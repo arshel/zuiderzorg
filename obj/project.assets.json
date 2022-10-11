@@ -8,24 +8,26 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/Users/arshelmelfor/.nuget/packages/": {}
+    "C:\\Users\\jdam3\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/arshelmelfor/zuiderzorg/zuiderzorg.csproj",
+      "projectUniqueName": "c:\\Users\\jdam3\\Documents\\GitHub\\project_c\\zuiderzorg.csproj",
       "projectName": "zuiderzorg",
-      "projectPath": "/Users/arshelmelfor/zuiderzorg/zuiderzorg.csproj",
-      "packagesPath": "/Users/arshelmelfor/.nuget/packages/",
-      "outputPath": "/Users/arshelmelfor/zuiderzorg/obj/",
+      "projectPath": "c:\\Users\\jdam3\\Documents\\GitHub\\project_c\\zuiderzorg.csproj",
+      "packagesPath": "C:\\Users\\jdam3\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\jdam3\\Documents\\GitHub\\project_c\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/arshelmelfor/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\jdam3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
