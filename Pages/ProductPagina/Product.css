@@ -1,0 +1,64 @@
+.Blikopener {
+    width: 400px;
+    height: 500px;
+}
+
+button.Info {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    top: 0px;
+    left: 0px;
+    border: 3px solid #73AD21;
+    border-width: right;
+    background-color: white;
+}
+
+button.Info:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
+button.Experience {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    top: 0x;
+    left: 0px;
+    border: 3px solid #73AD21;
+    border-width: right;
+    background-color: white;
+}
+
+button.Experience:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
+button.ShoppingCart {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    top: 0px;
+    left: 0px;
+    border: 3px solid #73AD21;
+    border-width: small;
+    background-color: white;
+}
+
+button.ShoppingCart:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
+button.Buy {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    top: 0px;
+    left: 0px;
+    border: 3px solid #73AD21;
+    border-width: small;
+    background-color: white;
+}
+
+button.Buy:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
