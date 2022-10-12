@@ -7,13 +7,12 @@
 
 <head>
 <style>
-#Blikopener {
+.Blikopener {
     width: 400px;
     height: 500px;
-    float: left;
 }
 
-span.Info {
+button.Info {
     position: relative;
     height: 200px;
     width: 200px;
@@ -21,8 +20,14 @@ span.Info {
     left: 0px;
     border: 3px solid #73AD21;
     border-width: right;
+    background-color: white;
 }
-span.Experience {
+
+button.Info:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
+button.Experience {
     position: relative;
     height: 200px;
     width: 200px;
@@ -30,8 +35,14 @@ span.Experience {
     left: 0px;
     border: 3px solid #73AD21;
     border-width: right;
+    background-color: white;
 }
-span.ShoppingCart {
+
+button.Experience:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
+button.ShoppingCart {
     position: relative;
     height: 200px;
     width: 200px;
@@ -39,8 +50,14 @@ span.ShoppingCart {
     left: 0px;
     border: 3px solid #73AD21;
     border-width: small;
+    background-color: white;
 }
-span.Buy {
+
+button.ShoppingCart:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
+button.Buy {
     position: relative;
     height: 200px;
     width: 200px;
@@ -48,14 +65,20 @@ span.Buy {
     left: 0px;
     border: 3px solid #73AD21;
     border-width: small;
+    background-color: white;
 }
+
+button.Buy:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
 </style>
 </head>
 
 <body>
-<span class="Info"> Informatie</span>
-<span class="Experience"> Ervaringen van anderen</span>
-<span class="ShoppingCart"> In winkelmandje plaatsen</span>
-<span class="Buy"> Product Kopen</span>
-<img id="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
+<button class="Info"> Informatie</button>
+<button class="Experience"> Ervaringen van anderen</button>
+<button class="ShoppingCart"> In winkelmandje plaatsen</button>
+<button class="Buy"> Product Kopen</button>
+<img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
 </body>
