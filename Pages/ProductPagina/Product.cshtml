@@ -6,13 +6,96 @@
 <h1>@ViewData["Title"]</h1>
 
 <head>
-    <link rel="stylesheet" href="./ProductPagina/Product.css" asp-append-version="true"/>
+<style>
+.Blikopener {
+    width: 400px;
+    height: 500px;
+}
+
+
+
+button.Back {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    top: 0px;
+    left: 0px;
+    border: 3px solid #73AD21;
+    border-width: right;
+    background-color: white;
+}
+
+button.Back:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
+button.Experience {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    top: 0x;
+    left: 0px;
+    border: 3px solid #73AD21;
+    border-width: right;
+    background-color: white;
+}
+
+button.Experience:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
+button.ShoppingCart {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    top: 0px;
+    left: 0px;
+    border: 3px solid #73AD21;
+    border-width: small;
+    background-color: white;
+}
+
+button.ShoppingCart:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+
+button.Buy {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    top: 0px;
+    left: 0px;
+    border: 3px solid #73AD21;
+    border-width: small;
+    background-color: white;
+}
+
+button.Buy:hover {
+    box-shadow: 10px 10px 8px #888888;
+}
+</style>
 </head>
 
 <body>
-<button class="Info"> Informatie</button>
+<button class="Back" onclick="GoBack()"> Terug</button>
 <button class="Experience"> Ervaringen van anderen</button>
-<button class="ShoppingCart"> In winkelmandje plaatsen</button>
-<button class="Buy"> Product Kopen</button>
+<button class="ShoppingCart" onclick="InShoppingCart()"> In winkelmandje plaatsen</button>
+<button class="Buy" onclick="ToProduct()"> Naar Productpagina</button>
 <img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
+
+<p id="WM"></p>
+
+<script>
+    function GoBack() {
+        location.href = "http://localhost:5090/";
+    }
+    function ToProduct() {
+        location.href = "https://www.wibra.nl/assortiment/blikopener-rvs/";
+    }
+    function InShoppingCart() {
+        document.getElementsByID("WM").innerHTML = "Toegevoegd aan winkelmandje";
+    }
+</script>
+
+
 </body>
