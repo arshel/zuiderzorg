@@ -1,10 +1,8 @@
 ﻿@page
 @model BlikModel
 
-
 <head>
 <style>
-
 
 .Category {
     position: absolute;
@@ -99,7 +97,18 @@ button.Help {
     border-width: 2px;
     border-color: black;
     border-radius: 8px;
+}
+
+p.HelpText {
+    position: relative;
+    top: 10px;
+    left: 30px;
     font-size: 20px;
+    text-align: center;
+}
+
+button.Help:hover {
+    box-shadow: 10px 10px 8px #888888;
 }
 
 button.Back {
@@ -113,6 +122,13 @@ button.Back {
     border-color: black;
     border-radius: 8px;
     font-size: 20px;
+}
+
+p.BackText {
+    position: relative;
+    top: 70px;
+    font-size: 30px;
+    text-align: center;
 }
 
 button.Back:hover {
@@ -131,6 +147,13 @@ button.Experience {
     border-color: black;
     border-radius: 8px;
     font-size: 20px;
+}
+
+p.ExperienceText {
+    position: relative;
+    top: 70px;
+    font-size: 30px;
+    text-align: center;
 }
 
 button.Experience:hover {
@@ -180,25 +203,37 @@ p.Titel {
 </head>
 
 <body style="background-color:#E9E2E2;">
-<div class="ProductInfo"></div>
-<div class="Category">
-    <div class="CategoryTitle">Category</div>
-    <div class="CategoryDescription">Categorie: Huiskamer</div>
-</div>
-<div class="DescriptionBlock">Blikopener
-    <div class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</div>
-</div>
-<div class="PriceBlock">€2,79</div>
-<button class="Experience" onclick="Experiences()"> Ervaringen van anderen</button>
-<button class="ShoppingCart" onclick="InShoppingCart()"> In winkelmandje plaatsen</button>
-<button class="Buy" onclick="ToProduct()"> Naar Productpagina</button>
-<img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <div class="ProductInfo"></div>
+    <div class="Category">
+        <div class="CategoryTitle">Category</div>
+        <div class="CategoryDescription">Categorie: Huiskamer</div>
+    </div>
+    <div class="DescriptionBlock">Blikopener
+        <div class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</div>
+    </div>
+    <div class="PriceBlock">€2,79</div>
+    <button class="ShoppingCart" onclick="InShoppingCart()"> In winkelmandje plaatsen</button>
+    <button class="Buy" onclick="ToProduct()"> Naar Productpagina</button>
+    <img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
 
+    <button class="Back" onclick="GoBack()">
+        <p class="BackText">Terug</p>
+        <i class="bi bi-arrow-return-left" style="font-size:100px;color:#6CBF2A;position:absolute;left:62px;top:40px"></i>
+    </button>
 
-<button class="Back" onclick="GoBack()"> Terug</button>
-<button class="Help"> Klik hier voor hulp</button>
+    <button class="Experience" onclick="Experiences()">
+        <p class="ExperienceText">Ervaringen van anderen</p>
+        <i class="bi bi-play-circle" style="font-size:100px;color:#6CBF2A;position:absolute;left:68px;top:10px"></i>
+    </button>
+
+    <button class="Help">
+        <p class="HelpText">Klik hier voor hulp</p>
+        <i class="bi bi-question-circle" style="font-size:70px;color:#6CBF2A;position:absolute;left:5px;top:-10px"></i>
+    </button>
 
 </body>
+
 
 <script>
     function GoBack() {
