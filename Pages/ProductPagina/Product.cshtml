@@ -1,28 +1,118 @@
 ﻿@page
 @model BlikModel
-@{
-    ViewData["Title"] = "Blikopener";
-}
-<h1>@ViewData["Title"]</h1>
+
 
 <head>
 <style>
-.Blikopener {
+
+
+.Category {
+    position: absolute;
     width: 400px;
     height: 500px;
+    background-color: white;
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    border-radius: 8px;
+    left: 100px;
+}
+
+.CategoryTitle {
+    width: 400px;
+    height: 100px;
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+    background-color: #6CBF2A;
+    border-radius: 8px;
 }
 
 
+.CategoryDescription {
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 300px;
+}
+
+.ProductInfo {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background-color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 8px;
+    left: 900px;
+}
+
+.DescriptionBlock {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background-color: #D9D9D9;
+    top: 100px;
+    left: 1100px;
+
+    font-size: 30px;
+    text-align: center;
+}
+
+.DescriptionText {
+    font-size: 20px;
+    text-align: left;
+    
+}
+
+.PriceBlock {
+    position: absolute;
+    width: 150px;
+    height: 100px;
+    background-color: #D9D9D9;
+    top: 450px;
+    left: 900px;
+
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+}
+
+.Blikopener {
+    position: absolute;
+    width: 250px;
+    height: 300px;
+    left: 875px;
+}
+
+button.Help {
+    position: absolute;
+    width: 270px;
+    height: 100px;
+    background-color: white;
+    left: 100px;
+    top: 665px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 8px;
+    font-size: 20px;
+}
 
 button.Back {
-    position: relative;
-    height: 200px;
-    width: 200px;
-    top: 0px;
-    left: 0px;
-    border: 3px solid #73AD21;
-    border-width: right;
+    position: absolute;
+    height: 285px;
+    width: 250px;
+    left: 600px;
     background-color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 8px;
+    font-size: 20px;
 }
 
 button.Back:hover {
@@ -30,14 +120,17 @@ button.Back:hover {
 }
 
 button.Experience {
-    position: relative;
-    height: 200px;
-    width: 200px;
-    top: 0x;
-    left: 0px;
-    border: 3px solid #73AD21;
-    border-width: right;
+    position: absolute;
+    height: 285px;
+    width: 250px;
+    top: 485px;
+    left: 600px;
     background-color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 8px;
+    font-size: 20px;
 }
 
 button.Experience:hover {
@@ -45,14 +138,15 @@ button.Experience:hover {
 }
 
 button.ShoppingCart {
-    position: relative;
+    position: absolute;
     height: 200px;
-    width: 200px;
-    top: 0px;
-    left: 0px;
-    border: 3px solid #73AD21;
-    border-width: small;
-    background-color: white;
+    width: 300px;
+    top: 565px;
+    left: 920px;
+    border: none;
+    background-color: #D9D9D9;
+    border-radius: 8px;
+    font-size: 20px;
 }
 
 button.ShoppingCart:hover {
@@ -60,30 +154,51 @@ button.ShoppingCart:hover {
 }
 
 button.Buy {
-    position: relative;
+    position: absolute;
     height: 200px;
-    width: 200px;
-    top: 0px;
-    left: 0px;
-    border: 3px solid #73AD21;
-    border-width: small;
-    background-color: white;
+    width: 300px;
+    top: 565px;
+    left: 1250px;
+    border: none;
+    background-color: #D9D9D9;
+    border-radius: 8px;
+    font-size: 20px;
 }
 
 button.Buy:hover {
     box-shadow: 10px 10px 8px #888888;
 }
+
+p.Titel {
+    position: absolute;
+    font-size: x-large;
+    left: 0px;
+    top: 0px;
+}
+
 </style>
 </head>
 
-<body>
-<button class="Back" onclick="GoBack()"> Terug</button>
-<button class="Experience"> Ervaringen van anderen</button>
+<body style="background-color:#E9E2E2;">
+<div class="ProductInfo"></div>
+<div class="Category">
+    <div class="CategoryTitle">Category</div>
+    <div class="CategoryDescription">Categorie: Huiskamer</div>
+</div>
+<div class="DescriptionBlock">Blikopener
+    <div class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</div>
+</div>
+<div class="PriceBlock">€2,79</div>
+<button class="Experience" onclick="Experiences()"> Ervaringen van anderen</button>
 <button class="ShoppingCart" onclick="InShoppingCart()"> In winkelmandje plaatsen</button>
 <button class="Buy" onclick="ToProduct()"> Naar Productpagina</button>
 <img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
 
-<p id="WM"></p>
+
+<button class="Back" onclick="GoBack()"> Terug</button>
+<button class="Help"> Klik hier voor hulp</button>
+
+</body>
 
 <script>
     function GoBack() {
@@ -92,10 +207,13 @@ button.Buy:hover {
     function ToProduct() {
         location.href = "https://www.wibra.nl/assortiment/blikopener-rvs/";
     }
+    function Experiences() {
+        location.href = "https://www.youtube.com/watch?v=BWmBov6O0BA";
+    }
     function InShoppingCart() {
-        document.getElementsByID("WM").innerHTML = "Toegevoegd aan winkelmandje";
+        alert("Het product is toegevoegd aan uw winkelmandje");
     }
 </script>
 
 
-</body>
+
