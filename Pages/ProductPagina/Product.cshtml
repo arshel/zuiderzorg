@@ -4,6 +4,7 @@
 <head>
 <style>
 
+
 .Category {
     position: absolute;
     width: 400px;
@@ -172,6 +173,13 @@ button.ShoppingCart {
     font-size: 20px;
 }
 
+p.ShoppingCartText {
+    position: relative;
+    top: 45px;
+    font-size: 30px;
+    text-align: center;
+}
+
 button.ShoppingCart:hover {
     box-shadow: 10px 10px 8px #888888;
 }
@@ -187,6 +195,14 @@ button.Buy {
     border-radius: 8px;
     font-size: 20px;
 }
+
+p.BuyText {
+    position: relative;
+    top: 50px;
+    font-size: 30px;
+    text-align: center;
+}
+
 
 button.Buy:hover {
     box-shadow: 10px 10px 8px #888888;
@@ -213,8 +229,14 @@ p.Titel {
         <div class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</div>
     </div>
     <div class="PriceBlock">€2,79</div>
-    <button class="ShoppingCart" onclick="InShoppingCart()"> In winkelmandje plaatsen</button>
-    <button class="Buy" onclick="ToProduct()"> Naar Productpagina</button>
+    <button class="ShoppingCart" onclick="InShoppingCart()">
+        <p class="ShoppingCartText">In winkelmandje plaatsen</p>
+        <i class="bi bi-cart" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px"></i>
+    </button>
+    <button class="Buy" onclick="ToProduct()">
+        <p class="BuyText">Naar productpagina</p>
+        <i class="bi bi-shop" style="font-size:100px;color:#6CBF2A;position:absolute;left:90px;top:-20px"></i>
+    </button>
     <img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
 
     <button class="Back" onclick="GoBack()">
