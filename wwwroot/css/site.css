@@ -16,3 +16,55 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Navbar-begin */
+
+.bg-green {
+  --bs-bg-opacity: 1;
+  background-color: rgba(108, 191, 42,var(--bs-bg-opacity))!important;
+}
+
+/* Navbar-end */
+
+/* Video container begin */
+
+.bi-play-circle-fill {
+  width:30%;
+  height:30%;
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+}
+
+/* Video container end */
+
+/* Next-page begin */
+
+.border-green {
+  
+}
+
+.next-page {
+  margin: auto;
+  width: 40%;
+}
+
+.button {
+  background-color: #ddd;
+  width: 99%;
+  height: 100px;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 2px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+/* Next-page end */
