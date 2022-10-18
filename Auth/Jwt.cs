@@ -5,7 +5,7 @@ using JWT.Algorithms;
 using JWT.Builder;
 using JWT.Exceptions;
 using JWT.Serializers;
-using zuiderzorg.PostgreSQL;
+using zuiderzorg.Models;
 
 namespace zuiderzorg.Auth {
     public class Jwt {
@@ -60,7 +60,7 @@ namespace zuiderzorg.Auth {
     }
 
     public class CreatedToken {
-        public string Token;
-        public TimeSpan TimeSpan;
+        public string? Token;
+        public TimeSpan? TimeSpan;
     }
 }

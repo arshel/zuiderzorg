@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject Auth.AuthChecker auth
+@model IndexModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -12,12 +15,19 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+               
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Zuiderzorg</a>
+               
+                                   
+                 @if (auth) {
+                                    <span>@auth.User.Email</span>
+                    }
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
@@ -26,45 +36,19 @@
                     </ul>
                     
                 </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+                
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+<div class="container">
+    <main role="main" class="pb-3">
             @RenderBody()
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-    <form method="POST">
-        <div class="modal-body">
-      
-            <div class="form-group">
-                <label  class="control-label">Email</label>
-                <input class="form-control" placeholder="Voer Email in..." type="email">
-                <span  class="text-danger"></span>
+             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                </div>
             </div>
-            <div class="form-group">
-                <label  class="control-label">Wachtwoord</label>
-                <input  class="form-control" placeholder="Voer wachtwoord in..." type="password">
-                <span  class="text-danger"></span>
-            </div>
-        
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success">Save changes</button>
-        </div>
-    </form>
-    </div>
-  </div>
-</div>
-        </main>
+            
+</main>
    
 
     <footer class="border-top footer text-muted">

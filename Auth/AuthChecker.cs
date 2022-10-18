@@ -1,6 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Http;
-using zuiderzorg.PostgreSQL;
+using zuiderzorg.Models;
 
 namespace zuiderzorg.Auth {
     public class AuthChecker {
