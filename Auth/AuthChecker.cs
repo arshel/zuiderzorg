@@ -4,9 +4,9 @@ using zuiderzorg.Models;
 
 namespace zuiderzorg.Auth {
     public class AuthChecker {
-        public User User { get; }
+        public User? User { get; }
 
-        public AuthChecker(IHttpContextAccessor accessor) {
+        public AuthChecker(IHttpContextAccessor? accessor) {
             // Get token out of cookies
             var token = accessor.HttpContext.Request.Cookies["JWTAuthToken"];
             if (token == null) {
@@ -23,6 +23,6 @@ namespace zuiderzorg.Auth {
         }
 
         // Allows for @if (authChecker)
-        public static implicit operator bool(AuthChecker checker) => checker.isLoggedIn();
+        public static implicit operator bool(AuthChecker? checker) => checker.isLoggedIn();
     }
 }

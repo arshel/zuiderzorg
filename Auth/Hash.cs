@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace zuiderzorg.Auth {
     public class Hash {
-        public static string Create(string value, string salt) {
+        public static string Create(string? value, string? salt) {
             var valueBytes = KeyDerivation.Pbkdf2(
                 password: value,
                 salt: Encoding.UTF8.GetBytes(salt),
@@ -16,6 +16,6 @@ namespace zuiderzorg.Auth {
             return Convert.ToBase64String(valueBytes);
         }
 
-        public static bool Validate(string value, string salt, string hash) => Create(value, salt) == hash;
+        public static bool Validate(string? value, string? salt, string? hash) => Create(value, salt) == hash;
     }
 }

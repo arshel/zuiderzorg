@@ -21,11 +21,11 @@ namespace zuiderzorg.Auth {
                 .WithSecret(Secret);
         }
 
-        public CreatedToken Create(User user) {
+        public CreatedToken Create(User? user) {
             // In 7 days
             var timespan = TimeSpan.FromDays(7);
             var expiresAt = DateTime.Now.Add(timespan).Subtract(DateTime.UnixEpoch).TotalSeconds;
-
+           
             var payload = new Dictionary<string, object>{
                 {"Id", user.Id },
                 {"Email", user.Email },
@@ -41,7 +41,7 @@ namespace zuiderzorg.Auth {
             };
         }
 
-        public User Verify(string token) {
+        public User Verify(string? token) {
             try {
                 var payload = Builder
                     .MustVerifySignature()

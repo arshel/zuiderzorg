@@ -22,28 +22,28 @@ public class IndexModel : PageModel
     public void OnGet()
     {
 
-        // var salt = Salt.Create();
-        // var hash = Hash.Create("admin", salt);
+    //     var salt = Salt.Create();
+    //    var hash = Hash.Create("admin", salt);
        
-        // using (var db = new UserContext())
-        //     {
-        //         // Creating a new item and saving it to the database
-        //         var newUser = new User();
-        //         newUser.Email = "arshelmelfor@hotmail.com";
-        //         newUser.HashSalt = salt;
-        //         newUser.HashPassword = hash;
-        //         db.Users.Add(newUser);
-        //         db.SaveChanges();
+    //     using (var db = new UserContext())
+    //         {
+    //             // Creating a new item and saving it to the database
+    //             var newUser = new User();
+    //             newUser.Email = "arshelmelfor@gmail.com";
+    //             newUser.HashSalt = salt;
+    //             newUser.HashPassword = hash;
+    //             db.Users.Add(newUser);
+    //             db.SaveChanges();
   
-        //     }
+    //         }
     }
-    public string danger;
-    public string success;
+    public string? danger;
+    public string? success;
     [BindProperty]
      public LoginRequest LoginRequest { get; set; }
     public IActionResult OnPost()
         {
-            string returnUrl = null;
+            string? returnUrl = null;
             returnUrl = returnUrl ?? Url.Content("~/");
                if (!ModelState.IsValid) {
                 return Page();
@@ -52,6 +52,7 @@ public class IndexModel : PageModel
               
                 
                 // Get the user with the email
+                
                 var maybeUser = db.Users.First(x => x.Email == LoginRequest.Email);
                 if (maybeUser == null) {
                     // User does not exist
