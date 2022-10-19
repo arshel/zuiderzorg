@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jdam3\\Documents\\GitHub\\project_c\\zuiderzorg.csproj": {}
+    "C:\\Users\\brian\\source\\repos\\zuiderzorg\\zuiderzorg.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jdam3\\Documents\\GitHub\\project_c\\zuiderzorg.csproj": {
+    "C:\\Users\\brian\\source\\repos\\zuiderzorg\\zuiderzorg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jdam3\\Documents\\GitHub\\project_c\\zuiderzorg.csproj",
+        "projectUniqueName": "C:\\Users\\brian\\source\\repos\\zuiderzorg\\zuiderzorg.csproj",
         "projectName": "zuiderzorg",
-        "projectPath": "C:\\Users\\jdam3\\Documents\\GitHub\\project_c\\zuiderzorg.csproj",
-        "packagesPath": "C:\\Users\\jdam3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jdam3\\Documents\\GitHub\\project_c\\obj\\",
+        "projectPath": "C:\\Users\\brian\\source\\repos\\zuiderzorg\\zuiderzorg.csproj",
+        "packagesPath": "C:\\Users\\brian\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\brian\\source\\repos\\zuiderzorg\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jdam3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\brian\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
