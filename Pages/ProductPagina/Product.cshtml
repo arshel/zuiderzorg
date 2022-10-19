@@ -222,7 +222,7 @@ p.Titel {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <div class="ProductInfo"></div>
     <div class="Category">
-        <div class="CategoryTitle">Category</div>
+        <div class="CategoryTitle">Categorie</div>
         <div class="CategoryDescription">Categorie: Huiskamer</div>
     </div>
     <div class="DescriptionBlock">Blikopener
@@ -249,7 +249,7 @@ p.Titel {
         <i class="bi bi-play-circle" style="font-size:100px;color:#6CBF2A;position:absolute;left:68px;top:10px"></i>
     </button>
 
-    <button class="Help">
+    <button class="Help" onclick="Help()">
         <p class="HelpText">Klik hier voor hulp</p>
         <i class="bi bi-question-circle" style="font-size:70px;color:#6CBF2A;position:absolute;left:5px;top:-10px"></i>
     </button>
@@ -269,6 +269,9 @@ p.Titel {
     }
     function InShoppingCart() {
         alert("Het product is toegevoegd aan uw winkelmandje");
+    }
+    function Help() {
+        location.href = "http://localhost:5090/ProductPagina/Product/Help";
     }
 </script>
 
