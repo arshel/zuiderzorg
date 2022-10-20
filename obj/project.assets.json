@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\jdam3\\.nuget\\packages\\": {}
+    "C:\\Users\\daan0\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\jdam3\\Documents\\GitHub\\project_c\\zuiderzorg.csproj",
+      "projectUniqueName": "D:\\daan0\\HvRotterdam\\Jaar_1\\Op3\\Project\\cinema\\project_c\\zuiderzorg.csproj",
       "projectName": "zuiderzorg",
-      "projectPath": "c:\\Users\\jdam3\\Documents\\GitHub\\project_c\\zuiderzorg.csproj",
-      "packagesPath": "C:\\Users\\jdam3\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\jdam3\\Documents\\GitHub\\project_c\\obj\\",
+      "projectPath": "D:\\daan0\\HvRotterdam\\Jaar_1\\Op3\\Project\\cinema\\project_c\\zuiderzorg.csproj",
+      "packagesPath": "C:\\Users\\daan0\\.nuget\\packages\\",
+      "outputPath": "D:\\daan0\\HvRotterdam\\Jaar_1\\Op3\\Project\\cinema\\project_c\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jdam3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\daan0\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -51,7 +51,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -63,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
