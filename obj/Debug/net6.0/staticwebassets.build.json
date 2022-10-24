@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Yh1sMEJTzcxcFf83y3fwQ/cD/Oi/ER2WWykkq1ZrzDs=",
+  "Hash": "yIuSf3O0sb9FzIq51lWEmz4ALDa0dcnSs77PQCaFSk8=",
   "Source": "zuiderzorg",
   "BasePath": "_content/zuiderzorg",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\jdam3\\Documents\\GitHub\\project_c\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\zuiderzorg.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\jdam3\\Documents\\GitHub\\project_c\\wwwroot\\css\\ProductStyle.css",
+      "SourceId": "zuiderzorg",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jdam3\\Documents\\GitHub\\project_c\\wwwroot\\",
+      "BasePath": "_content/zuiderzorg",
+      "RelativePath": "css/ProductStyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\ProductStyle.css"
     },
     {
       "Identity": "C:\\Users\\jdam3\\Documents\\GitHub\\project_c\\wwwroot\\css\\site.css",
