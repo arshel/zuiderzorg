@@ -21,7 +21,7 @@ namespace zuiderzorg.Auth {
                 .WithSecret(Secret);
         }
 
-        public CreatedToken Create(User? user) {
+        public CreatedToken Create(User user) {
             // In 7 days
             var timespan = TimeSpan.FromDays(7);
             var expiresAt = DateTime.Now.Add(timespan).Subtract(DateTime.UnixEpoch).TotalSeconds;

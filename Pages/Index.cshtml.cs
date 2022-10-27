@@ -40,7 +40,7 @@ public class IndexModel : PageModel
     public string? danger;
     public string? success;
     [BindProperty]
-     public LoginRequest LoginRequest { get; set; }
+     public LoginRequest? LoginRequest { get; set; }
     public IActionResult OnPost()
         {
             string? returnUrl = null;
