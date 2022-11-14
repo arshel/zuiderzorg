@@ -1,9 +1,16 @@
 ﻿@page
 @model IndexModel
+@inject Auth.AuthChecker auth
 @{
     ViewData["Title"] = "Home page";
 }
-
+<div class="mt-4 container">
+<component render-mode="Static" type="typeof(Components.Message)" param-text="Model.success" param-type='"success"' />
+    <component render-mode="Static" type="typeof(Components.Message)" param-text="Model.danger" param-type='"danger"' />
+    @if (auth) {
+        <component render-mode="Static" type="typeof(Components.Message)" param-text='"Je bent ingelogd!"' param-type='"info"' />
+    }
+</div>
 <div class="text-center">
     <h1 class="display-4">Welkom bij Zuiderzorg</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>

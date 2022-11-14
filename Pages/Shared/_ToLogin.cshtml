@@ -1,0 +1,41 @@
+
+@inject Auth.AuthChecker auth
+@model IndexModel
+@{
+    ViewData["Title"] = "Login";
+}   
+   <div class="modal-content">
+      <div class="modal-header__border">
+         <img src="/images/Account.png" class="mx-auto d-block" alt="icon log in" width="60" height="60">
+        </div>
+  
+             <form  id="account" method="POST" asp-page-handler="Login">
+               
+                <div class="modal-body">
+          
+                    <div class="form-group pb-2">
+                        <label asp-for="LoginRequest.Email" class="control-label">Email</label>
+                        <input asp-for="LoginRequest.Email" class="form-control" style="background-color:#E9E2E2;" type="email">
+                        <span asp-validation-for="LoginRequest.Email" class="text-danger"></span>
+                        <span  class="text-danger"></span>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label  asp-for="LoginRequest.Password" class="control-label">Wachtwoord</label>
+                        <input  asp-for="LoginRequest.Password" class="form-control" style="background-color:#E9E2E2;" type="password">
+                        <span asp-validation-for="LoginRequest.Password" class="text-danger"></span>
+                        <span  class="text-danger"></span>
+                    </div>
+                
+                </div>
+               <div class="p-3">
+                  <div class="d-flex justify-content-between gap-4">
+                    <button type="button" class="button__white btn w-50" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="button__white btn w-50">Log in</button>
+                   </div>
+                </div>
+               
+            </form>
+
+</div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
