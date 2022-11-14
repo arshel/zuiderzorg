@@ -1,3 +1,4 @@
+
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -22,20 +23,20 @@ public class IndexModel : PageModel
     public void OnGet()
     {
 
-    //     var salt = Salt.Create();
-    //    var hash = Hash.Create("admin", salt);
-       
-    //     using (var db = new UserContext())
-    //         {
-    //             // Creating a new item and saving it to the database
-    //             var newUser = new User();
-    //             newUser.Email = "arshelmelfor@gmail.com";
-    //             newUser.HashSalt = salt;
-    //             newUser.HashPassword = hash;
-    //             db.Users.Add(newUser);
-    //             db.SaveChanges();
-  
-    //         }
+             /*var salt = Salt.Create();
+            var hash = Hash.Create("admin", salt);
+
+             using (var db = new UserContext())
+                 {
+                     // Creating a new item and saving it to the database
+                     var newUser = new User();
+                     newUser.Email = "arshelmelfor@gmail.com";
+                     newUser.HashSalt = salt;
+                     newUser.HashPassword = hash;
+                     db.Users.Add(newUser);
+                     db.SaveChanges();
+
+               }*/
     }
     public string? danger;
     public string? success;

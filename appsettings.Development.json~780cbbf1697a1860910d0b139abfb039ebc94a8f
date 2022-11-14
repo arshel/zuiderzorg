@@ -1,6 +1,6 @@
 {
 "ConnectionStrings": {
-        "DefaultConnection": "server=localhost;Port=5432;Database=jedatabasenaam;User Id=postgres;Password="
+        "DefaultConnection": "server=localhost;Port=5432;Database=Zuiderzorg;User Id=postgres;Password=Brian2304"
     },
       
     "Logging": {
