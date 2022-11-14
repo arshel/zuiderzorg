@@ -8,20 +8,21 @@
 <body style="background-color:#E9E2E2;">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <div class="ProductInfo"></div>
-    <div class="Category">
+    @* <div class="Category">
         <div class="CategoryTitle">Categorie</div>
         <div class="CategoryDescription">Categorie: Huiskamer</div>
-    </div>
+    </div> *@
     <div class="DescriptionBlock">Blikopener
         <div class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</div>
     </div>
     <div class="PriceBlock">€2,79</div>
     <button class="ShoppingCart" onclick="InShoppingCart()">
-        <p class="ShoppingCartText">In winkelmandje plaatsen</p>
-        <i class="bi bi-cart" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px"></i>
+        <p class="ShoppingCartText">In favorieten plaatsen</p>
+        <i class="bi bi-star" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:visible"></i>
+        <i class="bi bi-star-fill" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:hidden"></i>
     </button>
     <div class="ConfirmText">
-        <p class="ShoppingCartConfirm">Het product is in het winkelmandje geplaatst</p>
+        <p class="ShoppingCartConfirm">Het product is in favorieten geplaatst</p>
     </div>
     <button class="Buy" onclick="ToProduct()">
         <p class="BuyText">Naar productpagina</p>
@@ -62,17 +63,28 @@
         location.href = "https://www.youtube.com/watch?v=BWmBov6O0BA";
     }
     function InShoppingCart() {
-        var hiddiv = document.getElementsByClassName("ConfirmText");
-        if(hiddiv[0].offsetWidth > 0 && hiddiv[0].offsetHeight > 0) {
+        var star = document.getElementsByClassName("bi bi-star");
+        var starfill = document.getElementsByClassName("bi bi-star-fill");
+        var visible = hiddiv[0].style.visibility
+
+        if (visible = "visible") {
+            if(star[0].offsetWidth > 0 && star[0].offsetHeight > 0) {
+            star[0].style.visibility = "hidden";
+            }
+            if(starfill[0].offsetWidth > 0 && starfill[0].offsetHeight > 0) {
+                starfill[0].style.visibility = "visible";
+            }
+        }
+
+        if (visible = "hidden") {
+            if(hiddiv[0].offsetWidth > 0 && hiddiv[0].offsetHeight > 0) {
             hiddiv[0].style.visibility = "visible";
+            }
+            var visdiv = document.getElementsByClassName("bi bi-star-fill");
+            if(visdiv[0].offsetWidth > 0 && visdiv[0].offsetHeight > 0) {
+                visdiv[0].style.visibility = "hidden";
+            }
         }
-        var hid = document.getElementsByClassName("ShoppingCartConfirm");
-        if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
-            hid[0].style.visibility = "visible";
-        }
-
-        wait(5000);
-
     }
     function Help() {
         if (document.getElementById("HiddenHelp").style.visibility == "hidden") {
