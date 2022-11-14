@@ -10,10 +10,10 @@ namespace zuiderzorg.Models
     public class UserContext : DbContext
     {
         public DbSet<User>? Users { get; set; }
-        
+        WebApplicationBuilder builder = WebApplication.CreateBuilder();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("server=localhost;Port=5432;Database=zuiderzorg;User Id=postgres;Password=Feliciano123!");
+            => optionsBuilder.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
     
 }
 
