@@ -1,6 +1,10 @@
 {
 "ConnectionStrings": {
+<<<<<<<< HEAD:appsettings.Development.json~780cbbf1697a1860910d0b139abfb039ebc94a8f
         "DefaultConnection": "server=localhost;Port=5432;Database=Zuiderzorg;User Id=postgres;Password=Brian2304"
+========
+        "DefaultConnection": "server=localhost;Port=5432;Database=jedatabasenaam;User Id=postgres;Password="
+>>>>>>>> 9d572d4 (Database setup + admin login):appsettings.Development.json
     },
       
     "Logging": {
