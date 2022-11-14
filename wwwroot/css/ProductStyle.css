@@ -173,6 +173,25 @@ p.ShoppingCartText {
  text-align: center;
 }
 
+p.ShoppingCartConfirm {
+ visibility: hidden;
+ font-size: 20px;
+}
+
+
+.ConfirmText {
+ visibility: hidden;
+ position: absolute;
+ height: 30px;
+ width: 400px;
+ top: 850px;
+ left: 850px;
+ border: none;
+ background-color: white;
+ border-radius: 8px;
+}
+
+
 button.ShoppingCart:hover {
  box-shadow: 10px 10px 8px #888888;
 }

@@ -20,6 +20,9 @@
         <p class="ShoppingCartText">In winkelmandje plaatsen</p>
         <i class="bi bi-cart" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px"></i>
     </button>
+    <div class="ConfirmText">
+        <p class="ShoppingCartConfirm">Het product is in het winkelmandje geplaatst</p>
+    </div>
     <button class="Buy" onclick="ToProduct()">
         <p class="BuyText">Naar productpagina</p>
         <i class="bi bi-shop" style="font-size:100px;color:#6CBF2A;position:absolute;left:90px;top:-20px"></i>
@@ -59,7 +62,17 @@
         location.href = "https://www.youtube.com/watch?v=BWmBov6O0BA";
     }
     function InShoppingCart() {
-        alert("Het product is toegevoegd aan uw winkelmandje");
+        var hiddiv = document.getElementsByClassName("ConfirmText");
+        if(hiddiv[0].offsetWidth > 0 && hiddiv[0].offsetHeight > 0) {
+            hiddiv[0].style.visibility = "visible";
+        }
+        var hid = document.getElementsByClassName("ShoppingCartConfirm");
+        if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+            hid[0].style.visibility = "visible";
+        }
+
+        wait(5000);
+
     }
     function Help() {
         if (document.getElementById("HiddenHelp").style.visibility == "hidden") {
