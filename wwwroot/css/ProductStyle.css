@@ -166,9 +166,18 @@ button.ShoppingCart {
  font-size: 20px;
 }
 
-p.ShoppingCartText {
+.ShoppingCartText {
+ visibility: visible;
  position: relative;
- top: 45px;
+ top: 75px;
+ font-size: 30px;
+ text-align: center;
+}
+
+.ShoppingCartText2 {
+ visibility: hidden;
+ position: relative;
+ top: 30px;
  font-size: 30px;
  text-align: center;
 }
