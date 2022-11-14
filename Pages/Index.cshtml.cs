@@ -38,7 +38,7 @@ public class IndexModel : PageModel
   
         //     }
     }
-    }
+    
     public string? danger;
     public string? success;
     [BindProperty]
