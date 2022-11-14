@@ -8,41 +8,41 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = zuiderzorg
 build_property.RootNamespace = zuiderzorg
-build_property.ProjectDir = d:\daan0\HvRotterdam\Jaar_1\Op3\Project\cinema\project_c\
+build_property.ProjectDir = D:\daan0\HvRotterdam\Jaar_1\Op3\Project\cinema\project_c\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = d:\daan0\HvRotterdam\Jaar_1\Op3\Project\cinema\project_c
+build_property.MSBuildProjectDirectory = D:\daan0\HvRotterdam\Jaar_1\Op3\Project\cinema\project_c
 build_property._RazorSourceGeneratorDebug = 
 
-[d:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Error.cshtml]
+[D:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Index.cshtml]
+[D:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Product.cshtml]
+[D:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/ProductenSelectie.cshtml]
+[D:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/ProductenSelectie.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdGVuU2VsZWN0aWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[D:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/_ViewImports.cshtml]
+[D:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/_ViewStart.cshtml]
+[D:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Shared/_Layout.cshtml]
+[D:/daan0/HvRotterdam/Jaar_1/Op3/Project/cinema/project_c/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-pk65s9atht
