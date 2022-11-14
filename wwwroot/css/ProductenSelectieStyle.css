@@ -38,15 +38,14 @@
 
 .button:hover {background-color: rgb(111, 121, 114);}
 
-.side {width: 300px; height: 200px; line-height: -300%;}
-.Help {width: 300px; height: 200px;}
+.back {width: 300px; height: 200px; position: relative;}
+.Help {width: 300px; height: 200px; position: relative;}
 
-.Back {top: 20%; left: 30%;}
-.Product1 {line-height: 10%;}
-.Product2 {top: 20%; left: 70%;;}
-.Product3 {top: 50%; left: 30%;}
-.Product4 {top: 50%; left: 50%;}
-.Product5 {top: 50%; left: 70%;}
+.Product1 {position: relative;}
+.Product2 {position: relative;}
+.Product3 {position: relative;}
+.Product4 {position: relative;}
+.Product5 {position: relative;}
 
 
 
