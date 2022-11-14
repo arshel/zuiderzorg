@@ -8,41 +8,57 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = zuiderzorg
 build_property.RootNamespace = zuiderzorg
-build_property.ProjectDir = C:\Users\Brian Haubrich\source\repos\zuiderzorg\
+build_property.ProjectDir = C:\Users\Brian Haubrich\Source\Repos\zuiderzorg\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Brian Haubrich\source\repos\zuiderzorg
+build_property.MSBuildProjectDirectory = C:\Users\Brian Haubrich\Source\Repos\zuiderzorg
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Brian Haubrich/source/repos/zuiderzorg/Pages/Error.cshtml]
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Components/Message.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNZXNzYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Brian Haubrich/source/repos/zuiderzorg/Pages/Index.cshtml]
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Brian Haubrich/source/repos/zuiderzorg/Pages/Product.cshtml]
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Brian Haubrich/source/repos/zuiderzorg/Pages/Product_Select_Page.cshtml]
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/Product_Select_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdF9TZWxlY3RfUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Brian Haubrich/source/repos/zuiderzorg/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/Shared/_ToLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Ub0xvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Brian Haubrich/source/repos/zuiderzorg/Pages/_ViewImports.cshtml]
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Brian Haubrich/source/repos/zuiderzorg/Pages/_ViewStart.cshtml]
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Brian Haubrich/source/repos/zuiderzorg/Pages/Shared/_Layout.cshtml]
+[C:/Users/Brian Haubrich/Source/Repos/zuiderzorg/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-pk65s9atht
