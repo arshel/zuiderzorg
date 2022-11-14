@@ -17,13 +17,11 @@
     </div>
     <div class="PriceBlock">€2,79</div>
     <button class="ShoppingCart" onclick="InShoppingCart()">
-        <p class="ShoppingCartText">In favorieten plaatsen</p>
+        <div class="ShoppingCartText">In favorieten plaatsen</div>
+        <div class="ShoppingCartText2">In favorieten geplaatst</div>  
         <i class="bi bi-star" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:visible"></i>
         <i class="bi bi-star-fill" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:hidden"></i>
     </button>
-    <div class="ConfirmText">
-        <p class="ShoppingCartConfirm">Het product is in favorieten geplaatst</p>
-    </div>
     <button class="Buy" onclick="ToProduct()">
         <p class="BuyText">Naar productpagina</p>
         <i class="bi bi-shop" style="font-size:100px;color:#6CBF2A;position:absolute;left:90px;top:-20px"></i>
@@ -65,24 +63,31 @@
     function InShoppingCart() {
         var star = document.getElementsByClassName("bi bi-star");
         var starfill = document.getElementsByClassName("bi bi-star-fill");
-        var visible = hiddiv[0].style.visibility
 
-        if (visible = "visible") {
+        var text = document.getElementsByClassName("ShoppingCartText");
+        var text2 = document.getElementsByClassName("ShoppingCartText2");
+
+        visible = star[0].style.visibility
+
+        if (visible == "visible") {
             if(star[0].offsetWidth > 0 && star[0].offsetHeight > 0) {
-            star[0].style.visibility = "hidden";
+                star[0].style.visibility = "hidden";
+                text[0].style.visibility = "hidden";
+
             }
             if(starfill[0].offsetWidth > 0 && starfill[0].offsetHeight > 0) {
                 starfill[0].style.visibility = "visible";
+                text2[0].style.visibility = "visible";
             }
-        }
+        } else {
+            if(star[0].offsetWidth > 0 && star[0].offsetHeight > 0) {
+                star[0].style.visibility = "visible";
+                text[0].style.visibility = "visible";
 
-        if (visible = "hidden") {
-            if(hiddiv[0].offsetWidth > 0 && hiddiv[0].offsetHeight > 0) {
-            hiddiv[0].style.visibility = "visible";
             }
-            var visdiv = document.getElementsByClassName("bi bi-star-fill");
-            if(visdiv[0].offsetWidth > 0 && visdiv[0].offsetHeight > 0) {
-                visdiv[0].style.visibility = "hidden";
+            if(starfill[0].offsetWidth > 0 && starfill[0].offsetHeight > 0) {
+                starfill[0].style.visibility = "hidden";
+                text2[0].style.visibility = "hidden";
             }
         }
     }
