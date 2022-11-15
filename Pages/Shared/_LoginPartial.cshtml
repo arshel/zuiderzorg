@@ -1,16 +1,19 @@
 @using Microsoft.AspNetCore.Identity
 @inject Auth.AuthChecker auth
 @if (!auth){
-                  
+                  <ul class="list-unstyled">
                     <li class="nav-item">
                         <a href="ima" ></a>
         <button type="button" class="nav-link btn btn-link text-dark" id="LoginPartial">
              <img src="/images/Account.png" class="mx-auto d-block" alt="icon log in" width="40" height="40">
         </button>
     </li>
+    </ul>
                 }
                 @if(auth){
-                    <li class="nav-item">
-                            <a class="nav-link" href="/logout">Log uit</a>
-                    </li>
+                    <ul class="list-unstyled">
+                        <li class="nav-item">
+                                <a class="nav-link" href="/logout">Log uit</a>
+                        </li>
+                    </ul>
                 }
