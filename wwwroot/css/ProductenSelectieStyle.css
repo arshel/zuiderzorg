@@ -5,7 +5,7 @@
   display: grid;
 
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 100px repeat(2, 1fr);
+  grid-template-rows: 80px repeat(2, 1fr);
 
   gap: 10px;
 
@@ -15,9 +15,14 @@
   box-align: center;
 }
 
-.category {
-  border: 10px solid green;
+div.navbar {
+  border: 5px solid rgb(113, 207, 113);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .button {
   border: 4px solid black;
   color: rgb(0, 0, 0);
