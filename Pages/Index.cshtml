@@ -4,17 +4,25 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="col-auto">
-    <div class="container-fluid position-relative mb-5">
-        <video class="video rounded-3 container-fluid shadow p-1 bg-green" padding="20px">
-            <source src="http://e14aaeb709f7cde1ae68-a1d0a134a31b545b257b15f8a8ba5726.r70.cf3.rackcdn.com/projects/31432/1427815464209-bf74131a7528d0ea5ce8c0710f530bb5/1280x720.mp4" type="video/mp4"/>
-        </video>
-        <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
-        </svg>
+<div class="container container-fluid container-xxl">
+    <div class="row flex-row offset-1 align-items-center">
+        <div class="col col-10 position-relative mb-5">
+            <video class="video rounded-3 container-fluid shadow p-1 bg-green">
+                <source src="http://e14aaeb709f7cde1ae68-a1d0a134a31b545b257b15f8a8ba5726.r70.cf3.rackcdn.com/projects/31432/1427815464209-bf74131a7528d0ea5ce8c0710f530bb5/1280x720.mp4" type="video/mp4"/>
+            </video>
+            <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+            </svg>
+            
+        </div>
+        
+        <div class="col mb-5" style="transform: translate(-42%) rotate(-90deg)">
+            <input type="range" orient="vertical" min="0" max="100" value="50" class="slider" id="myRange">
+            <span id="volume" class="offset-5"></span>
+        </div>
     </div>
     
-    <div class="next-page position-relative border border-2 border-dark rounded-pill shadow-lg bg-black bg-opacity-10">
-        <button class="button">Volgende Pagina</button>
+    <div class="img-fluid next-page border border-2 border-dark rounded-pill shadow-lg bg-black bg-opacity-10">
+        <button class="button row-cols-1">Volgende Pagina</button>
     </div>
 </div>
