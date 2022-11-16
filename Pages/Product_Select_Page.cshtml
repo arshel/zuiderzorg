@@ -14,7 +14,6 @@
         height: 300px;
         width: 275px;
         border: 3px solid;
-        border-width: right;
         background-color: white;
         border-radius: 12px;
         margin-bottom: 20px;
@@ -29,7 +28,6 @@
         height: 100px;
         width: 200px;
         border: 3px solid;
-        border-width: right;
         background-color: white;
         border-radius: 12px;
         margin-bottom: 20px;
@@ -44,7 +42,6 @@
         height: 470px;
         width: 250px;
         border: 3px solid;
-        border-width: right;
         background-color: white;
         border-radius: 12px;
         margin-bottom: 20px;
@@ -55,19 +52,20 @@
 
 <body style="background-color: #F9EFEF">
 
-    <button class="Basic" onclick="document.location='/index'"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF1tSX5LQAJKgBGYAr4eGZUe6aYZzFrwWb_EMnoIzlaQtdSbSSYldBusNMTdlk6pHu2dc&usqp=CAU" height=100 width=100 /><br /> <strong>Terug</strong></button>
+    <button style="position:absolute; left:100px; top:150px;" class="Basic" onclick="document.location='/index'"> <img src="/images/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
 
-    <div style=" left:700px; top:150px;">
+    <div style="position:absolute; right:100px; top:150px;">
 
-        <button class="Basic" onclick="document.location='/product'"> <img src="https://cdn-icons-png.flaticon.com/512/1010/1010398.png" height=100 width=100 /><br /> <strong>Woonkamer</strong></button>
-        <button class="Basic" onclick="document.location='/product'"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpvlM6wdMcrrdJgCfXPccKAiWkz_f5Z3MHgQ&usqp=CAU" height=100 width=100 /><br /> <strong>Keuken</strong></button>
-
-        <br>
-        <button class="Basic" onclick="document.location='/product'"> <img src="https://cdn-icons-png.flaticon.com/512/4312/4312464.png" height=100 width=100 /><br /> <strong>Slaapkamer</strong></button>
+        <button class="Basic" onclick="document.location='/productenselectie'"> <img src="/images/TVIcon.png" height="150" width="150" /><br /> <strong>Woonkamer</strong></button>
+        <button class="Basic" onclick="document.location='/productenselectie'"> <img src="/images/KitchenIcon.png" /><br /> <strong>Keuken</strong></button>
+        <button class="Basic" onclick="document.location='/productenselectie'"> <img src="/images/BedIcon.png"  /><br /> <strong>Slaapkamer</strong></button>
+        <br />
+        <button class="Basic" onclick="document.location='/productenselectie'"> <img src="/images/ShowerIcon.png"  /><br /> <strong>Badkamer</strong></button>
+        <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')"> <img src="/images/PlusIcon.png" height=100 width=100 /><br /> <strong>Toevoegen</strong></button>
 
     </div>
 
-    <div style="left:200px; bottom:100px;">
+    <div style="position:absolute; left:100px; bottom:100px;">
         <button class="HelpButton" onclick="JavaScript:alert('This button is under construction, please remain calm.')"> <strong>Vraag om hulp</strong></button>
     </div>
 
