@@ -22,7 +22,7 @@
         <i class="bi bi-star" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:visible"></i>
         <i class="bi bi-star-fill" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:hidden"></i>
     </button>
-    <button class="Buy" onclick="ToProduct()">
+    <button class="Buy" onclick="window.open('https://www.wibra.nl/assortiment/blikopener-rvs/')">     @*onclick="ToProduct()"*@
         <p class="BuyText">Naar productpagina</p>
         <i class="bi bi-shop" style="font-size:100px;color:#6CBF2A;position:absolute;left:90px;top:-20px"></i>
     </button>
@@ -33,7 +33,7 @@
         <i class="bi bi-arrow-return-left" style="font-size:100px;color:#6CBF2A;position:absolute;left:62px;top:40px"></i>
     </button>
 
-    <button class="Experience" onclick="Experiences()">
+    <button class="Experience" onclick="window.open('https://www.youtube.com/watch?v=BWmBov6O0BA')">     @*onclick="Experiences()"*@
         <p class="ExperienceText">Ervaringen van anderen</p>
         <i class="bi bi-play-circle" style="font-size:100px;color:#6CBF2A;position:absolute;left:68px;top:10px"></i>
     </button>
@@ -52,7 +52,7 @@
 
 <script>
     function GoBack() {
-        location.href = "http://localhost:5090/";
+        location.href = 'http://localhost:5090/productenselectie';
     }
     function ToProduct() {
         location.href = "https://www.wibra.nl/assortiment/blikopener-rvs/";
