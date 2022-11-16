@@ -6,7 +6,7 @@
 
 <div class="container container-fluid container-xxl">
     <div class="row flex-row offset-1 align-items-center">
-        <div class="col col-10 position-relative mb-5">
+        <div class="col col-10 position-relative mb-5 p-1">
             <video class="video rounded-3 container-fluid shadow p-1 bg-green">
                 <source src="http://e14aaeb709f7cde1ae68-a1d0a134a31b545b257b15f8a8ba5726.r70.cf3.rackcdn.com/projects/31432/1427815464209-bf74131a7528d0ea5ce8c0710f530bb5/1280x720.mp4" type="video/mp4"/>
             </video>
@@ -16,9 +16,11 @@
             
         </div>
         
-        <div class="col mb-5" style="transform: translate(-42%) rotate(-90deg)">
-            <input type="range" orient="vertical" min="0" max="100" value="50" class="slider" id="myRange">
-            <span id="volume" class="offset-5"></span>
+        <div class="col mb-5 p-0" >
+            <div class="float-start slidecontainer position-absolute">
+                <input type="range" orient="vertical" step="1" min="0" max="100" value="50" class="slider" id="myRange">
+            </div>
+            <span class="position-absolute" id="volume"></span>
         </div>
     </div>
     
