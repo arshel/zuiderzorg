@@ -22,22 +22,23 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-
-
-        // var salt = Salt.Create();
-        // var hash = Hash.Create("admin", salt);
+        
+        /*
+         var salt = Salt.Create();
+         var hash = Hash.Create("admin", salt);
        
-        // using (var db = new UserContext())
-        //     {
-        //         // Creating a new item and saving it to the database
-        //         var newUser = new User();
-        //         newUser.Email = "123@gmail.com";
-        //         newUser.HashSalt = salt;
-        //         newUser.HashPassword = hash;
-        //         db.Users.Add(newUser);
-        //         db.SaveChanges();
+         using (var db = new UserContext())
+             {
+                 // Creating a new item and saving it to the database
+                var newUser = new User();
+                 newUser.Email = "123@gmail.com";
+                 newUser.HashSalt = salt;
+                 newUser.HashPassword = hash;
+                 db.Users.Add(newUser);
+                 db.SaveChanges();
   
-        //     }
+             }
+         */
     }
     public string? danger;
     public string? success;

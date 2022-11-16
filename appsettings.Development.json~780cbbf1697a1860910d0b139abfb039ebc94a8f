@@ -1,0 +1,14 @@
+{
+"ConnectionStrings": {
+        "DefaultConnection": "server=localhost;Port=5432;Database=Zuiderzorg;User Id=postgres;Password=Brian2304"
+    },
+      
+    "Logging": {
+      "LogLevel": {
+        "Default": "Information",
+        "Microsoft.AspNetCore": "Warning"
+      }
+    },
+    "AllowedHosts": "*"
+  }
+  
