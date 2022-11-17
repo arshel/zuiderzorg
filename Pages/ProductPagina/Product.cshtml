@@ -7,26 +7,25 @@
 
 <body style="background-color:#E9E2E2;">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <div class="ProductInfo"></div>
-    @* <div class="Category">
-        <div class="CategoryTitle">Categorie</div>
-        <div class="CategoryDescription">Categorie: Huiskamer</div>
-    </div> *@
-    <div class="DescriptionBlock">Blikopener
-        <div class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</div>
+
+    <div class="Product">
+        <div class="ProductInfo"></div>
+        <div class="DescriptionBlock">Blikopener
+            <div class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</div>
+        </div>
+        <div class="PriceBlock">€2,79</div>
+        <button class="ShoppingCart" onclick="InShoppingCart()">
+            <div class="ShoppingCartText">In favorieten plaatsen</div>
+            <div class="ShoppingCartText2">In favorieten geplaatst</div>  
+            <i class="bi bi-star" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:visible"></i>
+            <i class="bi bi-star-fill" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:hidden"></i>
+        </button>
+        <button class="Buy" onclick="ToProduct()">
+            <p class="BuyText">Naar productpagina</p>
+            <i class="bi bi-shop" style="font-size:100px;color:#6CBF2A;position:absolute;left:90px;top:-20px"></i>
+        </button>
+        <img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
     </div>
-    <div class="PriceBlock">€2,79</div>
-    <button class="ShoppingCart" onclick="InShoppingCart()">
-        <div class="ShoppingCartText">In favorieten plaatsen</div>
-        <div class="ShoppingCartText2">In favorieten geplaatst</div>  
-        <i class="bi bi-star" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:visible"></i>
-        <i class="bi bi-star-fill" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:hidden"></i>
-    </button>
-    <button class="Buy" onclick="ToProduct()">
-        <p class="BuyText">Naar productpagina</p>
-        <i class="bi bi-shop" style="font-size:100px;color:#6CBF2A;position:absolute;left:90px;top:-20px"></i>
-    </button>
-    <img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
 
     <button class="Back" onclick="GoBack()">
         <p class="BackText">Terug</p>
@@ -42,11 +41,6 @@
         <p class="HelpText">Klik hier voor hulp</p>
         <i class="bi bi-question-circle" style="font-size:70px;color:#6CBF2A;position:absolute;left:5px;top:-10px"></i>
     </button>
-    
-    <div id="HiddenHelp">
-        <button class="HiddenHelpContinue">Verder</p>
-    </div>
-
 </body>
 
 
@@ -54,12 +48,15 @@
     function GoBack() {
         location.href = "http://localhost:5090/";
     }
+
     function ToProduct() {
         location.href = "https://www.wibra.nl/assortiment/blikopener-rvs/";
     }
+
     function Experiences() {
         location.href = "https://www.youtube.com/watch?v=BWmBov6O0BA";
     }
+
     function InShoppingCart() {
         var star = document.getElementsByClassName("bi bi-star");
         var starfill = document.getElementsByClassName("bi bi-star-fill");
@@ -89,13 +86,6 @@
                 starfill[0].style.visibility = "hidden";
                 text2[0].style.visibility = "hidden";
             }
-        }
-    }
-    function Help() {
-        if (document.getElementById("HiddenHelp").style.visibility == "hidden") {
-            document.getElementById("HiddenHelp").style.visibility == "visible";
-        } else {
-            document.getElementById("HiddenHelp").style.visibility = "hidden";
         }
     }
 </script>

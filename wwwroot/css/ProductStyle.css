@@ -82,11 +82,11 @@
 
 button.Help {
  position: absolute;
- width: 270px;
- height: 100px;
+ height: 285px;
+ width: 250px;
  background-color: white;
  left: 100px;
- top: 665px;
+ top: 485px;
  border-style: solid;
  border-width: 2px;
  border-color: black;
@@ -109,7 +109,7 @@ button.Back {
  position: absolute;
  height: 285px;
  width: 250px;
- left: 600px;
+ left: 100px;
  background-color: white;
  border-style: solid;
  border-width: 2px;
@@ -215,14 +215,4 @@ p.Titel {
  font-size: x-large;
  left: 0px;
  top: 0px;
-}
-
-#HiddenHelp {
- visibility: hidden;
-
- position: absolute;
- background-color: #D9D9D9;
- height: 500px;
- width: 500px;
- top: 565px;
 }
