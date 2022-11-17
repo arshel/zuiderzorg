@@ -1,0 +1,33 @@
+@page
+@model FavorietenModel
+
+<head>
+    <link href="~/css/FavouriteStyle.css" rel="stylesheet"/>
+</head>
+
+<body style="background-color:#E9E2E2;">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
+    <div class="row">
+        <div class="col">
+            <div class="button1">
+                <button class="Back" onclick="GoBack()">
+                <p class="BackText">Terug</p>
+                <i class="bi bi-arrow-return-left" style="font-size:100px;color:#6CBF2A;position:relative;top:-20%"></i>
+            </button>
+            </div>
+            <div class="button2">
+                <button class="Help" onclick="Help()">
+                <p class="HelpText">Klik hier voor hulp</p>
+                <i class="bi bi-question-circle" style="font-size:100px;color:#6CBF2A;position:relative;top:-40%"></i>
+            </button>
+            </div>
+        </div>
+</body>
+
+
+<script>
+    function GoBack() {
+        location.href = "http://localhost:5090/";
+    }
+</script>
