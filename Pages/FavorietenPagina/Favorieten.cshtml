@@ -1,0 +1,77 @@
+@page
+@model FavorietenModel
+
+<head>
+    <link href="~/css/FavouriteStyle.css" rel="stylesheet"/>
+</head>
+
+<body style="background-color:#E9E2E2;">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
+    <div class="row">
+        <div class="col">
+            <div class="button1">
+                <button class="Back" onclick="GoBack()">
+                <p class="BackText">Terug</p>
+                <i class="bi bi-arrow-return-left" style="font-size:100px;color:#6CBF2A;position:relative;top:-20%"></i>
+            </button>
+            </div>
+            <div class="button2">
+                <button class="Help" onclick="Help()">
+                <p class="HelpText">Klik hier voor hulp</p>
+                <i class="bi bi-question-circle" style="font-size:100px;color:#6CBF2A;position:relative;top:-40%"></i>
+            </button>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="Favorieten">
+                <button class="ProductBlock1"  onclick="ToProduct()">Blikopener
+                    <div class="image1">
+                        <img class="image-1" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
+                    </div>
+                    <div class="PriceBlock-1">€2,79</div>
+                </button>
+                <button class="ProductBlock2"  onclick="ToProduct2()">Rookmelder
+                    <div class="image2">
+                        <img class="image-2" src="https://www.rookmeldershop.nl/Files/5/17000/17795/ProductPhotos/MaxContent/1923737877.png" alt="Rookmelder">
+                    </div>
+                    <div class="PriceBlock-2">€36,95</div>
+                </button>
+                <button class="ProductBlock3"  onclick="ToProduct()">Trilwekker
+                    <div class="image3">
+                        <img class="image-3" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
+                    </div>
+                    <div class="PriceBlock-3">€2,79</div>
+                </button>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="stars">
+                <button class="star1"  onclick="StarFill">
+                    <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
+                </button>
+                <button class="star2"  onclick="StarFill">
+                    <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
+                </button>
+                <button class="star3"  onclick="StarFill">
+                    <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
+                </button>
+            </div>
+        </div>
+</body>
+
+
+<script>
+    function GoBack() {
+        location.href = "http://localhost:5090/";
+    }
+    function ToProduct() {
+        location.href = "https://www.wibra.nl/assortiment/blikopener-rvs/";
+    }
+    function ToProduct2() {
+        location.href = "https://www.rookmeldershop.nl/honeywell-home-rookmelder-r200S-1";
+    }
+    function ToProduct3() {
+        location.href = "https://www.hearplanet.nl/wekkers/iluv-smartshaker-3-bluetooth-trilwekker?channable=00b0d9696400333430303307&gclid=Cj0KCQiA99ybBhD9ARIsALvZavWElFiyyCNrGI7-gcRmijkmgoVw4At0SqkoegEZGkYiogbml-4zVU0aAlBbEALw_wcB";
+    }
+</script>

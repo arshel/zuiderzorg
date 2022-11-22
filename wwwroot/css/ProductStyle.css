@@ -1,5 +1,12 @@
+@media screen and (max-width: 767px) {
+ .row.content {
+  height:auto;
+ } 
+}
+
+
 .Category {
- position: absolute;
+ position: relative;
  width: 400px;
  height: 500px;
  background-color: white;
@@ -21,7 +28,6 @@
  border-radius: 8px;
 }
 
-
 .CategoryDescription {
  font-size: 30px;
  text-align: center;
@@ -30,74 +36,67 @@
 }
 
 .ProductInfo {
- position: absolute;
+ position: relative;
+ margin-left: 3%;
+ margin-top: 5%;
  width: 700px;
  height: 700px;
  background-color: white;
  border-style: solid;
- border-width: 2px;
+ border-width: 1.5px;
  border-color: black;
  border-radius: 8px;
- left: 900px;
 }
 
 .DescriptionBlock {
- position: absolute;
+ position: relative;
+ margin: auto;
+ left: 10%;
  width: 450px;
  height: 450px;
  background-color: #D9D9D9;
- top: 120px;
- left: 1100px;
-
  font-size: 30px;
- text-align: center;
 }
 
 .DescriptionText {
  font-size: 20px;
- text-align: left;
  
 }
 
 .PriceBlock {
- position: absolute;
+ position: relative;
  width: 150px;
  height: 100px;
+ top: -14%;
  background-color: #D9D9D9;
- top: 450px;
- left: 900px;
-
  font-size: 30px;
  text-align: center;
- vertical-align: middle;
  line-height: 100px;
 }
 
 .Blikopener {
- position: absolute;
+ position: relative;
+ float: left;
  width: 250px;
  height: 300px;
- left: 875px;
 }
 
 button.Help {
- position: absolute;
- width: 270px;
- height: 100px;
+ position: relative;
+ margin-top: 50%;
+ height: 285px;
+ width: 250px;
  background-color: white;
- left: 100px;
- top: 665px;
  border-style: solid;
- border-width: 2px;
+ border-width: 1.5px;
  border-color: black;
  border-radius: 8px;
 }
 
 p.HelpText {
  position: relative;
- top: 10px;
- left: 30px;
- font-size: 20px;
+ top: 50%;
+ font-size: 30px;
  text-align: center;
 }
 
@@ -106,13 +105,13 @@ button.Help:hover {
 }
 
 button.Back {
- position: absolute;
+ position: relative;
+ margin-top: 15%;
  height: 285px;
  width: 250px;
- left: 600px;
  background-color: white;
  border-style: solid;
- border-width: 2px;
+ border-width: 1.5px;
  border-color: black;
  border-radius: 8px;
  font-size: 20px;
@@ -120,7 +119,7 @@ button.Back {
 
 p.BackText {
  position: relative;
- top: 70px;
+ top: 50%;
  font-size: 30px;
  text-align: center;
 }
@@ -130,14 +129,13 @@ button.Back:hover {
 }
 
 button.Experience {
- position: absolute;
+ position: relative;
+ margin-top: 15%;
  height: 285px;
  width: 250px;
- top: 485px;
- left: 600px;
  background-color: white;
  border-style: solid;
- border-width: 2px;
+ border-width: 1.5px;
  border-color: black;
  border-radius: 8px;
  font-size: 20px;
@@ -145,7 +143,7 @@ button.Experience {
 
 p.ExperienceText {
  position: relative;
- top: 70px;
+ top: 25%;
  font-size: 30px;
  text-align: center;
 }
@@ -155,29 +153,32 @@ button.Experience:hover {
 }
 
 button.ShoppingCart {
- position: absolute;
+ position: relative;
+ float:left;
+ left: 3%;
+ margin-top: -10%;
  height: 200px;
  width: 300px;
- top: 600px;
- left: 920px;
- border: none;
- background-color: #D9D9D9;
+ border-style: solid;
+ border-width: 1.5px;
+ border-color: black;
  border-radius: 8px;
+ background-color: #D9D9D9;
  font-size: 20px;
 }
 
 .ShoppingCartText {
  visibility: visible;
  position: relative;
- top: 75px;
+ top: 40%;
  font-size: 30px;
  text-align: center;
 }
 
 .ShoppingCartText2 {
  visibility: hidden;
+ font-weight: bold;
  position: relative;
- top: 30px;
  font-size: 30px;
  text-align: center;
 }
@@ -187,21 +188,23 @@ button.ShoppingCart:hover {
 }
 
 button.Buy {
- position: absolute;
+ position: relative;
+ left: 10%;
+ margin-top: -10%;
  height: 200px;
  width: 300px;
- top: 600px;
- left: 1250px;
- border: none;
- background-color: #D9D9D9;
+ border-style: solid;
+ border-width: 1.5px;
+ border-color: black;
  border-radius: 8px;
+ background-color: #D9D9D9;
  font-size: 20px;
 }
 
 p.BuyText {
  position: relative;
- top: 50px;
  font-size: 30px;
+ top: 35%;
  text-align: center;
 }
 
@@ -211,18 +214,6 @@ button.Buy:hover {
 }
 
 p.Titel {
- position: absolute;
+ position: relative;
  font-size: x-large;
- left: 0px;
- top: 0px;
-}
-
-#HiddenHelp {
- visibility: hidden;
-
- position: absolute;
- background-color: #D9D9D9;
- height: 500px;
- width: 500px;
- top: 565px;
 }
