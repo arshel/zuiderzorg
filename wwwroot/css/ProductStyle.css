@@ -217,3 +217,26 @@ p.Titel {
  position: relative;
  font-size: x-large;
 }
+
+button.Favourites {
+ position: relative;
+ margin-top: 50%;
+ height: 285px;
+ width: 250px;
+ background-color: white;
+ border-style: solid;
+ border-width: 1.5px;
+ border-color: black;
+ border-radius: 8px;
+}
+
+p.HelpText {
+ position: relative;
+ top: 50%;
+ font-size: 30px;
+ text-align: center;
+}
+
+button.Help:hover {
+ box-shadow: 10px 10px 8px #888888;
+}

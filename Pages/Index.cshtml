@@ -50,6 +50,12 @@
     </div>
     
     <div class="next-page border border-2 border-dark rounded-pill shadow-lg bg-black bg-opacity-10">
-        <button class="button row-cols-1">Volgende Pagina</button>
+        <button class="button row-cols-1" onclick="NextPage()">Volgende Pagina</button>
     </div>
 </div>
+
+<script>
+    function NextPage() {
+        location.href = "http://localhost:5090/Product_Select_Page";
+    }
+</script>
