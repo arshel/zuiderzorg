@@ -14,16 +14,21 @@ namespace zuiderzorg.Pages
     {
         public void OnGet()
         {
-            GetCategories();
-            /*using (var db = new CategoryContext())
+        }
+        [BindProperty]
+        public CategoryRequest CategoryRequest { get;set;}
+        public IActionResult OnPost()
+        {
+            using (var db = new CategoryContext())
             {
-                // Creating a new item and saving it to the database
+                //Creating a new item and saving it to the database
                 var newCatergory = new Category();
-                newCatergory.Name = "Garden";
+                newCatergory.Name = CategoryRequest.Name;
                 db.Categories.Add(newCatergory);
                 db.SaveChanges();
 
-            }*/
+            }
+            return Page();
         }
         public Category[] GetCategories()
         {
@@ -33,4 +38,8 @@ namespace zuiderzorg.Pages
 
         }
     }
+    public class CategoryRequest{
+        public string Name { get;set;}
+
+        }
 }

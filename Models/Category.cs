@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace zuiderzorg.Models
 {
-    public class CategoryContext : DbContext
+    public class CategoryContext :  DbContext
     {
         public DbSet<Category>? Categories { get; set; }
         WebApplicationBuilder builder = WebApplication.CreateBuilder();

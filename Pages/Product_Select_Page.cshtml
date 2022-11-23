@@ -1,6 +1,7 @@
 ﻿@page
 @using zuiderzorg.Models
 @model zuiderzorg.Pages.Product_Select_PageModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
 }
 
@@ -44,14 +45,16 @@
     </container>
     <div class="form-popup" id="myForm">
         <div class="center"> 
-            <form class="form-container" >
-                <h1>Toevoegen</h1>
+            <form class="form-container" method="POST">
+                <div asp-validation-summary="ModelOnly">
+                </div>
+                    <h1>Toevoegen</h1>
+                    <label asp-for="CategoryRequest.Name"><b>Titel</b></label>
+                    <input asp-for="CategoryRequest.Name" type="text" placeholder="Vul een naam in" name="title" required>
+                    <span asp-validation-for="CategoryRequest.Name"> </span>
 
-                <label for="title"><b>Titel</b></label>
-                <input type="text" placeholder="Vul een naam in" name="title" required>
-
-                <button type="submit" class="btn">Toevoegen</button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
+                    <button type="submit" class="btn">Toevoegen</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
             </form>
         </div>
     </div>
