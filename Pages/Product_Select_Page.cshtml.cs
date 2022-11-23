@@ -23,7 +23,8 @@ namespace zuiderzorg.Pages
             {
                 //Creating a new item and saving it to the database
                 var newCatergory = new Category();
-                newCatergory.Name = CategoryRequest.Name;
+                newCatergory.Name = Request.Form["title"];
+                //newCatergory.Name = CategoryRequest.Name;
                 db.Categories.Add(newCatergory);
                 db.SaveChanges();
 
