@@ -115,6 +115,13 @@ body {
   /*border-radius: 2px;*/
 }
 
+.button__white{
+  background-color: #FFFFFF;
+  border-color: black;
+  box-shadow: 0 1px 3px 0 black;
+  padding: 0.50rem;
+  }
+
 
 /* Volume display */
 /*#volume {*/
