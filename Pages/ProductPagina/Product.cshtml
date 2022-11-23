@@ -50,10 +50,18 @@
                 </div>
             </div>
             <div class="col">
-                <button class="Experience" onclick="Experiences()">
-                <p class="ExperienceText">Ervaringen van anderen</p>
-                <i class="bi bi-play-circle" style="font-size:100px;color:#6CBF2A;position:absolute;left:68px;top:10px"></i>
+                <div class="button11">
+                    <button class="Experience" onclick="Experiences()">
+                    <p class="ExperienceText">Ervaringen van anderen</p>
+                    <i class="bi bi-play-circle" style="font-size:100px;color:#6CBF2A;position:absolute;left:68px;top:10px"></i>
                 </button>
+                </div>
+                <div class="button22">
+                    <button class="Favourites" onclick="Favourites()">
+                    <p class="ExperienceText">Naar Favorieten</p>
+                    <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:absolute;left:68px;top:10px"></i>
+                </button>
+                </div>
             </div>
         </container>
 </body>
@@ -62,6 +70,10 @@
 <script>
     function GoBack() {
         location.href = "http://localhost:5090/";
+    }
+
+    function Favourites() {
+        location.href = "http://localhost:5090/FavorietenPagina/Favorieten";
     }
 
     function ToProduct() {
