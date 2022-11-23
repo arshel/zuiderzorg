@@ -37,10 +37,34 @@
                         <button class="Basic" onclick="document.location='/productenselectie'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong></button>
                     }
                 }
-                <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>Toevoegen</strong></button>
+                <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
+                
             </div>
         </div>
-           
     </container>
+    <div class="form-popup" id="myForm">
+        <div class="center"> 
+            <form class="form-container" >
+                <h1>Toevoegen</h1>
+
+                <label for="title"><b>Titel</b></label>
+                <input type="text" placeholder="Vul een naam in" name="title" required>
+
+                <button type="submit" class="btn">Toevoegen</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
+            </form>
+        </div>
+    </div>
+  
+<script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    
+</script>
 
 </body>
