@@ -13,20 +13,38 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 bg-green">
             <div class="container">
-                <button onclick="languageChange_NL()" class="language-btn NL">
+                <button onclick="languageChange_NL()" class="language-btn NL" name="NL" asp-action="check">
+>
                     <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/266px-Flag_of_the_Netherlands.svg.png">
                     <script> if(Language == "NL"){Nederlands} else {Netherlands} </script>
                 </button> 
-                <button onclick="languageChange_EN()" class="language-btn EN">
+                <button onclick="languageChange_EN()" class="language-btn EN" name="EN" asp-action="check">
+>
                     <img class="image" src="https://people4all.nl/wp-content/uploads/2016/07/engelse-vlag.png">
                 </button>
+                @* <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" ClientIDMode="Static"></asp:LinkButton> *@
+                <h2 id="test" runat="server">TEST</h2>
+
                 <script>
-                    function languageChange_NL(){
+                     public ActionResult check()
+                        {
+                            if(button == "EN")
+                            {
+                                myHeader.InnerHtml = "EN";
+                            }
+                            else if (button == "NL")
+                            {
+                                myHeader.InnerHtml = "NL";
+                            }
+                            return RedirectToAction("");
+                        }
+
+                    @* function languageChange_NL(){
                         var Language = "NL";
                     }
                     function languageChange_EN(){
                         var Language = "EN";
-                    }
+                    } *@
                 </script>
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Zuiderzorg</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
