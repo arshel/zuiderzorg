@@ -1,3 +1,4 @@
+
 ﻿@inject Auth.AuthChecker auth
 
 
@@ -13,29 +14,26 @@
     
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+     <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-white bg-green border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Zuiderzorg</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">zuiderzorg</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Product_Select_Page">categorien</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
-                       
-                        
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
-                
+                <a href="https://www.solnetwerk.nl/"><img class="navbar-brand float-end img-fluid" alt="" style="width: 130px; height: 60px" src="Images/SOL_LOGO.png"></a>
             </div>
         </nav>
     </header>
