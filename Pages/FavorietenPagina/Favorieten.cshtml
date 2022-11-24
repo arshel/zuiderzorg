@@ -24,6 +24,9 @@
             </div>
         </div>
         <div class="col-7">
+            <div class="NoFavourites">
+                <h1>U heeft nog geen favorieten</h1>
+                </div>
             <div class="Favorieten">
                 <button class="ProductBlock1"  onclick="ToProduct()">Blikopener
                     <div class="image1">
@@ -62,6 +65,35 @@
 
 
 <script>
+    function getStorageLength() {
+        var storagelist = [];
+
+        for (var i = 0; i < localStorage.length; i++) {
+            storagelist.push(localStorage.key("i"));
+        }
+
+        return storagelist.length;
+    }
+
+    window.onload = function () {
+        items = getStorageLength()
+        if (items == 0) {
+            var NoFav = document.getElementsByClassName("NoFavourites");
+            NoFav[0].style.visibility = "visible";
+        } else {
+            for (var i = 1; i < items+1; i++) {
+                searchstringproduct = "ProductBlock" + i;
+                searchstringstar = "star" + i;
+                var Blocks = document.getElementsByClassName(searchstringproduct);
+                var Stars = document.getElementsByClassName(searchstringstar);
+                Blocks[0].style.visibility = "visible";
+                Stars[0].style.visibility = "visible";
+            }
+        }
+    };
+
+
+
     function GoBack() {
         location.href = "http://localhost:5090/";
     }

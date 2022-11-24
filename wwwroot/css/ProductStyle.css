@@ -48,7 +48,7 @@
  border-radius: 8px;
 }
 
-.DescriptionBlock {
+#DescriptionBlock {
  position: relative;
  margin: auto;
  left: 10%;
@@ -60,10 +60,11 @@
 
 .DescriptionText {
  font-size: 20px;
+ margin-top: -20%
  
 }
 
-.PriceBlock {
+#PriceBlock {
  position: relative;
  width: 150px;
  height: 100px;
@@ -74,7 +75,7 @@
  line-height: 100px;
 }
 
-.Blikopener {
+#Blikopener {
  position: relative;
  float: left;
  width: 250px;
