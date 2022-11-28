@@ -75,6 +75,22 @@
         return storagelist.length;
     }
 
+    function Deletecheck(object) {
+        if (object.name == "")
+    }
+    
+    function DeleteFavourites() {
+        var values = [],
+        keys = Object.keys(localStorage),
+        len = keys.length;
+
+        while ( len-- ) {
+            values.push(JSON.parse(localStorage.getItem(keys[len])));
+        }
+
+        values.forEach(Deletecheck);
+    }
+
     window.onload = function () {
         items = getStorageLength()
         if (items == 0) {
