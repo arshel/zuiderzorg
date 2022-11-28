@@ -31,15 +31,15 @@
             </div>
             <div class="col-sm-9">
                 @{
-                    using var db = new CategoryContext();
+                    var db = new CategoryContext();
                     var CatInfo = db.Categories.ToArray();
                     foreach(var item in CatInfo)
                     {
-                        <button class="Basic" onclick="document.location='/productenselectie'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong></button>
+                    <button class="Basic" onclick="document.location='/productenselectie'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong></button>
                     }
                 }
                 <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
-                
+
             </div>
         </div>
     </container>
