@@ -40,6 +40,7 @@ public class IndexModel : PageModel
              }
          */
     }
+
     public string? danger;
     public string? success;
     [BindProperty]
@@ -56,7 +57,7 @@ public class IndexModel : PageModel
                 
                 // Get the user with the email
                 
-                var maybeUser = db.Users.First(x => x.Email == LoginRequest.Email);
+                var maybeUser = db.Users.FirstOrDefault(x => x.Email == LoginRequest.Email);
                 if (maybeUser == null) {
                     // User does not exist
                     danger = "Deze combinatie email en wachtwoord is onjuist.";

@@ -1,8 +1,13 @@
 ﻿@page
 @model IndexModel
 @inject Auth.AuthChecker auth
+@* @using Microsoft.AspNetCore.Localization
+@inject IStringLocalizer<IndexModel> localizer
+@inject IHtmlLocalizer<IndexModel> htmlLocalizer *@
 @{
     ViewData["Title"] = "Home page";
+    var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
 }
 
 <div class="mt-4 container">
@@ -50,7 +55,7 @@
     </div>
     
     <div class="next-page border border-2 border-dark rounded-pill shadow-lg bg-black bg-opacity-10">
-        <button class="button row-cols-1" onclick="NextPage()">Volgende Pagina</button>
+        <button class="button row-cols-1" onclick="NextPage()">@localizer.Get("Volgende pagina")</button>
     </div>
 </div>
 
