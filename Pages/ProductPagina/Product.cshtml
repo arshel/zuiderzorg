@@ -8,8 +8,8 @@
 <body style="background-color:#E9E2E2;">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     
-    <container class="cont">
-        <div class="row">
+    <div class="das">
+        <div class="row flex-row">
             <div class="col">
                 <div class="button1">
                     <button class="Back" onclick="GoBack()">
@@ -27,14 +27,12 @@
             <div class="col-7">
                 <div class="ProductInfo">
                     <div class="image">
-                        <img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
+                        <img id="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
                     </div>
-                    <div class="DescriptionBlock">Blikopener
-                        <div class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</div>
-                    </div>
-                    <div class="PriceBlock">€2,79</div>
+                    <div id="DescriptionBlock">Blikopener</div>
+                    <div id="PriceBlock">€2,79</div>
                     <div class="button1">
-                        <button class="ShoppingCart" onclick="InShoppingCart()">
+                        <button class="ShoppingCart" onclick="FavouritesToggle()">
                         <div class="ShoppingCartText">In favorieten plaatsen</div>
                         <div class="ShoppingCartText2">In favorieten geplaatst</div>  
                         <i class="bi bi-star" style="font-size:70px;color:#6CBF2A;position:absolute;left:110px;top:-10px;visibility:visible"></i>
@@ -47,6 +45,7 @@
                         <i class="bi bi-shop" style="font-size:100px;color:#6CBF2A;position:absolute;left:90px;top:-20px"></i>
                     </button>
                     </div>
+                    <p class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</p>
                 </div>
             </div>
             <div class="col">
@@ -63,7 +62,7 @@
                 </button>
                 </div>
             </div>
-        </container>
+        </div>
 </body>
 
 
@@ -84,25 +83,25 @@
         location.href = "https://www.youtube.com/watch?v=BWmBov6O0BA";
     }
 
-    function InShoppingCart() {
+    function FavouritesToggle() {
         var star = document.getElementsByClassName("bi bi-star");
         var starfill = document.getElementsByClassName("bi bi-star-fill");
 
         var text = document.getElementsByClassName("ShoppingCartText");
         var text2 = document.getElementsByClassName("ShoppingCartText2");
 
-        visible = star[0].style.visibility
+        visible = star[0].style.visibility;
 
         if (visible == "visible") {
             if(star[0].offsetWidth > 0 && star[0].offsetHeight > 0) {
                 star[0].style.visibility = "hidden";
                 text[0].style.visibility = "hidden";
-
             }
             if(starfill[0].offsetWidth > 0 && starfill[0].offsetHeight > 0) {
                 starfill[0].style.visibility = "visible";
                 text2[0].style.visibility = "visible";
             }
+            AddFavourites();
         } else {
             if(star[0].offsetWidth > 0 && star[0].offsetHeight > 0) {
                 star[0].style.visibility = "visible";
@@ -113,8 +112,62 @@
                 starfill[0].style.visibility = "hidden";
                 text2[0].style.visibility = "hidden";
             }
+            DeleteFavourites();
         }
     }
+
+
+    function AddFavourites() {
+        var storagelist = [];
+
+        for (var i = 0; i < localStorage.length; i++) {
+            storagelist.push(localStorage.key("i"));
+        }
+    
+        const product = {
+            name: document.getElementById("DescriptionBlock").innerHTML,
+            image: document.getElementById("Blikopener").src,
+            href: "https://www.wibra.nl/assortiment/blikopener-rvs/", 
+            price: document.getElementById("PriceBlock").innerHTML
+        }
+
+        localStorage.setItem(storagelist.length, JSON.stringify(product));
+    }
+
+    function DeleteFavourites() {
+        for (var i = localStorage.length; i > 0; i--) {
+            localStorage.removeItem(localStorage.key("i"));
+            break;
+        }
+    }
+
+    function StarFill(object) {
+        if (object.name == document.getElementById("DescriptionBlock").innerHTML) {
+            var star = document.getElementsByClassName("bi bi-star");
+            var starfill = document.getElementsByClassName("bi bi-star-fill");
+            var text = document.getElementsByClassName("ShoppingCartText");
+            var text2 = document.getElementsByClassName("ShoppingCartText2");
+
+            star[0].style.visibility = "hidden";
+            text[0].style.visibility = "hidden";
+            starfill[0].style.visibility = "visible";
+            text2[0].style.visibility = "visible";
+        }
+    }
+
+
+    window.onload = function () { 
+        var values = [],
+        keys = Object.keys(localStorage),
+        len = keys.length;
+
+        while ( len-- ) {
+            values.push(JSON.parse(localStorage.getItem(keys[len])));
+        }
+
+        values.forEach(StarFill);
+    };
+
 </script>
 
 

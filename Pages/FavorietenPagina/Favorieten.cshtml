@@ -24,6 +24,9 @@
             </div>
         </div>
         <div class="col-7">
+            <div class="NoFavourites">
+                <h1>U heeft nog geen favorieten</h1>
+                </div>
             <div class="Favorieten">
                 <button class="ProductBlock1"  onclick="ToProduct()">Blikopener
                     <div class="image1">
@@ -47,13 +50,13 @@
         </div>
         <div class="col-md">
             <div class="stars">
-                <button class="star1"  onclick="StarFill">
+                <button class="star1"  onclick="Delete1()">
                     <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
                 </button>
-                <button class="star2"  onclick="StarFill">
+                <button class="star2"  onclick="Delete2()">
                     <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
                 </button>
-                <button class="star3"  onclick="StarFill">
+                <button class="star3"  onclick="Delete3()">
                     <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
                 </button>
             </div>
@@ -62,6 +65,58 @@
 
 
 <script>
+    function getStorageLength() {
+        var storagelist = [];
+
+        for (var i = 0; i < localStorage.length; i++) {
+            storagelist.push(localStorage.key("i"));
+        }
+
+        return storagelist.length;
+    }
+
+    function Delete1() {
+        var Stars = document.getElementsByClassName("star1"); 
+        Stars[0].style.visibility = "collapse"; 
+        var Blocks = document.getElementsByClassName("ProductBlock1");
+
+        Blocks[0].style.visibility = "collapse";
+        localStorage.removeItem(localStorage.key("1")); 
+    }
+    function Delete2() {
+        var Stars = document.getElementsByClassName("star2");
+        Stars[0].style.visibility = "collapse"; 
+        var Blocks = document.getElementsByClassName("ProductBlock2");
+        Blocks[0].style.visibility = "collapse"; 
+        localStorage.removeItem(localStorage.key("2"));
+    }
+    function Delete3() {
+        var Stars = document.getElementsByClassName("star3");
+        Stars[0].style.visibility = "collapse";
+        var Blocks = document.getElementsByClassName("ProductBlock3");
+        Blocks[0].style.visibility = "collapse";
+        localStorage.removeItem(localStorage.key("3"));
+    }
+
+    window.onload = function () {
+        items = getStorageLength()
+        if (items == 0) {
+            var NoFav = document.getElementsByClassName("NoFavourites");
+            NoFav[0].style.visibility = "visible";
+        } else {
+            for (var i = 1; i < items+1; i++) {
+                searchstringproduct = "ProductBlock" + i;
+                searchstringstar = "star" + i;
+                var Blocks = document.getElementsByClassName(searchstringproduct);
+                var Stars = document.getElementsByClassName(searchstringstar);
+                Blocks[0].style.visibility = "visible";
+                Stars[0].style.visibility = "visible";
+            }
+        }
+    };
+
+
+
     function GoBack() {
         location.href = "http://localhost:5090/productpagina/product";
     }
