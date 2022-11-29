@@ -1,6 +1,7 @@
 ﻿@page
 @using zuiderzorg.Models
 @model zuiderzorg.Pages.Product_Select_PageModel
+@inject CommonLocalizationService localizer
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
 }
@@ -38,7 +39,7 @@
                         <button class="Basic" onclick="document.location='/productenselectie'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong></button>
                     }
                 }
-                <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
+                <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>@localizer.Get("Toevoegen")</strong></button>
                 
             </div>
         </div>
@@ -53,7 +54,7 @@
                     <input for="CategoryRequest.Name" type="text" placeholder="Vul een naam in" name="title" required>
                     <span asp-validation-for="CategoryRequest.Name"> </span>
 
-                    <button type="submit" class="btn">Toevoegen</button>
+                    <button type="submit" class="btn">@localizer.Get("Toevoegen")</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
             </form>
         </div>
