@@ -17,35 +17,38 @@
             </div>
         </div>
     <form onsubmit="sendEmail(); reset(); return false;">
-    <div class="form-container">
-        <h1>Contact Form</h1>
-        
-        <div class="form-group">
-            <label for="name">Naam</label>
-            <input type="text" class="form-control" id="name" placeholder="Naam" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Email" required>
-        </div>
-        <div class="form-group">
-            <label for="telnum">Telefoon nummer</label>
-            <input type="number" class="form-control" id="telnum" placeholder="Telefoon nummer">
-        </div>
-        <p>Naam <br> ZorgZuid</p>
-        <p>Email <br> daan0902@gmail.com</p>
-        <p>Telefoon nummer <br>+31611656582</p>
-    </div>
-    <div class="text-container">
+    @* <form action="https://formsubmit.co/0dc827a606e971845ab40e1c00e4b478" method="POST" reset(); return false();>
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_autoresponse" value="Bedankt voor uw bericht!"> *@
+        <div class="form-container">
+            <h1>Contact Form</h1>
+            
             <div class="form-group">
-                <label for="bericht">Hier uw bericht</label>
-                <textarea class="form-control" id="bericht" rows="3" required></textarea>
+                <label for="name">Naam</label>
+                <input type="text" class="form-control" id="name" placeholder="Naam" required>
             </div>
-            <button type="submit" class="btn btn-primary align-self-end mt-2">
-                send 
-                <i class="bi bi-send"></i>
-            </button>
-    </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="telnum">Telefoon nummer</label>
+                <input type="number" class="form-control" id="telnum" placeholder="Telefoon nummer">
+            </div>
+            <p>Naam <br> ZorgZuid</p>
+            <p>Email <br> daan0902@gmail.com</p>
+            <p>Telefoon nummer <br>+31611656582</p>
+        </div>
+        <div class="text-container">
+                <div class="form-group">
+                    <label for="bericht">Hier uw bericht</label>
+                    <textarea class="form-control" id="bericht" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary align-self-end mt-2">
+                    send 
+                    <i class="bi bi-send"></i>
+                </button>
+        </div>
     </form>
     </div>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
