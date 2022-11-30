@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using zuiderzorg.Models;
+using zuiderzorg.Pages;
 using Npgsql;
 using System.Linq;
 using zuiderzorg.Auth;
@@ -19,11 +20,16 @@ namespace zuiderzorg.Pages
         public ProductRequest ProductRequest { get;set;}
         public IActionResult OnPost()
         {
-            using (var db = new ProductContext())
+            using (var db = new CategoryContext())
             {
                 //Creating a new item and saving it to the database
                 var NewProduct = new Product();
-                NewProduct.Name = Request.Form["title"];
+                NewProduct.Name = Request.Form["ProductTitle"];
+                NewProduct.ProductId = Guid.NewGuid();
+                string x = Request.Form["CategorieID"];
+                NewProduct.ParentCategoryId = Guid.Parse(x);
+                Console.WriteLine(NewProduct.ParentCategoryId);
+                //NewProduct.ParentCategoryId = Guid.Parse();
                 //newCatergory.Name = CategoryRequest.Name;
                 db.Products.Add(NewProduct);
                 db.SaveChanges();
@@ -41,7 +47,7 @@ namespace zuiderzorg.Pages
 
         public Product[] GetProducts()
         {
-            var db = new ProductContext();
+            var db = new CategoryContext();
             var ProductNames = db.Products.ToArray();
             return ProductNames;
 

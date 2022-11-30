@@ -16,12 +16,19 @@
                 <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
             </div>
             <div class="col-sm-9">
+                
                 @{
-                    var db = new ProductContext();
-                    var ProductInfo = db.Products.ToArray();
+                    var db = new CategoryContext();
+                    var ProductInfo =
+                        from p in db.Products
+                        join c in db.Categories on p.ParentCategoryId equals c.CategoryId
+                    select new
+                        {
+                            Product = p.Name, Id =p.ProductId
+                        };
                     foreach(var item in ProductInfo)
                     {
-                    <button class="Basic" onclick="document.location='/productpagina/product'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong></button>
+                    <button class="Basic" onclick="document.location='/productpagina/product'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Product</strong></button>
                     }
                 }
                 <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
@@ -31,13 +38,16 @@
     </container>
     <div class="form-popup" id="myForm">
         <div class="center">
-            <form class="form-container" method="post">
+            <form class="form-container" method="post" onsubmit="GetID()">
                 <div asp-validation-summary="ModelOnly">
                 </div>
                 <h1>Toevoegen</h1>
                 <label for="ProductRequest.Name"><b>Titel</b></label>
-                <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="title" required>
+                <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" required>
                 <span asp-validation-for="ProductRequest.Name"> </span>
+
+                <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
+                @*<span asp-validation-for="ProductRequest.ParentCategoryId"> </span>*@
 
                 <button type="submit" class="btn">Toevoegen</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
@@ -53,9 +63,12 @@
         function closeForm() {
             document.getElementById("myForm").style.display = "none";
         }
-
+        function GetID(){
+            var fr = document.getElementById("CategorieID");
+            fr.value = localStorage.getItem('CategoryId');
+        }
     </script>
-
+    
 </body>
 @*<div class="container productenselectie">
 
