@@ -65,49 +65,38 @@
 
 
 <script>
-    function getStorageLength() {
-        var storagelist = [];
-
-        for (var i = 0; i < localStorage.length; i++) {
-            storagelist.push(localStorage.key("i"));
-        }
-
-        return storagelist.length;
-    }
-
     function Delete(number) {
         var Stars = document.getElementsByClassName("star1"); 
         Stars[0].style.visibility = "collapse"; 
         var Blocks = document.getElementsByClassName("ProductBlock1");
         Blocks[0].style.visibility = "collapse";
 
-        localStorage.removeItem(localStorage.key(number)); 
+        localStorage.removeItem(number);
     }
 
     function ProductShow(object) {
-        searchstringproduct = "ProductBlock" + "1";
-        searchstringstar = "star" + "1";
+        searchstringproduct = "ProductBlock" + keyvalues[0];
+        searchstringstar = "star" + keyvalues[0];
         var Blocks = document.getElementsByClassName(searchstringproduct);
         var Stars = document.getElementsByClassName(searchstringstar);
         Blocks[0].style.visibility = "visible";
         Stars[0].style.visibility = "visible";
 
-        keys.shift()
+        keyvalues.shift()
     }
     
     window.onload = function () {
         var values = []
         keys = Object.keys(localStorage)
-        items = getStorageLength()
-
-        while ( items-- ) {
-            values.push(JSON.parse(localStorage.getItem(keys[items])));
-        }
+        items = keys.length
 
         if (items == 0) {
             var NoFav = document.getElementsByClassName("NoFavourites");
             NoFav[0].style.visibility = "visible";
         } else {
+            while ( items-- ) {
+                values.push(JSON.parse(localStorage.getItem(keys[items])));
+            }
             keyvalues = Object.keys(localStorage)
             values.forEach(ProductShow)
         }
@@ -119,7 +108,7 @@
         location.href = "http://localhost:5090/";
     }
     function ToProduct() {
-        location.href = "https://www.wibra.nl/assortiment/blikopener-rvs/";
+        location.href = "http://localhost:5090/productpagina/product";
     }
     function ToProduct2() {
         location.href = "https://www.rookmeldershop.nl/honeywell-home-rookmelder-r200S-1";

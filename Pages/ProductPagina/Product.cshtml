@@ -106,11 +106,8 @@
 
 
     function AddFavourites() {
-        var storagelist = [];
-
-        for (var i = 0; i < localStorage.length; i++) {
-            storagelist.push(localStorage.key("i"));
-        }
+        var storagelength = (Object.keys(localStorage)).length;
+        storagenew = storagelength += 1;
     
         const product = {
             name: document.getElementById("DescriptionBlock").innerHTML,
@@ -119,7 +116,7 @@
             price: document.getElementById("PriceBlock").innerHTML
         }
 
-        localStorage.setItem(storagelist.length, JSON.stringify(product));
+        localStorage.setItem(storagenew, JSON.stringify(product));
     }
 
     function DeleteFavourites() {
