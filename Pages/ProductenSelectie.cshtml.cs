@@ -1,23 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using javax.jws;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
 using zuiderzorg.Models;
-using zuiderzorg.Pages;
-using Npgsql;
-using System.Linq;
-using zuiderzorg.Auth;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http.Extensions;
-
 namespace zuiderzorg.Pages
 {
     public class ProductenSelectie : PageModel
-    { 
+    {
         public void OnGet()
         {
         }
         [BindProperty]
-        public ProductRequest ProductRequest { get;set;}
+        public ProductRequest ProductRequest { get; set; }
         public IActionResult OnPost()
         {
             using (var db = new CategoryContext())
@@ -38,23 +31,35 @@ namespace zuiderzorg.Pages
             return Page();
         }
         private readonly ILogger<ProductenSelectie> _logger;
-        
+
 
         public ProductenSelectie(ILogger<ProductenSelectie> logger)
         {
             _logger = logger;
         }
 
-        public Product[] GetProducts()
+        [WebMethod]
+        public static string GetProducts(string CategoryID)
         {
-            var db = new CategoryContext();
+            return "succes";
+            Guid ID = Guid.Parse(CategoryID);
+            /*var db = new CategoryContext();
             var ProductNames = db.Products.ToArray();
             return ProductNames;
-
+            var db = new CategoryContext();
+            var ProductInfo =
+                from p in db.Products
+                join c in db.Categories on p.ParentCategoryId equals c.CategoryId
+                select new
+                {
+                    Product = p.Name,
+                    Id = p.ProductId
+                };*/
         }
 
-       
     }
+
+    
     public class ProductRequest{
         public string Name { get;set;}
 
