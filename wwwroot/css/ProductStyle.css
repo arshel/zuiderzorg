@@ -54,11 +54,11 @@
  width: 25vw;
  height: 45vh;
  background-color: #D9D9D9;
- font-size: 30px;
+ font-size: 4vh;
 }
 
 .DescriptionText {
- font-size: 20px;
+ font-size: 1vw;
 }
 
 #PriceBlock {
@@ -67,7 +67,7 @@
  height: 10vh;
  top: -14%;
  background-color: #D9D9D9;
- font-size: 30px;
+ font-size: 4vh;
  text-align: center;
  line-height: 100px;
 }
@@ -94,7 +94,7 @@ button.Help {
 p.HelpText {
  position: relative;
  top: 50%;
- font-size: 30px;
+ font-size: 2vw;
  text-align: center;
 }
 
@@ -118,7 +118,7 @@ button.Back {
 p.BackText {
  position: relative;
  top: 50%;
- font-size: 30px;
+ font-size: 2vw;
  text-align: center;
 }
 
@@ -141,8 +141,8 @@ button.Experience {
 
 p.ExperienceText {
  position: relative;
- top: 25%;
- font-size: 30px;
+ top: 55%;
+ font-size: 2vw;
  text-align: center;
 }
 
@@ -168,8 +168,8 @@ button.ShoppingCart {
 .ShoppingCartText {
  visibility: visible;
  position: relative;
- top: 40%;
- font-size: 30px;
+ top: 70%;
+ font-size: 3vh;
  text-align: center;
 }
 
@@ -177,7 +177,8 @@ button.ShoppingCart {
  visibility: hidden;
  font-weight: bold;
  position: relative;
- font-size: 30px;
+ top: 30%;
+ font-size: 3vh;
  text-align: center;
 }
 
@@ -201,8 +202,8 @@ button.Buy {
 
 p.BuyText {
  position: relative;
- font-size: 30px;
- top: 35%;
+ font-size: 3vh;
+ top: 70%;
  text-align: center;
 }
 
