@@ -94,7 +94,7 @@ button.Help {
 p.HelpText {
  position: relative;
  top: 50%;
- font-size: 30px;
+ font-size: 2vw;
  text-align: center;
 }
 
@@ -118,7 +118,7 @@ button.Back {
 p.BackText {
  position: relative;
  top: 50%;
- font-size: 30px;
+ font-size: 2vw;
  text-align: center;
 }
 
@@ -142,7 +142,7 @@ button.Experience {
 p.ExperienceText {
  position: relative;
  top: 25%;
- font-size: 30px;
+ font-size: 2vw;
  text-align: center;
 }
 
@@ -169,7 +169,7 @@ button.ShoppingCart {
  visibility: visible;
  position: relative;
  top: 40%;
- font-size: 30px;
+ font-size: 3vh;
  text-align: center;
 }
 
@@ -177,7 +177,7 @@ button.ShoppingCart {
  visibility: hidden;
  font-weight: bold;
  position: relative;
- font-size: 30px;
+ font-size: 3vh;
  text-align: center;
 }
 
@@ -201,7 +201,7 @@ button.Buy {
 
 p.BuyText {
  position: relative;
- font-size: 30px;
+ font-size: 3vh;
  top: 35%;
  text-align: center;
 }
