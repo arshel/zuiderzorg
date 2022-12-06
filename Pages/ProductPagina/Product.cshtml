@@ -42,7 +42,7 @@
                     </button>
                     </div>
                     <div class="button2">
-                        <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" onclick="ClickedButton()">
+                        <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">
                         <p class="BuyText">Naar productpagina</p>
                         <i class="bi bi-shop" style="font-size:6vw;color:#6CBF2A;position:relative;top:-50%;"></i>
                     </button>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="col">
-                <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" onclick="ClickedButton()">
+                <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">
                 <p class="ExperienceText">Ervaringen van anderen</p>
                 <i class="bi bi-play-circle" style="font-size:6vw;color:#6CBF2A;position:relative;top:-40%;"></i>
                 </button>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
-                            <button type="button" class="btn btn-primary">Doorgaan</button>
+                            <button type="button" class="btn btn-primary" onclick="ToPage()">Doorgaan</button>
                         </div>
                     </div>
                 </div>
@@ -84,24 +84,23 @@
 
 
 <script>
+    var Nextlocation = {};
+
     function GoBack() {
-        location.href = "http://localhost:5090/productenselectie";
+        location.href = "/index.html";
     }
 
-    function Favourites() {
-        location.href = "http://localhost:5090/FavorietenPagina/Favorieten";
+    function ToPage() {
+        location.href = Nextlocation;
     }
 
-    function ToProduct() {
-        location.href = "https://www.wibra.nl/assortiment/blikopener-rvs/";
-    }
-
-    function Experiences() {
-        location.href = "https://www.youtube.com/watch?v=BWmBov6O0BA";
-    }
-
-    function ClickedButton() {
-        
+    function ClickedButton(arg) {
+        Nextlocation = "";
+        if (arg == "Buy") {
+            Nextlocation = "https://www.wibra.nl/assortiment/blikopener-rvs/";
+        } else {
+            Nextlocation = "https://www.youtube.com/watch?v=BWmBov6O0BA";
+        }
     }
 
     function FavouritesToggle() {
