@@ -1,19 +1,24 @@
 ﻿@page
 @model IndexModel
 @inject Auth.AuthChecker auth
+@* @using Microsoft.AspNetCore.Localization
+@inject IStringLocalizer<IndexModel> localizer
+@inject IHtmlLocalizer<IndexModel> htmlLocalizer *@
 @{
     ViewData["Title"] = "Home page";
+    var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
 }
 
 <div class="mt-4 container">
-    <component render-mode="Static" type="typeof(Components.Message)" param-text="Model.success" param-type='"success"' />
+<component render-mode="Static" type="typeof(Components.Message)" param-text="Model.success" param-type='"success"' />
     <component render-mode="Static" type="typeof(Components.Message)" param-text="Model.danger" param-type='"danger"' />
     @if (auth) {
         <component render-mode="Static" type="typeof(Components.Message)" param-text='"Je bent ingelogd!"' param-type='"info"' />
     }
 </div>
 
-<div class="container-fluid" onload="init()">
+<div class="container container-fluid container-xxl" onload="init()">
     <div class="row flex-row offset-1 align-items-center">
         <div class="col col-10 position-relative mb-5 p-1">
             <video class="video rounded-3 container-fluid shadow p-1 bg-green">
@@ -22,14 +27,16 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
             </svg>
+            
         </div>
         
         <div class="col mb-5 p-0" >
             <div class="float-start slidecontainer position-absolute">
-                <input type="range" step="1" min="0" max="100" value="50" class="slider" id="range">
-                <div class="range-value" id="rangeV"></div>
+                <input type="range" step="1" min="0" max="100" value="50" class="slider" id="myRange">
+                @* <div id="bubble" style="position: absolute; left: 20px; width: 20px; height:20px; background-color: red;pointer-events: none;"></div> *@
             </div>
             
+            @* <span class="position-absolute" id="volume"></span> *@
             <svg style="margin-top: 83px; margin-left: -3px" class="float-start" width="24px" height="24px" viewBox="0 0 75 75" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" id="layer1" >
                 <metadata id="metadata1"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/></cc:Work></rdf:RDF></metadata>
                 <g id="g1"><polygon id="polygon1" points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769" style="stroke:#111111;stroke-width:5;stroke-linejoin:round;fill:#111111;"/>
@@ -47,8 +54,8 @@
         </div>
     </div>
     
-    <div class="next-page border border-2 border-dark rounded-pill shadow-lg bg-black bg-opacity-10" type="button">
-        <button class="button row-cols-1" onclick="NextPage()">Volgende Pagina</button>
+    <div class="next-page border border-2 border-dark rounded-pill shadow-lg bg-black bg-opacity-10">
+        <button class="button row-cols-1" onclick="NextPage()">@localizer.Get("Volgende pagina")</button>
     </div>
 </div>
 

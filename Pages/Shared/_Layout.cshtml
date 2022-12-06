@@ -24,11 +24,19 @@
                     @* <button onclick="languageChange_EN()" type="button" class="btn language-btn EN" data-toggle="tooltip" data-placement="bottom" title="Placeholder"> *@
                     <img class="image" src="https://people4all.nl/wp-content/uploads/2016/07/engelse-vlag.png">
                 </button>
+                <script>
+                function languageChange_NL(){
+                    var Language = "NL";
+                }
+                function languageChange_EN(){
+                    var Language = "EN";
+                }
+            </script>
                 <button onclick="TogglePopovers()" type="button" class="btn">
                     <img class="image" src="Images/Info_icon.png">
                 </button>
                 
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Zuiderzorg</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">@localizer.Get("Huis")</a>
             </div>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +52,8 @@
                         <partial name="_LoginPartial"/>
                     </li>
                     <li class="nav-item">
-                        <button onclick="window.open('https://www.solnetwerk.nl/')" type="button" class="btn" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="right">
-                            <img class="navbar-brand img-fluid" alt="" style="width: 130px; height: 60px" src="~/Images/SOL_LOGO.png">
-                        </button>
+                        <a href="https://www.solnetwerk.nl/"><img class="navbar-brand float-end img-fluid" alt="" style="width: 130px; height: 60px" src="~/Images/SOL_LOGO.png"></a>
+                        <vc:culture-switcher/>
                     </li>
                 </ul>
             </div>
@@ -67,10 +74,10 @@
 
 
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
-@await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
