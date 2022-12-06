@@ -26,7 +26,7 @@
         <div class="col-7">
             <div class="NoFavourites">
                 <h1 class="NoFavouritesText">U heeft nog geen favorieten</h1>
-                </div>
+            </div>
             <div class="Favorieten">
                 <button class="ProductBlock1"  onclick="ToProduct()">Blikopener
                     <div class="image1">
@@ -72,6 +72,7 @@
         Blocks[0].style.visibility = "collapse";
 
         localStorage.removeItem(number);
+        location.reload();
     }
 
     function ProductShow(object) {
