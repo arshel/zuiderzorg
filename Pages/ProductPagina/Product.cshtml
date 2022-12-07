@@ -26,31 +26,31 @@
             </div>
             <div class="col-7">
                 <div class="ProductInfo">
-                    @{
+                
                     <div class="image">
                         <img id="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
-                    </div>
-                        var db = new CategoryContext();
-                        var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();
-                    <div class="DescriptionBlock">@ProductInfo[0].Name <br />
-                            <div class="DescriptionText">@ProductInfo[0].Description</div> <br />
+                    </div class>
+                        @{var db = new CategoryContext();}
+                        @{var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
+                    
+                    <div class="DescriptionBlock">@ProductInfo[0].Name
+                        <div class="DescriptionText">@ProductInfo[0].Description</div>
                     </div>
                     <div class="PriceBlock">€@ProductInfo[0].Price</div>
                     <div class="button1">
-                          <button class="ShoppingCart" onclick="FavouritesToggle()">
+                        <button class="ShoppingCart" onclick="FavouritesToggle()">
                         <div class="ShoppingCartText">In favorieten plaatsen</div>
                         <div class="ShoppingCartText2">In favorieten geplaatst</div>  
-                        <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;top:-90%;visibility:visible"></i>
-                        <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:relative;top:-90%;visibility:hidden"></i>
-                        </button>
+                        <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;top:-90%;left:18%;visibility:visible"></i>
+                        <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:relative;top:-90%;left:-20%;visibility:hidden"></i>
+                    </button>
                     </div>
                     <div class="button2">
                         <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">
                         <p class="BuyText">Naar productpagina</p>
                         <i class="bi bi-shop" style="font-size:6vw;color:#6CBF2A;position:relative;top:-50%;"></i>
-                    </button>  
+                    </button>
                     </div>
-                }
                 </div>
             </div>
             
@@ -58,12 +58,6 @@
                 <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">
                 <p class="ExperienceText">Ervaringen van anderen</p>
                 <i class="bi bi-play-circle" style="font-size:6vw;color:#6CBF2A;position:relative;top:-40%;"></i>
-                </button>
-                </div>
-                <div class="button22">
-                    <button class="Favourites" onclick="Favourites()">
-                    <p class="ExperienceText">Naar Favorieten</p>
-                    <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:absolute;left:68px;top:10px"></i>
                 </button>
                 </div>
             </div>
@@ -86,7 +80,6 @@
             </div>
         </div>
 </body>
-
 
 <script>
     function Favorites() {
