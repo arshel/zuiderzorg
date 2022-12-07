@@ -35,8 +35,21 @@
                 <button onclick="TogglePopovers()" type="button" class="btn">
                     <img class="image" src="Images/Info_icon.png">
                 </button>
-                
-                <a class="navbar-brand" asp-area="" asp-page="/Index">@localizer.Get("Huis")</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <partial name="_LoginPartial" />
+                </div>
+                <a href="https://www.solnetwerk.nl/"><img class="navbar-brand float-end img-fluid" alt="" style="width: 130px; height: 60px" src="~/Images/SOL_LOGO.png"></a>
+            </div>
+                <a href="/Contact"><img class="navbar-brand float-end img-fluid" alt="" style="width: 130px; height: 60px" src="~/Images/Contact.svg"></a>
+            </div>y
+        </nav>
+    </header>
+<div class="container">
+    <main role="main" class="pb-3">
+            @RenderBody()
+             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                </div>
             </div>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
