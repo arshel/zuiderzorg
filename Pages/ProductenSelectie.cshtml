@@ -14,7 +14,17 @@
                 <button class="Basic" onclick="document.location='/Product_Select_Page'"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
                 <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
             </div>
-            <div class="col-sm-9" id="buttonsContainer" runat="server"></div>
+            <div class="col-sm-9" id="buttonsContainer" runat="server">
+                @{
+                    var db = new CategoryContext();
+                    var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
+                    foreach(var item in CatInfo)
+                    {
+                    <button class="Basic" onclick="document.location='/productpagina/product'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
+                    }
+                }
+                <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
+            </div>
         </div>
     </container>
     <div class="form-popup" id="myForm">
@@ -35,7 +45,6 @@
             </form>
         </div>
     </div>
-</asp:ScriptManager>
 
     <script>
         function openForm() {
@@ -52,116 +61,5 @@
     </script>
 
 
-            @*beforeSend: function(){  
-                Show(); // Show loader icon  
-            },           
-            complete: function(){  
-                Hide(); // Hide loader icon  
-            },*@
-            
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript">
-    function getProducts() {  
-        $.ajax({  
-            type: "GET",  
-            url: "ProductenSelectie.csthml/GetProducts",  
-            contentType: "application/json; charset=utf-8",  
-            dataType: "json",  
-            
-            success: function (response) {  
-               alert("hi");
-            },   
-            failure: function (jqXHR, textStatus, errorThrown) {                  
-                alert("HTTP Status: " + jqXHR.status + "; Error Text: " + jqXHR.responseText); // Display error message  
-            }  
-        });  
-    }  
-</script>
 
-    <script type="text/javascript">
-        const buttonsContainer = document.getElementById("buttonsContainer");
-        var products = getProducts();
-        
-               console.log( "hi");
-        for (var i = 0; i < 5; i++) {
-          const button = document.createElement("button");
-          button.className = "Basic";
-          button.innerHTML = "<img src='/images/CatagoryIcons/PlusIcon.png' height=100 width=100 /><br /><strong>Javascript Test</strong>";
-          button.addEventListener("click", function() {
-            document.location='/productpagina/product'
-          })
-          buttonsContainer.appendChild(button);
-       }
-       const button = document.createElement("button");
-          button.className = "Basic";
-          button.innerHTML = "<img src='/images/CatagoryIcons/PlusIcon.png' height=100 width=100 /><br /><strong>Add</strong>";
-          button.addEventListener("click", function() {
-            openForm()
-          })
-          buttonsContainer.appendChild(button);
-    </script>
-    
 </body>
-@*<div class="container productenselectie">
-
-        <div class="navbar" style="grid-column-start:1;grid-column-end:5;">
-            <i class="bi bi-house" style="font-size:70px;color:#6CBF2A;position:absolute;top:-40%;"></i>
-        </div>
-
-        <button class="button back">
-            <i class="bi bi-arrow-90deg-left" style="font-size:70px;color:#6CBF2A;"></i>
-            <p class="buttontext">Terug</p>
-
-        </button>
-
-        <button class="button Product1">
-            <img class="image image2 " src="https://www.optimalegezondheid.com/wp-content/uploads/2015/05/adullatietherapie.jpg">
-            <p class="buttontext">Trill bed</p>
-        </button>
-
-        <button class="button Product2">
-            <img class="image image2 " src="https://cdn.webshopapp.com/shops/285291/files/363696598/1100x720x2/bellman-symfon-bellman-trilwekker-digitaal-pro.jpg">
-            <p class="buttontext">Trill wekker</p>
-        </button>
-
-
-        <a href="/productpagina/product" class="button Product1">
-            <p style="position:absolute;bottom:20px;left:50px;" class="buttontext">Trilbed</p>
-
-        </a>
-        <a href="/productpagina/product" class="button Product2">
-            <img class="image image2" src="https://cdn.webshopapp.com/shops/285291/files/363696598/1100x720x2/bellman-symfon-bellman-trilwekker-digitaal-pro.jpg">
-            <p class="buttontext">Trill wekker</p>
-
-        </a>
-
-        <a href="/productpagina/product" class="button Product3">
-            <img class="image image3" src="https://img.grouponcdn.com/deal/4DUKDZGbhtW5YVHLj5TBm1VwSFwK/4D-1500x900/v1/c1400x840.webp">
-            <p class="buttontext">Bejaarden bestek</p>
-        </a>
-
-        <a href="/productpagina/product" class="button Help">
-            <i class="bi bi-info-circle" style="font-size:70px;color:#6CBF2A;"></i>
-            <p class="buttontext">Druk voor help</p>
-
-        </a>
-
-        <a href="/productpagina/product" class="button Product4">
-            <img class="image image4" src="https://cdn.shopify.com/s/files/1/0373/7006/9125/products/f5306ab7b50ecbda9d8fbf9487ef28aff348bfd2_FD_35_8712412581634_02_720x.jpg?v=1626439582">
-            <p class="buttontext">Licht bel</p>
-        </a>
-
-        <a href="/productpagina/product" class="button Product5">
-            <img class="image image5" src="https://mijnsos.nl/media/mf_webp/jpg/media/catalog/product/cache/83eecdf2a771bef3096e9ee184c49b16/e/v/ev-07b-zwart_4.webp">
-            <p class="buttontext">GPS tracker</p>
-
-        </a>
-
-        <a href="/productpagina/product" class="button Add">
-            <img class="image image6" src="https://ct-res.cloudinary.com/images/f_auto,q_auto:good,w_700/images/c94623f77b935e9ecb2fb4c5f3b39535/gourmetmaxx-elektrische-blikopener-0001732683.jpg">
-            <p class="buttontext">Blikopener</p>
-
-        </a>
-
-
-    </div>*@

@@ -1,5 +1,4 @@
-﻿using javax.jws;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using zuiderzorg.Models;
 namespace zuiderzorg.Pages
@@ -38,23 +37,10 @@ namespace zuiderzorg.Pages
             _logger = logger;
         }
 
-        [WebMethod]
-        public static string GetProducts(string CategoryID)
+        public static Product[] GetProducts(string CategoryID)
         {
-            return "succes";
-            Guid ID = Guid.Parse(CategoryID);
-            /*var db = new CategoryContext();
-            var ProductNames = db.Products.ToArray();
-            return ProductNames;
-            var db = new CategoryContext();
-            var ProductInfo =
-                from p in db.Products
-                join c in db.Categories on p.ParentCategoryId equals c.CategoryId
-                select new
-                {
-                    Product = p.Name,
-                    Id = p.ProductId
-                };*/
+           var db = new CategoryContext();
+           return db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(CategoryID)).ToArray();
         }
 
     }
