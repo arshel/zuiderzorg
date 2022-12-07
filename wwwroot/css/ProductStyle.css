@@ -153,8 +153,8 @@ button.Experience:hover {
 button.ShoppingCart {
  position: relative;
  float:left;
- left: 3%;
- margin-top: -10%;
+ left: 13%;
+ margin-top: 60%;
  height: 20vh;
  width: 18vw;
  border-style: solid;
@@ -188,8 +188,8 @@ button.ShoppingCart:hover {
 
 button.Buy {
  position: relative;
- left: 8%;
- margin-top: -10%;
+ left: 2%;
+ margin-top: -32%;
  height: 20vh;
  width: 18vw;
  border-style: solid;
@@ -212,30 +212,3 @@ button.Buy:hover {
  box-shadow: 10px 10px 8px #888888;
 }
 
-p.Titel {
- position: relative;
- font-size: x-large;
-}
-
-button.Favourites {
- position: relative;
- margin-top: 50%;
- height: 285px;
- width: 250px;
- background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
-}
-
-p.HelpText {
- position: relative;
- top: 50%;
- font-size: 30px;
- text-align: center;
-}
-
-button.Help:hover {
- box-shadow: 10px 10px 8px #888888;
-}
