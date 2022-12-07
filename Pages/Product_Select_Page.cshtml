@@ -26,7 +26,7 @@
                     var CatInfo = db.Categories.ToArray();
                     foreach(var item in CatInfo)
                     {
-                    <button class="Basic" onclick="document.cookie = 'CategoryId=@item.CategoryId';localStorage.setItem('CategoryId', '@item.CategoryId'); document.location = '/productenselectie'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
+                    <button class="Basic" onclick="document.cookie = 'CategoryId=@item.CategoryId';localStorage.setItem('CategoryId', '@item.CategoryId'); document.location = '/productenselectie'"> <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
                     }
                 }
                 <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>@localizer.Get("Toevoegen")</strong></button>
