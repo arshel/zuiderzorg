@@ -31,7 +31,7 @@
                         <img id="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
                     </div>
                         var db = new CategoryContext();
-                        var ProductInfo = db.Products.Where(x=>x.ProductId==Guid.Parse(Request.Cookies["ProductId"])).ToArray();
+                        var ProductInfo = db.Products.Where(x=>x.ProductId==Guid.Parse("cd5d5a6e-65d5-4b39-96bd-6990c5087cee")).ToArray();
                     <div class="DescriptionBlock">@ProductInfo[0].Name
                         <div class="DescriptionText">@ProductInfo[0].Description</div>
                     </div>

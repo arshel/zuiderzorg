@@ -17,22 +17,7 @@
             <vc:culture-switcher/>
             <div class="container">
                 
-                @* <button onclick="languageChange_NL()" class="language-btn NL">
-                    <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/266px-Flag_of_the_Netherlands.svg.png">
-                    <script> if(Language == "NL"){Nederlands} else {Netherlands} </script>
-                </button> 
-                <button onclick="languageChange_EN()" class="language-btn EN">
-                    <img class="image" src="https://people4all.nl/wp-content/uploads/2016/07/engelse-vlag.png">
-                </button>
-                <script>
-                    function languageChange_NL(){
-                        var Language = "NL";
-                    }
-                    function languageChange_EN(){
-                        var Language = "EN";
-                    }
-                </script> *@
-                <a class="navbar-brand"   asp-route-culture="@Context.Request.RouteValues["culture"]" asp-page="/Index">Zuiderzorg</a>
+                <a class="navbar-brand"  href="/nl/index">Zuiderzorg</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
