@@ -32,23 +32,23 @@
                     </div>
                         var db = new CategoryContext();
                         var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();
-                    <div class="DescriptionBlock">@ProductInfo[0].Name
-                        <div class="DescriptionText">@ProductInfo[0].Description</div>
+                    <div class="DescriptionBlock">@ProductInfo[0].Name <br />
+                            <div class="DescriptionText">@ProductInfo[0].Description</div> <br />
                     </div>
                     <div class="PriceBlock">€@ProductInfo[0].Price</div>
                     <div class="button1">
-                        <button class="ShoppingCart" onclick="FavouritesToggle()">
+                          <button class="ShoppingCart" onclick="FavouritesToggle()">
                         <div class="ShoppingCartText">In favorieten plaatsen</div>
                         <div class="ShoppingCartText2">In favorieten geplaatst</div>  
                         <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;top:-90%;visibility:visible"></i>
                         <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:relative;top:-90%;visibility:hidden"></i>
-                    </button>
+                        </button>
                     </div>
                     <div class="button2">
                         <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">
                         <p class="BuyText">Naar productpagina</p>
                         <i class="bi bi-shop" style="font-size:6vw;color:#6CBF2A;position:relative;top:-50%;"></i>
-                    </button>
+                    </button>  
                     </div>
                 }
                 </div>
