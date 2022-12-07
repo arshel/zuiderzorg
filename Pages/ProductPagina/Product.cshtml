@@ -1,6 +1,6 @@
 ﻿@page
 @model BlikModel
-
+@using zuiderzorg.Models
 <head>
     <link href="~/css/ProductStyle.css" rel="stylesheet"/>
 </head>
@@ -26,13 +26,16 @@
             </div>
             <div class="col-7">
                 <div class="ProductInfo">
+                    @{
                     <div class="image">
                         <img class="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
                     </div>
-                    <div class="DescriptionBlock">Blikopener
-                        <div class="DescriptionText">Blikopener met een afmeting van 20 x 4,2cm. Gemaakt van roestvrij staal (RVS).</div>
+                        var db = new CategoryContext();
+                        var ProductInfo = db.Products.Where(x=>x.ProductId==Guid.Parse(Request.Cookies["ProductId"])).ToArray();
+                    <div class="DescriptionBlock">@ProductInfo[0].Name
+                        <div class="DescriptionText">@ProductInfo[0].Description</div>
                     </div>
-                    <div class="PriceBlock">€2,79</div>
+                    <div class="PriceBlock">€@ProductInfo[0].Price</div>
                     <div class="button1">
                         <button class="ShoppingCart" onclick="InShoppingCart()">
                         <div class="ShoppingCartText">In favorieten plaatsen</div>
@@ -47,8 +50,10 @@
                         <i class="bi bi-shop" style="font-size:100px;color:#6CBF2A;position:absolute;left:90px;top:-20px"></i>
                     </button>
                     </div>
+                }
                 </div>
             </div>
+            
             <div class="col">
                 <div class="button11">
                     <button class="Experience" onclick="Experiences()">
