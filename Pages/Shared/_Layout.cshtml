@@ -1,4 +1,4 @@
-@inject Auth.AuthChecker auth
+﻿@inject Auth.AuthChecker auth
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +12,30 @@
 
 </head>
 <body>
-
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 bg-green">
+            <vc:culture-switcher/>
+            <div class="container">
+                
+                @* <button onclick="languageChange_NL()" class="language-btn NL">
                     <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/266px-Flag_of_the_Netherlands.svg.png">
                     <script> if(Language == "NL"){Nederlands} else {Netherlands} </script>
-                </button>
-                <button onclick="languageChange_EN()" type="button" class="btn" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="bottom">
-                    @* <button onclick="languageChange_EN()" type="button" class="btn language-btn EN" data-toggle="tooltip" data-placement="bottom" title="Placeholder"> *@
+                </button> 
+                <button onclick="languageChange_EN()" class="language-btn EN">
                     <img class="image" src="https://people4all.nl/wp-content/uploads/2016/07/engelse-vlag.png">
                 </button>
                 <script>
-
+                    function languageChange_NL(){
+                        var Language = "NL";
+                    }
+                    function languageChange_EN(){
+                        var Language = "EN";
+                    }
+                </script> *@
+                <a class="navbar-brand"   asp-route-culture="@Context.Request.RouteValues["culture"]" asp-page="/Index">Zuiderzorg</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <partial name="_LoginPartial" />
@@ -29,8 +43,6 @@
                 <a href="https://www.solnetwerk.nl/"><img class="navbar-brand float-end img-fluid" alt="" style="width: 130px; height: 60px" src="~/Images/SOL_LOGO.png"></a>
           
             </div>
-                <a href="/Contact"><img class="navbar-brand float-end img-fluid" alt="" style="width: 130px; height: 60px" src="~/Images/Contact.svg"></a>
-            </div>y
         </nav>
     </header>
 <div class="container">
@@ -41,39 +53,8 @@
                 </div>
             </div>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav">
-                    @* <li class="nav-item active"> *@
-                    @*     <a class="navbar-brand" asp-area="" asp-page="/Index">Zuiderzorg</a> *@
-                    @* </li> *@
-                    <li class="nav-item">
-                        <partial name="_LoginPartial"/>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.solnetwerk.nl/"><img class="navbar-brand float-end img-fluid" alt="" style="width: 130px; height: 60px" src="~/Images/SOL_LOGO.png"></a>
-                        <vc:culture-switcher/>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-            </div>
-        </div>
-
-    </main>
-</div>
-
+</main>
+   
 
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
