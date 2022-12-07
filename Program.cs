@@ -9,6 +9,7 @@ using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
 using zuiderzorg.Services;
+using zuiderzorg.RouteModelConventions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,17 +26,20 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddRazorPages().AddViewLocalization();
-
+builder.Services.AddRazorPages(options => {
+        options.Conventions.Add(new CultureTemplatePageRouteModelConvention());
+    });
  builder.Services.Configure<RequestLocalizationOptions>(
     opt => {
         var supportCulteres = new List<CultureInfo>
         {
             new CultureInfo("en"),
-            new CultureInfo("nld")
+            new CultureInfo("nl")
         };
-            opt.DefaultRequestCulture = new RequestCulture("en");
+            opt.DefaultRequestCulture = new RequestCulture("nl");
             opt.SupportedCultures = supportCulteres;
             opt.SupportedUICultures = supportCulteres;
+            opt.RequestCultureProviders.Insert(0, new RouteDataRequestCultureProvider { Options = opt });
          });
         // services.AddRazorPages();
 builder.Services.AddSingleton<CommonLocalizationService>();

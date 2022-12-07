@@ -15,6 +15,7 @@ html {
 
 body {
   margin-bottom: 60px;
+ 
 }
 
 /* Navbar-begin */
@@ -24,6 +25,15 @@ body {
   background-color: rgba(108, 191, 42,var(--bs-bg-opacity))!important;
 }
 
+#popover1 {
+  width: 10%;
+  z-index: 1000;
+}
+
+/*.popover {*/
+/*  overflow:visible!important*/
+/*}*/
+.visible{overflow:visible!important}
 /* Navbar-end */
 
 /* Video container begin */
@@ -123,11 +133,34 @@ body {
   }
 
 
-/* Volume display */
-/*#volume {*/
-/*  margin-top: 80px;*/
-/*  margin-left: -4px;*/
-/*  padding: 4px;*/
-/*  background: rgb(108, 191, 42);*/
-/*  border-radius: 2px;*/
-/*}*/
+.range-value{
+  position: absolute;
+  top: -50%;
+}
+.range-value span{
+  width: 30px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  background: #03a9f4;
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 6px;
+}
+.range-value span:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #03a9f4;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
+}

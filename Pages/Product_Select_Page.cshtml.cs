@@ -16,14 +16,14 @@ namespace zuiderzorg.Pages
         {
         }
         [BindProperty]
-        public CategoryRequest CategoryRequest { get;set;}
+        public CategoryContext CategoryRequest { get;set;}
         public IActionResult OnPost()
         {
             using (var db = new CategoryContext())
             {
                 //Creating a new item and saving it to the database
                 var newCatergory = new Category();
-                newCatergory.Name = Request.Form["title"];
+                newCatergory.Name = Request.Form["CategoryName"];
                 //newCatergory.Name = CategoryRequest.Name;
                 db.Categories.Add(newCatergory);
                 db.SaveChanges();
@@ -39,8 +39,4 @@ namespace zuiderzorg.Pages
 
         }
     }
-    public class CategoryRequest{
-        public string Name { get;set;}
-
-        }
 }
