@@ -16,7 +16,8 @@
                 <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
             </div>
         </div>
-    <form onsubmit="sendEmail(); reset(); return false;">
+    <form action="mailto:daan0902@gmail.com" method="post" enctype="text/plain">
+    @* <form onsubmit="sendEmail(); reset(); return false;"> *@
     @* <form action="https://formsubmit.co/0dc827a606e971845ab40e1c00e4b478" method="POST" reset(); return false();>
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_autoresponse" value="Bedankt voor uw bericht!"> *@
@@ -25,32 +26,35 @@
             
             <div class="form-group">
                 <label for="name">Naam</label>
-                <input type="text" class="form-control" id="name" placeholder="Naam" required>
+                <input type="text" class="form-control" id="name" placeholder="Naam" name="Name" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                <input type="email" class="form-control" id="email" placeholder="Email" name="E-mail" required>
             </div>
             <div class="form-group">
                 <label for="telnum">Telefoon nummer</label>
-                <input type="number" class="form-control" id="telnum" placeholder="Telefoon nummer">
+                <input type="number" class="form-control" id="telnum" placeholder="Telefoon nummer" name="Telefoon nummer">
             </div>
-            <p>Naam <br> ZorgZuid</p>
-            <p>Email <br> daan0902@gmail.com</p>
-            <p>Telefoon nummer <br>+31611656582</p>
-        </div>
-        <div class="text-container">
-                <div class="form-group">
-                    <label for="bericht">Hier uw bericht</label>
-                    <textarea class="form-control" id="bericht" required></textarea>
+            <div class="form-group">
+                <label for="bericht">Hier uw bericht</label>
+                <textarea class="form-control" id="bericht" name="Bericht" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary align-self-end mt-2">
-                    send 
+                <button type="submit" class="btn btn-primary align-self-end mt-2"> 
+                    Verstuur 
                     <i class="bi bi-send"></i>
                 </button>
         </div>
     </form>
+    <div class="text-container">
+            <p>Naam: <br> SOL</p>
+            <p>Hoofdlocatie SOL: <br> Schommelstraat 69 <br> 3035 CG Rotterdam</p>
+            <p>Email: <br> info@solnetwerk.nl</p>
+            <p>Telefoon nummer: <br>010 – 2448240</p>
+                
+        </div>
     </div>
+    
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script> 
         function sendEmail(){
