@@ -25,22 +25,22 @@
         </div>
         <div class="col-7">
             <div class="NoFavourites">
-                <h1>U heeft nog geen favorieten</h1>
-                </div>
+                <h1 class="NoFavouritesText">U heeft nog geen favorieten</h1>
+            </div>
             <div class="Favorieten">
-                <button class="ProductBlock1"  onclick="ToProduct()">Blikopener
+                <button type="button" class="ProductBlock1" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">Blikopener
                     <div class="image1">
                         <img class="image-1" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
                     </div>
                     <div class="PriceBlock-1">€2,79</div>
                 </button>
-                <button class="ProductBlock2"  onclick="ToProduct2()">Rookmelder
+                <button type="button" class="ProductBlock2"  onclick="ToProduct2()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Rookmelder
                     <div class="image2">
                         <img class="image-2" src="https://www.rookmeldershop.nl/Files/5/17000/17795/ProductPhotos/MaxContent/1923737877.png" alt="Rookmelder">
                     </div>
                     <div class="PriceBlock-2">€36,95</div>
                 </button>
-                <button class="ProductBlock3"  onclick="ToProduct()">Trilwekker
+                <button type="button" class="ProductBlock3"  onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
                     <div class="image3">
                         <img class="image-3" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
                     </div>
@@ -50,68 +50,57 @@
         </div>
         <div class="col-md">
             <div class="stars">
-                <button class="star1"  onclick="Delete1()">
+                <button class="star1" value=1 onclick="Delete(value)">
                     <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
                 </button>
-                <button class="star2"  onclick="Delete2()">
+                <button class="star2" value=2 onclick="Delete(value)">
                     <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
                 </button>
-                <button class="star3"  onclick="Delete3()">
+                <button class="star3" value=3 onclick="Delete(value)">
                     <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
                 </button>
             </div>
         </div>
+    </div>
 </body>
 
 
 <script>
-    function getStorageLength() {
-        var storagelist = [];
-
-        for (var i = 0; i < localStorage.length; i++) {
-            storagelist.push(localStorage.key("i"));
-        }
-
-        return storagelist.length;
-    }
-
-    function Delete1() {
+    function Delete(number) {
         var Stars = document.getElementsByClassName("star1"); 
         Stars[0].style.visibility = "collapse"; 
         var Blocks = document.getElementsByClassName("ProductBlock1");
+        Blocks[0].style.visibility = "collapse";
 
-        Blocks[0].style.visibility = "collapse";
-        localStorage.removeItem(localStorage.key("1")); 
-    }
-    function Delete2() {
-        var Stars = document.getElementsByClassName("star2");
-        Stars[0].style.visibility = "collapse"; 
-        var Blocks = document.getElementsByClassName("ProductBlock2");
-        Blocks[0].style.visibility = "collapse"; 
-        localStorage.removeItem(localStorage.key("2"));
-    }
-    function Delete3() {
-        var Stars = document.getElementsByClassName("star3");
-        Stars[0].style.visibility = "collapse";
-        var Blocks = document.getElementsByClassName("ProductBlock3");
-        Blocks[0].style.visibility = "collapse";
-        localStorage.removeItem(localStorage.key("3"));
+        localStorage.removeItem(number);
+        location.reload();
     }
 
+    function ProductShow(object) {
+        searchstringproduct = "ProductBlock" + keyvalues[0];
+        searchstringstar = "star" + keyvalues[0];
+        var Blocks = document.getElementsByClassName(searchstringproduct);
+        var Stars = document.getElementsByClassName(searchstringstar);
+        Blocks[0].style.visibility = "visible";
+        Stars[0].style.visibility = "visible";
+
+        keyvalues.shift()
+    }
+    
     window.onload = function () {
-        items = getStorageLength()
+        var values = []
+        keys = Object.keys(localStorage)
+        items = keys.length
+
         if (items == 0) {
             var NoFav = document.getElementsByClassName("NoFavourites");
             NoFav[0].style.visibility = "visible";
         } else {
-            for (var i = 1; i < items+1; i++) {
-                searchstringproduct = "ProductBlock" + i;
-                searchstringstar = "star" + i;
-                var Blocks = document.getElementsByClassName(searchstringproduct);
-                var Stars = document.getElementsByClassName(searchstringstar);
-                Blocks[0].style.visibility = "visible";
-                Stars[0].style.visibility = "visible";
+            while ( items-- ) {
+                values.push(JSON.parse(localStorage.getItem(keys[items])));
             }
+            keyvalues = Object.keys(localStorage)
+            values.forEach(ProductShow)
         }
     };
 
@@ -121,7 +110,7 @@
         location.href = "http://localhost:5090/productpagina/product";
     }
     function ToProduct() {
-        location.href = "https://www.wibra.nl/assortiment/blikopener-rvs/";
+        location.href = "http://localhost:5090/productpagina/product";
     }
     function ToProduct2() {
         location.href = "https://www.rookmeldershop.nl/honeywell-home-rookmelder-r200S-1";
