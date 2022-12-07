@@ -20,7 +20,7 @@
                     var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
                     foreach(var item in CatInfo)
                     {
-                    <button class="Basic" onclick="document.location='/productpagina/product'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
+                    <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/productpagina/product'"> <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
                     }
                 }
                 <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
@@ -36,6 +36,14 @@
                 <label for="ProductRequest.Name"><b>Titel</b></label>
                 <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" required>
                 <span asp-validation-for="ProductRequest.Name"> </span>
+
+                <label for="ProductRequest.Price"><b>Prijs</b></label><br />
+                <input for="ProductRequest.Price" type="number" placeholder="Vul een prijs in" name="ProductPrice" required>
+                <span asp-validation-for="ProductRequest.Price"> </span>
+
+                <label for="ProductRequest.Description"><b>Beschrijving</b></label>
+                <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" required>
+                <span asp-validation-for="ProductRequest.Description"> </span>
 
                 <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
                 @*<span asp-validation-for="ProductRequest.ParentCategoryId"> </span>*@

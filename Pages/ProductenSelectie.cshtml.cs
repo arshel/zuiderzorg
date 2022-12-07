@@ -17,6 +17,8 @@ namespace zuiderzorg.Pages
                 //Creating a new item and saving it to the database
                 var NewProduct = new Product();
                 NewProduct.Name = Request.Form["ProductTitle"];
+                NewProduct.Description = Request.Form["ProductDescription"];
+                NewProduct.Price = decimal.Parse(Request.Form["ProductPrice"]);
                 NewProduct.ProductId = Guid.NewGuid();
                 string x = Request.Form["CategorieID"];
                 NewProduct.ParentCategoryId = Guid.Parse(x);
@@ -48,6 +50,8 @@ namespace zuiderzorg.Pages
     
     public class ProductRequest{
         public string Name { get;set;}
+        public string Description { get;set;}
+        public decimal Price { get;set;}
 
     }
 
