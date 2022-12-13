@@ -4,47 +4,19 @@
  } 
 }
 
-.Category {
- position: relative;
- width: 400px;
- height: 500px;
- background-color: white;
- border-style: solid;
- border-width: 0px;
- border-color: black;
- border-radius: 8px;
- left: 100px;
-}
-
-.CategoryTitle {
- width: 400px;
- height: 100px;
- font-size: 30px;
- text-align: center;
- vertical-align: middle;
- line-height: 100px;
- background-color: #6CBF2A;
- border-radius: 8px;
-}
-
-.CategoryDescription {
- font-size: 30px;
- text-align: center;
- vertical-align: middle;
- line-height: 300px;
-}
-
 .ProductInfo {
- position: relative;
- margin-left: 3%;
- margin-top: 5%;
- width: 40vw;
- height: 73vh;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
  background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
+ margin-left: 3%;
+ width: 40vw;
+ height: 78vh;
+ padding: 10px;
+ text-align: center;
+ text-decoration: none;
+ font-size: 30px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 #DescriptionBlock {
@@ -80,22 +52,18 @@
 }
 
 button.Help {
- position: relative;
- margin-top: 50%;
- height: 30vh;
- width: 14vw;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
  background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
-}
-
-p.HelpText {
- position: relative;
- top: 50%;
- font-size: 2vw;
+ width: 14vw;
+ height: 30vh;
+ padding: 10px;
  text-align: center;
+ margin-top: 65%;
+ text-decoration: none;
+ font-size: 30px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 button.Help:hover {
@@ -103,23 +71,17 @@ button.Help:hover {
 }
 
 button.Back {
- position: relative;
- margin-top: 15%;
- height: 30vh;
- width: 14vw;
- background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
- font-size: 20px;
-}
-
-p.BackText {
- position: relative;
- top: 50%;
- font-size: 2vw;
- text-align: center;
+  border: 4px solid black;
+  color: rgb(0, 0, 0);
+  background-color: white;
+  width: 14vw;
+  height: 30vh;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 button.Back:hover {
@@ -127,23 +89,17 @@ button.Back:hover {
 }
 
 button.Experience {
- position: relative;
- margin-top: 15%;
- height: 30vh;
- width: 14vw;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
  background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
- font-size: 20px;
-}
-
-p.ExperienceText {
- position: relative;
- top: 55%;
- font-size: 2vw;
+ width: 14vw;
+ height: 30vh;
+ padding: 10px;
  text-align: center;
+ text-decoration: none;
+ font-size: 30px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 button.Experience:hover {
@@ -151,18 +107,18 @@ button.Experience:hover {
 }
 
 button.ShoppingCart {
- position: relative;
- float:left;
- left: 13%;
- margin-top: 60%;
- height: 20vh;
- width: 18vw;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
- background-color: #D9D9D9;
- font-size: 20px;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
+ background-color: white;
+ width: 14vw;
+ height: 30vh;
+ padding: 10px;
+ text-align: center;
+ margin-top: 65%;
+ text-decoration: none;
+ font-size: 30px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .ShoppingCartText {
@@ -188,7 +144,6 @@ button.ShoppingCart:hover {
 
 button.Buy {
  position: relative;
- left: 2%;
  margin-top: -32%;
  height: 20vh;
  width: 18vw;

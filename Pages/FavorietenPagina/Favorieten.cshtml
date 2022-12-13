@@ -11,16 +11,11 @@
     <div class="row">
         <div class="col">
             <div class="button1">
-                <button class="Back" onclick="GoBack()">
-                <p class="BackText">Terug</p>
-                <i class="bi bi-arrow-return-left" style="font-size:100px;color:#6CBF2A;position:relative;top:-20%"></i>
-            </button>
-            </div>
-            <div class="button2">
-                <button class="Help" onclick="Help()">
-                <p class="HelpText">Klik hier voor hulp</p>
-                <i class="bi bi-question-circle" style="font-size:100px;color:#6CBF2A;position:relative;top:-40%"></i>
-            </button>
+                    <button class="Back" onclick="GoBack()"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
+                </div>
+                <div class="button2">
+                    <button class="Help" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
+                </button>
             </div>
         </div>
         <div class="col-7">
@@ -28,7 +23,9 @@
                 <h1 class="NoFavouritesText">U heeft nog geen favorieten</h1>
             </div>
             <div class="Favorieten">
-                <button type="button" class="ProductBlock1" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">Blikopener
+                @{  var db = new CategoryContext();
+                    var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
+                <button type="button" class="ProductBlock1" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">@ProductInfo[0].Name
                     <div class="image1">
                         <img class="image-1" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
                     </div>
@@ -107,7 +104,7 @@
 
 
     function GoBack() {
-        location.href = "http://localhost:5090/productpagina/product";
+        location.href = "http://localhost:5090";
     }
     function ToProduct() {
         location.href = "http://localhost:5090/productpagina/product";
