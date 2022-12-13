@@ -102,10 +102,16 @@
 
 
     function GoBack() {
-        location.href = "http://localhost:5090";
+        if (localStorage.getItem("location") != null) {
+            var newLocation = localStorage.getItem("location");
+        } else {
+            var newLocation = "http://localhost:5090";
+        }
+        location.href = newLocation;
+        localStorage.removeItem("location");
     }
     function ToProduct() {
-        location.href = "http://localhost:5090/productpagina/product";
+        location.href = "http://localhost:5090/nl/productpagina/product";
     }
     function ToProduct2() {
         location.href = "https://www.rookmeldershop.nl/honeywell-home-rookmelder-r200S-1";

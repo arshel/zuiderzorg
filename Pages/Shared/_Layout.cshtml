@@ -61,7 +61,8 @@
 
 <script>
     function ToFavourites() {
-        location.href = "http://localhost:5090/nl/favorietenpagina/favorieten"
+        location.href = "http://localhost:5090/nl/favorietenpagina/favorieten";
+        localStorage.setItem("location", (window.location.href).toString());
     }
 </script>
 

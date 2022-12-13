@@ -111,7 +111,7 @@ button.Back:hover {
 
 
 button.ProductBlock1 {
- visibility: hidden;
+ visibility: visible;
  position: relative;
  margin-left: 5%;
  margin-top: -40%;
@@ -130,7 +130,7 @@ button.ProductBlock1:hover {
 }
 
 button.ProductBlock2 {
- visibility: hidden;
+ visibility: visible;
  position: relative;
  margin-left: 5%;
  margin-top: 8%;
@@ -149,7 +149,7 @@ button.ProductBlock2:hover {
 }
 
 button.ProductBlock3 {
- visibility: hidden;
+ visibility: visible;
  position: relative;
  margin-left: 5%;
  margin-top: 8%;

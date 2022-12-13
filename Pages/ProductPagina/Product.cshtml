@@ -32,9 +32,7 @@
         </div>
         <div class="col">
             <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">  <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Ervaringen van anderen</strong></button>
-            <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i> <br /> <strong>In favorieten plaatsen</strong></button>
-                    @* <div class="ShoppingCartText2">In favorieten geplaatst</div>  
-                    <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:hidden"></i>  *@
+            <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i> <br/> <strong class="FavouritesText">In favorieten plaatsen</strong></button>
         </div>
         <div class="modal fade" id="Popup" tabindex="-1" aria-labelledby="LeavePopup" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -57,20 +55,7 @@
 </body>
 
 <script>
-    function Favorites() {
-        location.href = "http://localhost:5090/FavorietenPagina/Favorieten";
-    }
-
     var Nextlocation = {};
-
-    function GoBack() {
-        location.href = "http://localhost:5090/nl/productenselectie";
-    }
-
-    function ToPage() {
-        window.open(Nextlocation);
-        location.reload();
-    }
 
     function ClickedButton(arg) {
         Nextlocation = "";
@@ -81,39 +66,34 @@
         }
     }
 
+    function ToPage() {
+        window.open(Nextlocation);
+        location.reload();
+    }
+
+    function GoBack() {
+        location.href = "http://localhost:5090/nl/productenselectie";
+    }
+
     function FavouritesToggle() {
-        var star = document.getElementsByClassName("bi bi-star");
-        var starfill = document.getElementsByClassName("bi bi-star-fill");
+        var text = document.getElementsByClassName("FavouritesText");
+        var textstring = text[0].innerHTML;
 
-        var text = document.getElementsByClassName("ShoppingCartText");
-        var text2 = document.getElementsByClassName("ShoppingCartText2");
+        if (textstring.includes("In favorieten plaatsen")) {
+            $(".FavouritesText").html("In favorieten geplaatst");
+        } else {
+            $(".FavouritesText").html("In favorieten plaatsen");
+        }
 
-        visible = star[0].style.visibility;
-
-        if (visible == "visible") {
-            if(star[0].offsetWidth > 0 && star[0].offsetHeight > 0) {
-                star[0].style.visibility = "hidden";
-                text[0].style.visibility = "hidden";
-            }
-            if(starfill[0].offsetWidth > 0 && starfill[0].offsetHeight > 0) {
-                starfill[0].style.visibility = "visible";
-                text2[0].style.visibility = "visible";
-            }
+        var visibility = document.getElementsByClassName("bi bi-star");
+        if (visibility.length > 0) {
+            document.getElementsByClassName("bi bi-star").className="bi bi-star-fill";
             AddFavourites();
         } else {
-            if(star[0].offsetWidth > 0 && star[0].offsetHeight > 0) {
-                star[0].style.visibility = "visible";
-                text[0].style.visibility = "visible";
-
-            }
-            if(starfill[0].offsetWidth > 0 && starfill[0].offsetHeight > 0) {
-                starfill[0].style.visibility = "hidden";
-                text2[0].style.visibility = "hidden";
-            }
+            document.getElementsByClassName("bi bi-star-fill").className="bi bi-star";
             DeleteFavourites();
         }
     }
-
 
     function AddFavourites() {
         var storagelength = (Object.keys(localStorage)).length;
@@ -137,19 +117,16 @@
     }
 
     function StarFill(object) {
-        if (object.name == document.getElementById("DescriptionBlock").innerHTML) {
+        if (document.getElementById("productName").includes(object.name)) {
+            $(".FavouritesText").html("In favorieten geplaatst");
+
             var star = document.getElementsByClassName("bi bi-star");
             var starfill = document.getElementsByClassName("bi bi-star-fill");
-            var text = document.getElementsByClassName("ShoppingCartText");
-            var text2 = document.getElementsByClassName("ShoppingCartText2");
-
+        
             star[0].style.visibility = "hidden";
-            text[0].style.visibility = "hidden";
             starfill[0].style.visibility = "visible";
-            text2[0].style.visibility = "visible";
         }
     }
-
 
     window.onload = function () { 
         var values = [],
