@@ -1,11 +1,4 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Npgsql;
-using zuiderzorg.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace zuiderzorg.Models
 {
