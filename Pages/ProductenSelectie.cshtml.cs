@@ -20,11 +20,7 @@ namespace zuiderzorg.Pages
                 NewProduct.Description = Request.Form["ProductDescription"];
                 NewProduct.Price = decimal.Parse(Request.Form["ProductPrice"]);
                 NewProduct.ProductId = Guid.NewGuid();
-                string x = Request.Form["CategorieID"];
-                NewProduct.ParentCategoryId = Guid.Parse(x);
-                Console.WriteLine(NewProduct.ParentCategoryId);
-                //NewProduct.ParentCategoryId = Guid.Parse();
-                //newCatergory.Name = CategoryRequest.Name;
+                NewProduct.ParentCategoryId = Guid.Parse(Request.Form["CategorieID"]);
                 db.Products.Add(NewProduct);
                 db.SaveChanges();
 
@@ -39,19 +35,13 @@ namespace zuiderzorg.Pages
             _logger = logger;
         }
 
-        public static Product[] GetProducts(string CategoryID)
-        {
-           var db = new CategoryContext();
-           return db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(CategoryID)).ToArray();
-        }
-
     }
 
     
     public class ProductRequest{
-        public string Name { get;set;}
-        public string Description { get;set;}
-        public decimal Price { get;set;}
+        public string? Name { get;set;}
+        public string? Description { get;set;}
+        public decimal? Price { get;set;}
 
     }
 
