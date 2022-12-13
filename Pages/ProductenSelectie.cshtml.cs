@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Globalization;
 using zuiderzorg.Models;
 namespace zuiderzorg.Pages
 {
@@ -18,13 +19,9 @@ namespace zuiderzorg.Pages
                 var NewProduct = new Product();
                 NewProduct.Name = Request.Form["ProductTitle"];
                 NewProduct.Description = Request.Form["ProductDescription"];
-                NewProduct.Price = decimal.Parse(Request.Form["ProductPrice"]);
+                NewProduct.Price = decimal.Parse(Request.Form["ProductPrice"], CultureInfo.InvariantCulture.NumberFormat);
                 NewProduct.ProductId = Guid.NewGuid();
-                string x = Request.Form["CategorieID"];
-                NewProduct.ParentCategoryId = Guid.Parse(x);
-                Console.WriteLine(NewProduct.ParentCategoryId);
-                //NewProduct.ParentCategoryId = Guid.Parse();
-                //newCatergory.Name = CategoryRequest.Name;
+                NewProduct.ParentCategoryId = Guid.Parse(Request.Form["CategorieID"]);
                 db.Products.Add(NewProduct);
                 db.SaveChanges();
 
@@ -39,11 +36,6 @@ namespace zuiderzorg.Pages
             _logger = logger;
         }
 
-        public static Product[] GetProducts(string CategoryID)
-        {
-           var db = new CategoryContext();
-           return db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(CategoryID)).ToArray();
-        }
 
     }
 
