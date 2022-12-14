@@ -1,7 +1,7 @@
 @media screen and (max-width: 767px) {
   .row.content {
     height:auto;
-  } 
+  }
 }
 
 .ProductInfo {
@@ -126,7 +126,7 @@ button.ShoppingCart {
   top: 70%;
   font-size: 3vh;
   text-align: center;
-  }
+}
 
 .ShoppingCartText2 {
   visibility: hidden;
@@ -168,4 +168,3 @@ p.BuyText {
 button.Buy:hover {
   box-shadow: 10px 10px 8px #888888;
 }
-

@@ -20,7 +20,7 @@
             <div class="ProductInfo">
                 <div class="image">
                     <img id="productImage" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
-                </div class>
+                </div>
                 @{var db = new CategoryContext();}
                 @{var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
                 <div class="productName">@ProductInfo[0].Name
@@ -141,6 +141,3 @@
     };
 
 </script>
-
-
-
