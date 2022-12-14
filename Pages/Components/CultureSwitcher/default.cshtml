@@ -1,22 +1,22 @@
 @model CultureSwitcherModel
 
-<div style="margin-left: 1rem;">
+<div class="container" style="margin-left: 1rem;">
+
    
     <form id="culture-switcher">
         <select name="culture" class="selectpicker" id="culture-options">
 
             @foreach (var culture in Model.SupportedCultures)
             {
-                <option value="@culture.Name" selected="@(Model.CurrentUICulture.Name == culture.Name)">@culture.DisplayName</option>
+                var name = culture.Name + ".png";
+                <option    value="@culture.Name" selected="@(Model.CurrentUICulture.Name == culture.Name)" data-content="<img  style='width:30px; height:30px;' src='/images/@name'></img> @culture.DisplayName">@culture.DisplayName</option>
             }
         </select>
-    </form>
+    </form> 
 </div> 
 
 
-
 <script>
-
     var segments = location.pathname.split('/');
     var el = document.getElementById("culture-options");
     el.addEventListener("change", () => {
