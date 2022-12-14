@@ -48,7 +48,7 @@
                 <span asp-validation-for="ProductRequest.Description"> </span>
 
                 <label asp-for="FileUpload">Image</label>
-                <input type="file" asp-for="FileUpload">
+                <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe." required>
                 <span asp-validation-for="FileUpload"></span>
 
                 <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
