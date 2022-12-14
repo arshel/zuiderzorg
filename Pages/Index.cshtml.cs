@@ -1,3 +1,4 @@
+﻿
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -21,22 +22,25 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-
-    //     var salt = Salt.Create();
-    //    var hash = Hash.Create("admin", salt);
+        
+        /*
+         var salt = Salt.Create();
+         var hash = Hash.Create("admin", salt);
        
-    //     using (var db = new UserContext())
-    //         {
-    //             // Creating a new item and saving it to the database
-    //             var newUser = new User();
-    //             newUser.Email = "arshelmelfor@gmail.com";
-    //             newUser.HashSalt = salt;
-    //             newUser.HashPassword = hash;
-    //             db.Users.Add(newUser);
-    //             db.SaveChanges();
+         using (var db = new UserContext())
+             {
+                 // Creating a new item and saving it to the database
+                var newUser = new User();
+                 newUser.Email = "123@gmail.com";
+                 newUser.HashSalt = salt;
+                 newUser.HashPassword = hash;
+                 db.Users.Add(newUser);
+                 db.SaveChanges();
   
-    //         }
+             }
+         */
     }
+
     public string? danger;
     public string? success;
     [BindProperty]
@@ -53,7 +57,7 @@ public class IndexModel : PageModel
                 
                 // Get the user with the email
                 
-                var maybeUser = db.Users.First(x => x.Email == LoginRequest.Email);
+                var maybeUser = db.Users.FirstOrDefault(x => x.Email == LoginRequest.Email);
                 if (maybeUser == null) {
                     // User does not exist
                     danger = "Deze combinatie email en wachtwoord is onjuist.";

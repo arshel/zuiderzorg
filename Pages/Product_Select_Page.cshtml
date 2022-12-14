@@ -1,0 +1,74 @@
+﻿@page
+@using zuiderzorg.Models
+@model zuiderzorg.Pages.Product_Select_PageModel
+@inject CommonLocalizationService localizer
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+}
+
+<head>
+    <link href="~/css/CategoryStyle.css" rel="stylesheet"/>
+</head>
+
+<script>
+    function GetInfo(){        
+        
+        array.forEach(element {
+            let btn = document.createElement('button');
+            document.body.appendChild(btn);
+        });
+    }
+    
+</script>
+
+<body style="background-color: #F9EFEF">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <container class="cont">
+        <div class="row">
+            <div class="col-sm-3">
+                <button class="Basic" onclick="document.location='/index'"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
+                <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
+            </div>
+            <div class="col-sm-9">
+                @{
+                    using var db = new CategoryContext();
+                    var CatInfo = db.Categories.ToArray();
+                    foreach(var item in CatInfo)
+                    {
+                        <button class="Basic"  onclick="document.location='/productenselectie'"> <img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong></button>
+                    }
+                }
+                <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>@localizer.Get("Toevoegen")</strong></button>
+                
+            </div>
+        </div>
+    </container>
+    <div class="form-popup" id="myForm">
+        <div class="center"> 
+            <form class="form-container" method="post">
+                <div asp-validation-summary="ModelOnly">
+                </div>
+                    <h1>Toevoegen</h1>
+                    <label for="CategoryRequest.Name"><b>Titel</b></label>
+                    <input for="CategoryRequest.Name" type="text" placeholder="Vul een naam in" name="title" required>
+                    <span asp-validation-for="CategoryRequest.Name"> </span>
+
+                    <button type="submit" class="btn">@localizer.Get("Toevoegen")</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
+            </form>
+        </div>
+    </div>
+  
+<script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    
+</script>
+
+</body>

@@ -14,8 +14,115 @@ html {
 }
 
 body {
-  background-color:#E9E2E2;
   margin-bottom: 60px;
+ 
+}
+
+/* Navbar-begin */
+
+.bg-green {
+  --bs-bg-opacity: 1;
+  background-color: rgba(108, 191, 42,var(--bs-bg-opacity))!important;
+}
+
+#popover1 {
+  width: 10%;
+  z-index: 1000;
+}
+
+/*.popover {*/
+/*  overflow:visible!important*/
+/*}*/
+.visible{overflow:visible!important}
+/* Navbar-end */
+
+/* Video container begin */
+
+.bi-play-circle-fill {
+  width:17%;
+  height:30%;
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+}
+
+.bi-play-circle-fill:hover {
+  color: rgb(108, 191, 42);
+  cursor: pointer;
+}
+
+/* Video container end */
+
+/* Next-page begin */
+.border-green {
+  
+}
+
+.next-page {
+  margin: auto;
+  width: 40%;
+}
+
+.button {
+  background-color: #ddd;
+  width: 99%;
+  height: 100px;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 2px 2px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+/* Next-page end */
+
+
+/* Volume Slider */
+.slidecontainer {
+  transform: translate(-42%) rotate(-90deg);
+  margin-left: -1px;
+}
+
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 30px; /* Specified height */
+  background: #FFFFFF; /* white background */
+  outline: none; /* Remove outline */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  border-radius: 2px;
+  box-shadow: black;
+  border-width: 3px;
+  border-color: rgb(108, 191, 42);
+  border-style: solid;
+
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: rgb(108, 191, 42); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  /*border-radius: 2px;*/
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: rgb(108, 191, 42); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  /*border-radius: 2px;*/
 }
 
 .button__white{
@@ -25,6 +132,35 @@ body {
   padding: 0.50rem;
   }
 
-.modal-header__border{
-  padding: 1rem 1rem;
+
+.range-value{
+  position: absolute;
+  top: -50%;
+}
+.range-value span{
+  width: 30px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  background: #03a9f4;
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 6px;
+}
+.range-value span:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #03a9f4;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
 }
