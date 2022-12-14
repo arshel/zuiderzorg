@@ -1,6 +1,7 @@
 ﻿@page
 @using zuiderzorg.Models
 @model zuiderzorg.Pages.Product_Select_PageModel
+@inject Auth.AuthChecker auth
 @inject CommonLocalizationService localizer
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
@@ -29,7 +30,10 @@
                     <button class="Basic" onclick="document.cookie = 'CategoryId=@item.CategoryId';localStorage.setItem('CategoryId', '@item.CategoryId'); document.location = '/nl/productenselectie'"> <img src="/images/@item.Image" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
                     }
                 }
-                <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>@localizer.Get("Toevoegen")</strong></button>
+                @if (auth)
+                {
+                    <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>@localizer.Get("Toevoegen")</strong></button>
+                }
                 
             </div>
         </div>
