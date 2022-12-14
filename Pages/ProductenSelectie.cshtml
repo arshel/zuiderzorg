@@ -20,7 +20,7 @@
                     var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
                     foreach(var item in CatInfo)
                     {
-                    <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/nl/productpagina/product'"> <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
+                    <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/nl/productpagina/product'"> <img src="/images/@item.Image" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
                     }
                 }
                 <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
@@ -29,21 +29,27 @@
     </container>
     <div class="form-popup" id="myForm">
         <div class="center">
-            <form class="form-container" method="post" onsubmit="GetID()">
+            <form enctype="multipart/form-data" class="form-container" method="post" onsubmit="GetID()">
                 <div asp-validation-summary="ModelOnly">
                 </div>
                 <h1>Toevoegen</h1>
                 <label for="ProductRequest.Name"><b>Titel</b></label>
                 <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" required>
                 <span asp-validation-for="ProductRequest.Name"> </span>
+                
+                <label for="ProductRequest.PriceMax"><b>Maximum Prijs</b></label><br />
+                <input for="ProductRequest.PriceMax" type="number" placeholder="Vul een maximum prijs in" name="ProductPriceMax" step="0.01" required>
 
-                <label for="ProductRequest.Price"><b>Prijs</b></label><br />
-                <input for="ProductRequest.Price" type="number" placeholder="Vul een prijs in" name="ProductPrice" step="0.01" required>
-                <span asp-validation-for="ProductRequest.Price"> </span>
-
+                <label for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><br />
+                <input for="ProductRequest.PriceMin" type="number" placeholder="Vul een minimum prijs in" name="ProductPriceMin" step="0.01" required>
+                
                 <label for="ProductRequest.Description"><b>Beschrijving</b></label>
                 <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" required>
                 <span asp-validation-for="ProductRequest.Description"> </span>
+
+                <label asp-for="FileUpload">Image</label>
+                <input type="file" asp-for="FileUpload">
+                <span asp-validation-for="FileUpload"></span>
 
                 <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
 
