@@ -36,20 +36,21 @@
                 <label for="ProductRequest.Name"><b>Titel</b></label>
                 <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" required>
                 <span asp-validation-for="ProductRequest.Name"> </span>
-                
-                <label for="ProductRequest.PriceMax"><b>Maximum Prijs</b></label><br />
-                <input for="ProductRequest.PriceMax" type="number" placeholder="Vul een maximum prijs in" name="ProductPriceMax" step="0.01" required>
 
                 <label for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><br />
-                <input for="ProductRequest.PriceMin" type="number" placeholder="Vul een minimum prijs in" name="ProductPriceMin" step="0.01" required>
-                
+                <input for="ProductRequest.PriceMin" min="0" max="999.99" type="number"  name="ProductPriceMin" step="0.01" required>
+                <br />
+                <label for="ProductRequest.PriceMax"><b>Maximum Prijs</b></label><br />
+                <input for="ProductRequest.PriceMax" min="0" max="1000" type="number"  name="ProductPriceMax" step="0.01" required>
+                <br />
                 <label for="ProductRequest.Description"><b>Beschrijving</b></label>
                 <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" required>
                 <span asp-validation-for="ProductRequest.Description"> </span>
 
-                <label asp-for="FileUpload">Image</label>
+                <label asp-for="FileUpload"><b>Icoon</b></label>
                 <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe." required>
                 <span asp-validation-for="FileUpload"></span>
+                <br />
 
                 <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
 

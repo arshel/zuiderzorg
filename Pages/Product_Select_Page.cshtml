@@ -26,7 +26,7 @@
                     var CatInfo = db.Categories.ToArray();
                     foreach(var item in CatInfo)
                     {
-                    <button class="Basic" onclick="document.cookie = 'CategoryId=@item.CategoryId';localStorage.setItem('CategoryId', '@item.CategoryId'); document.location = '/nl/productenselectie'"> <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
+                    <button class="Basic" onclick="document.cookie = 'CategoryId=@item.CategoryId';localStorage.setItem('CategoryId', '@item.CategoryId'); document.location = '/nl/productenselectie'"> <img src="/images/@item.Image" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
                     }
                 }
                 <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>@localizer.Get("Toevoegen")</strong></button>
@@ -36,13 +36,18 @@
     </container>
     <div class="form-popup" id="myForm">
         <div class="center"> 
-            <form class="form-container" method="post">
+            <form enctype="multipart/form-data" class="form-container" method="post">
                 <div asp-validation-summary="ModelOnly">
                 </div>
                     <h1>Toevoegen</h1>
                     <label for="CategoryRequest.Name"><b>Titel</b></label>
                     <input for="CategoryRequest.Name" type="text" placeholder="Vul een naam in" name="CategoryName" required>
                     @*<span asp-validation-for="CategoryRequest.Name"> </span>*@
+                    
+                    <label asp-for="FileUpload"><b>Icoon</b></label>
+                    <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe." required>
+                    <span asp-validation-for="FileUpload"></span>
+                    <br />
 
                     <button type="submit" class="btn">@localizer.Get("Toevoegen")</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>

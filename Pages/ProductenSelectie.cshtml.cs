@@ -19,7 +19,6 @@ namespace zuiderzorg.Pages
         {
             using (var db = new CategoryContext())
             {
-                Console.WriteLine(FileUpload.FileName);
                 var filePath = Path.Combine("./wwwroot/images/", FileUpload.FileName);
                 using (var stream = System.IO.File.Create(filePath))
                 {
@@ -34,7 +33,7 @@ namespace zuiderzorg.Pages
                 NewProduct.PriceMax = decimal.Parse(Request.Form["ProductPriceMax"], CultureInfo.InvariantCulture.NumberFormat);
                 NewProduct.ProductId = Guid.NewGuid();
                 NewProduct.ParentCategoryId = Guid.Parse(Request.Form["CategorieID"]);
-                NewProduct.Image = (string)FileUpload.FileName;
+                NewProduct.Image = FileUpload.FileName;
                 db.Products.Add(NewProduct);
                 db.SaveChanges();
 
