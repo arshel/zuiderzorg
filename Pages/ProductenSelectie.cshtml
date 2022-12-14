@@ -1,5 +1,6 @@
 ﻿@page
 @using zuiderzorg.Models
+@inject Auth.AuthChecker auth
 @model ProductenSelectie
 
 <h1>@ViewData["Title"]</h1>
@@ -20,10 +21,14 @@
                     var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
                     foreach(var item in CatInfo)
                     {
-                    <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/nl/productpagina/product'"> <img src="/images/@item.Image" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
+                        <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/nl/productpagina/product'"> <img src="/images/@item.Image" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
                     }
                 }
-                <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
+                @if (auth)
+                {
+                    <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
+                }
+                
             </div>
         </div>
     </container>
