@@ -1,9 +1,13 @@
 @page
 @model ContactModel
 
-<div class="mt-4 container">
-   
+<head>
+    <link href="~/css/ContactStyle.css" rel="stylesheet"/>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
+<<<<<<< HEAD
    
        <form>
        
@@ -13,42 +17,73 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Naaam</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+=======
+    <div class="container contact">
+        <div class="buttons">
+            <div class="Basic-buttons">
+                <button class="Basic" onclick="document.location='/index'"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
+>>>>>>> 83032802bef8be05345fb1fe326ec10fd897ce58
+            </div>
+            <div class="Basic-buttons">
+                <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
+            </div>
+        </div>
+    <form action="mailto:daan0902@gmail.com" method="post" enctype="text/plain">
+    
+        <div class="form-container">
+            <h1>Contact Pagina</h1>
+            
+            <div class="form-group">
+                <label for="name">Naam</label>
+                <input type="text" class="form-control" id="name" placeholder="Naam" name="Name" required>
+            </div>
+            @* <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" name="E-mail" required>
+            </div> *@
+            <div class="form-group">
+                <label for="telnum">Telefoon nummer</label>
+                <input type="number" class="form-control" id="telnum" placeholder="Telefoon nummer" name="Telefoon nummer">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Email</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-             <div class="form-group">
-                <label for="exampleInputPassword1">Telefoon nummer</label>
-                <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Telefoon nummer">
-            </div>
-            <p>Naam <br>
-        ZorgZuid
-        </p>
-           
-            <p>Email <br>
-            arshelmelfor@hotmail.com
-            </p>
-           
-            <p>Telefoon nummer <br>
-            +31644182615
-          </p>
-         </div>
-        
-        <div class="d-flex col-4 flex-column">
-             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-              <button type="submit" class="btn btn-primary align-self-end mt-2">Submit</button>
+                <label for="bericht">Hier uw bericht</label>
+                <textarea class="form-control" id="bericht" name="Bericht" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary align-self-end mt-2"> 
+                    Verstuur 
+                    <i class="bi bi-send"></i>
+                </button>
         </div>
-       </div>
-     
-          
-        </form>
+    </form>
+    <div class="text-container">
+            <p>Naam: <br> SOL</p>
+            <p>Hoofdlocatie SOL: <br> Schommelstraat 69 <br> 3035 CG Rotterdam</p>
+            <p>Email: <br> info@solnetwerk.nl</p>
+            <p>Telefoon nummer: <br>010 – 2448240</p>
+                
+        </div>
+    </div>
     
-</div>
-
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script> 
+        function sendEmail(){
+            Email.send({
+                Host : "smtp.gmail.com",
+                Username : "daan0902@gmail.com",
+                Password : "Drumdrum123!",
+                To : 'daan0902@gmail.com',
+                From : document.getElementById("email").value,
+                Subject : "Een nieuwe email",
+                Body : "Naam: " + document.getElementById("name").value
+                    + "<br> Email: " + document.getElementById("email").value
+                    + "<br> Telefoon nummer: " + document.getElementById("telnum").value
+                    + "<br> Bericht: " + document.getElementById("bericht").value
+            }).then(
+            message => alert(message)
+            );
+        }
+    </script>
+</body>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
