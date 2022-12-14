@@ -26,14 +26,17 @@ public class Category {
         public Guid? CategoryId { get; set; }
         public string? Name { get; set; }
         public IEnumerable<Product>? Products { get; set; }
-    }
+        public string? Image { get; set; }
+}
 
 public class Product
 {
     public Guid? ProductId { get; set; }
     public Guid? ParentCategoryId { get; set; }
     public string? Name { get; set; }
-    public decimal? Price { get; set; }
+    public decimal? PriceMin { get; set; }
+    public decimal? PriceMax { get; set; }
     public string? Description { get; set; }
     public Category? Category { get; set; }
+    public string? Image { get; set; }
 }

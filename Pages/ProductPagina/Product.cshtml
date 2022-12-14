@@ -18,15 +18,15 @@
         </div>
         <div class="col-7">
             <div class="ProductInfo">
-                <div class="image">
-                    <img id="productImage" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
-                </div class>
                 @{var db = new CategoryContext();}
                 @{var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
+                <div class="image">
+                    <img id="productImage" src="/images/@ProductInfo[0].Image" alt="BlikopenerFoto">
+                </div class>
                 <div class="productName">@ProductInfo[0].Name
                     <div class="productDescription">@ProductInfo[0].Description</div>
                 </div>
-                <div class="productPrice">€@ProductInfo[0].Price</div>
+                <div class="productPrice">€@ProductInfo[0].PriceMin - €@ProductInfo[0].PriceMax</div>
                 <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">  <i class="bi bi-shop" style="font-size:5vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar productpagina</strong></button>
             </div>
         </div>
