@@ -14,13 +14,13 @@
                 <button class="Basic" onclick="document.location='/nl/Product_Select_Page'" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="left"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
                 <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
             </div>
-            <div class="col-sm-9" id="buttonsContainer" runat="server">
+            <div class="col-sm-9" id="buttonsContainer" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="right" runat="server">
                 @{
                     var db = new CategoryContext();
                     var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
                     foreach(var item in CatInfo)
                     {
-                    <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/nl/productpagina/product'" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="top"> <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
+                    <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/nl/productpagina/product'"> <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
                     }
                 }
                 <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
