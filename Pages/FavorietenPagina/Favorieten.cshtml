@@ -17,12 +17,12 @@
             </div>
         </div>
         <div class="col-7">
-            @* <div class="NoFavourites">
+            <div class="NoFavourites">
                 <h1 class="NoFavouritesText">U heeft nog geen favorieten</h1>
-            </div> *@
+            </div>
             <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-                <div class="nav Favorieten">
-                    @{  var db = new CategoryContext();
+                <div id="nav Favorieten">
+                    @* @{  var db = new CategoryContext();
                         var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
                     <button type="button" class="ProductBlock" id="nav ProductBlock0" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">@ProductInfo[0].Name
                         <div class="PriceBlock">€@ProductInfo[0].Price</div>
@@ -76,13 +76,13 @@
                         <div class="imagefield">
                             <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
                         </div>
-                    </button> 
+                    </button>  *@
                 </div>
             </div>
         </div>
         <div class="col-md">
-            <div class="stars">
-                <button class="star" id="star0" value=0 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
+            <div id="stars">
+                @* <button class="star" id="star0" value=0 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
                     <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;top:-15%;"></i>
                 </button>
                 <button class="star" id="star1" value=1 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
@@ -90,7 +90,7 @@
                 </button>
                 <button class="star" id="star2" value=2 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
                     <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;"></i>
-                </button>
+                </button> *@
             </div>
             <button class="dropdown-item Arrow" id="upArrow" href="#ProductBlock7"></button>
             <button class="dropdown-item Arrow" id="downArrow" href="#ProductBlock0"></button>
@@ -129,29 +129,12 @@
     }
 
     // Function to delete the product out of favourites.
-    function Delete(number) {
-        var Stars = document.getElementById(starstring); 
-        Stars[0].style.visibility = "collapse"; 
-        var Blocks = document.getElementById(blockstring);
-        Blocks[0].style.visibility = "collapse";
-
+    function Delete() {
         localStorage.removeItem(number);
-        ArrowCheck()
         location.reload();
+        ArrowCheck();
     }
 
-    // Function to show the correct products.
-    function ProductShow(object) {
-        searchstringproduct = "ProductBlock" + keyvalues[0];
-        searchstringstar = "star" + keyvalues[0];
-        var Blocks = document.getElementsByClassName(searchstringproduct);
-        var Stars = document.getElementsByClassName(searchstringstar);
-        Blocks[0].style.visibility = "visible";
-        Stars[0].style.visibility = "visible";
-
-        keyvalues.shift()
-    }
-    
     // Function to check if the arrows are neccesary.
     function ArrowCheck() {
         // Only make the up and down arrows appear if there are more than 3 products
@@ -164,26 +147,50 @@
 
     // Onload function. Check if there are products in favourites.
     window.onload = function () {
-        // Only make the up and down arrows appear if there are more than 3 products
-        ArrowCheck()
-        currentView = 0;
+        ArrowCheck();
 
-        var values = []
-        keys = Object.keys(localStorage)
-        items = keys.length
+        var values = [];
+        keys = Object.keys(localStorage);
 
-        if (items == 0) {
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].indexOf("FAVOURITEDPRODUCT") != -1) {
+                values.push(JSON.parse(localStorage.getItem(keys[i])))
+            }
+        }
+
+        if (values.length == 0) {
             var NoFav = document.getElementsByClassName("NoFavourites");
             NoFav[0].style.visibility = "visible";
         } else {
-            while ( items-- ) {
-                values.push(JSON.parse(localStorage.getItem(keys[items])));
+            var iterationnumbers = [];
+            for (var i = 0; i < values.length; i++) {
+                iterationnumbers.push(i);
             }
-            keyvalues = Object.keys(localStorage)
-            values.forEach(ProductShow)
+            values.forEach(ProductShow);
         }
     };
 
+    // Function to show the correct products.
+    function ProductShow(object) {
+        iterationnumbers = [0];
+        var makeProduct = 
+        `<button type="button" class="ProductBlock" id="nav ProductBlock${iterationnumbers[0]}" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">${object.name}
+            <div class="PriceBlock">${object.price}</div>
+            <div class="imagefield">
+                <img class="image" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
+            </div>`;
+
+        var makeStar = 
+        `<button class="star" id="star${iterationnumbers[0]}" value=${iterationnumbers[0]} onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
+            <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;top:-15%;"></i>
+        </button>`;
+
+        document.getElementById("nav Favorieten").innerHTML += makeProduct;
+
+        document.getElementById("stars").innerHTML += makeStar;
+
+        @* iterationnumbers.shift(); *@
+    }
 
     // Function to go back.
     function GoBack() {

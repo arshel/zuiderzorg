@@ -99,13 +99,13 @@
 
         var visibility = document.getElementsByClassName("bi bi-star")[0].style.visibility;
         if (visibility == "visible") {
-            document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
-            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
             AddFavourites();
+            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
+            document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
         } else {
-            document.getElementsByClassName("bi bi-star")[0].style.visibility = "visible";
-            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "hidden";
             DeleteFavourites();
+            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "hidden";
+            document.getElementsByClassName("bi bi-star")[0].style.visibility = "visible";
         }
     }
 
@@ -115,10 +115,19 @@
             name: window.productName,
             image: window.productImage,
             href: window.productHref, 
-            price: window.productPrice
+            price: window.productPrice,
+            GUIDfield: window.productGUID
         }
 
-        localStorage.setItem(window.productGUID, JSON.stringify(product));
+        amountofProducts = 0;
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].indexOf("FAVOURITEDPRODUCT") != -1) {
+                amountofProducts +=1;
+            }
+        }
+        var keystring = "FAVOURITEDPRODUCT" + amountofProducts;
+
+        localStorage.setItem(keystring, JSON.stringify(product));
     }
 
     // Function to delete a product from favourites.
@@ -128,23 +137,25 @@
 
     // Function to change the text and icon based on the product being favourited or not.
     function StarFill(object) {
-        if (window.productName == object.name) {
-            $(".FavouritesText").html("Uit favorieten verwijderen");
-            document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
-            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
+        if (object.name != null) {
+            if (window.productGUID == object.GUIDfield) {
+                $(".FavouritesText").html("Uit favorieten verwijderen");
+                document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+                document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
+            }
         }
     }
 
     // Onload function. Checks what the current product is and if that product is favourited.
     window.onload = function () { 
-        var values = [],
-        keys = Object.keys(localStorage),
-        len = keys.length;
+        var values = [];
+        keys = Object.keys(localStorage);
 
-        while ( len-- ) {
-            values.push(JSON.parse(localStorage.getItem(keys[len])));
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].indexOf("FAVOURITEDPRODUCT") != -1) {
+                values.push(JSON.parse(localStorage.getItem(keys[i])));
+            }
         }
-
         values.forEach(StarFill);
     };
 
