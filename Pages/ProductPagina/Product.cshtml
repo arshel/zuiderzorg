@@ -29,10 +29,17 @@
                 <div class="productPrice">€@ProductInfo[0].Price</div>
                 <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">  <i class="bi bi-shop" style="font-size:5vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar productpagina</strong></button>
             </div>
+            <script>
+                window.productName = "@ProductInfo[0].Name";
+                window.productImage = "temp";
+                window.productHref = "temp";
+                window.productPrice = "€@ProductInfo[0].Price";
+                window.productGUID = "@ProductInfo[0].ProductId";
+            </script>
         </div>
         <div class="col">
             <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">  <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Ervaringen van anderen</strong></button>
-            <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i> <br/> <strong class="FavouritesText">In favorieten plaatsen</strong></button>
+            <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i>  <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:absolute;margin-left:-6%;visibility:hidden"></i> <br/> <strong class="FavouritesText">In favorieten plaatsen</strong></button>
         </div>
         <div class="modal fade" id="Popup" tabindex="-1" aria-labelledby="LeavePopup" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -55,8 +62,10 @@
 </body>
 
 <script>
+    // Variable to store the next location from a popup.
     var Nextlocation = {};
 
+    // Function to set the next location for a popup depending if clicked on the buy button or experience button.
     function ClickedButton(arg) {
         Nextlocation = "";
         if (arg == "Buy") {
@@ -66,68 +75,67 @@
         }
     }
 
+    // Function to go to the next page after a popup. Also removes the popup.
     function ToPage() {
         window.open(Nextlocation);
         location.reload();
     }
 
+    // Function to go back with the back button.
     function GoBack() {
         location.href = "http://localhost:5090/nl/productenselectie";
     }
 
+    // Function to toggle a product in or out favourites.
     function FavouritesToggle() {
         var text = document.getElementsByClassName("FavouritesText");
         var textstring = text[0].innerHTML;
 
         if (textstring.includes("In favorieten plaatsen")) {
-            $(".FavouritesText").html("In favorieten geplaatst");
+            $(".FavouritesText").html("Uit favorieten verwijderen");
         } else {
             $(".FavouritesText").html("In favorieten plaatsen");
         }
 
-        var visibility = document.getElementsByClassName("bi bi-star");
-        if (visibility.length > 0) {
-            document.getElementsByClassName("bi bi-star").className="bi bi-star-fill";
+        var visibility = document.getElementsByClassName("bi bi-star")[0].style.visibility;
+        if (visibility == "visible") {
+            document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
             AddFavourites();
         } else {
-            document.getElementsByClassName("bi bi-star-fill").className="bi bi-star";
+            document.getElementsByClassName("bi bi-star")[0].style.visibility = "visible";
+            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "hidden";
             DeleteFavourites();
         }
     }
 
+    // Function to add a product into favourites.
     function AddFavourites() {
-        var storagelength = (Object.keys(localStorage)).length;
-        storagenew = storagelength += 1;
-    
         const product = {
-            name: document.getElementById("DescriptionBlock").innerHTML,
-            image: document.getElementById("Blikopener").src,
-            href: "https://www.wibra.nl/assortiment/blikopener-rvs/", 
-            price: document.getElementById("PriceBlock").innerHTML
+            name: window.productName,
+            image: window.productImage,
+            href: window.productHref, 
+            price: window.productPrice
         }
 
-        localStorage.setItem(storagenew, JSON.stringify(product));
+        localStorage.setItem(window.productGUID, JSON.stringify(product));
     }
 
+    // Function to delete a product from favourites.
     function DeleteFavourites() {
-        for (var i = localStorage.length; i > 0; i--) {
-            localStorage.removeItem(localStorage.key("i"));
-            break;
-        }
+        localStorage.removeItem(localStorage.key(window.productGUID));
     }
 
+    // Function to change the text and icon based on the product being favourited or not.
     function StarFill(object) {
-        if (document.getElementById("productName").includes(object.name)) {
-            $(".FavouritesText").html("In favorieten geplaatst");
-
-            var star = document.getElementsByClassName("bi bi-star");
-            var starfill = document.getElementsByClassName("bi bi-star-fill");
-        
-            star[0].style.visibility = "hidden";
-            starfill[0].style.visibility = "visible";
+        if (window.productName == object.name) {
+            $(".FavouritesText").html("Uit favorieten verwijderen");
+            document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
         }
     }
 
+    // Onload function. Checks what the current product is and if that product is favourited.
     window.onload = function () { 
         var values = [],
         keys = Object.keys(localStorage),

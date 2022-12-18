@@ -17,43 +17,99 @@
             </div>
         </div>
         <div class="col-7">
-            <div class="NoFavourites">
+            @* <div class="NoFavourites">
                 <h1 class="NoFavouritesText">U heeft nog geen favorieten</h1>
-            </div>
-            <div class="Favorieten">
-                @{  var db = new CategoryContext();
-                    var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
-                <button type="button" class="ProductBlock1" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">@ProductInfo[0].Name
-                    <div class="image1">
-                        <img class="image-1" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
-                    </div>
-                    <div class="PriceBlock-1">€2,79</div>
-                </button>
-                <button type="button" class="ProductBlock2"  onclick="ToProduct2()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Rookmelder
-                    <div class="image2">
-                        <img class="image-2" src="https://www.rookmeldershop.nl/Files/5/17000/17795/ProductPhotos/MaxContent/1923737877.png" alt="Rookmelder">
-                    </div>
-                    <div class="PriceBlock-2">€36,95</div>
-                </button>
-                <button type="button" class="ProductBlock3"  onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
-                    <div class="image3">
-                        <img class="image-3" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
-                    </div>
-                    <div class="PriceBlock-3">€2,79</div>
-                </button>
+            </div> *@
+            <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+                <div class="nav Favorieten">
+                    @{  var db = new CategoryContext();
+                        var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
+                    <button type="button" class="ProductBlock" id="nav ProductBlock0" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">@ProductInfo[0].Name
+                        <div class="PriceBlock">€@ProductInfo[0].Price</div>
+                        <div class="imagefield">
+                            <img class="image" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
+                        </div>
+                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock1" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Rookmelder
+                        <div class="PriceBlock">€36,95</div>
+                        <div class="imagefield">
+                            <img class="image" src="https://www.rookmeldershop.nl/Files/5/17000/17795/ProductPhotos/MaxContent/1923737877.png" alt="Rookmelder">
+                        </div>
+                    </button>
+                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock2" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
+                        <div class="PriceBlock">€2,79</div>
+                        <div class="imagefield">
+                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
+                        </div>
+                    </button>
+                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock3" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
+                        <div class="PriceBlock">€2,79</div>
+                        <div class="imagefield">
+                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
+                        </div>
+                    </button>
+                    <button type="button" class="ProductBlock" id="nav-link ProductBlock4" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
+                        <div class="PriceBlock">€2,79</div>
+                        <div class="imagefield">
+                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
+                        </div>
+                    </button>
+                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock5" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
+                        <div class="PriceBlock">€2,79</div>
+                        <div class="imagefield">
+                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
+                        </div>
+                    </button>
+                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock6" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
+                        <div class="PriceBlock">€2,79</div>
+                        <div class="imagefield">
+                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
+                        </div>
+                    </button>
+                    <button type="button" class="ProductBlock" id="nav-link ProductBlock7" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
+                        <div class="PriceBlock">€2,79</div>
+                        <div class="imagefield">
+                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
+                        </div>
+                    </button>
+                    <button type="button" class="ProductBlock" id="nav-link ProductBlock8"  onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
+                        <div class="PriceBlock">€2,79</div>
+                        <div class="imagefield">
+                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
+                        </div>
+                    </button> 
+                </div>
             </div>
         </div>
         <div class="col-md">
             <div class="stars">
-                <button class="star1" value=1 onclick="Delete(value)">
-                    <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
+                <button class="star" id="star0" value=0 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
+                    <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;top:-15%;"></i>
                 </button>
-                <button class="star2" value=2 onclick="Delete(value)">
-                    <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
+                <button class="star" id="star1" value=1 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
+                    <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;"></i>
                 </button>
-                <button class="star3" value=3 onclick="Delete(value)">
-                    <i class="bi bi-star-fill" style="font-size:100px;color:#6CBF2A;position:relative;top-margin:20%"></i>
+                <button class="star" id="star2" value=2 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
+                    <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;"></i>
                 </button>
+            </div>
+            <button class="dropdown-item Arrow" id="upArrow" href="#ProductBlock7"></button>
+            <button class="dropdown-item Arrow" id="downArrow" href="#ProductBlock0"></button>
+        </div>
+        <div class="modal fade" id="Popup" tabindex="-1" aria-labelledby="LeavePopup" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Wilt u het product uit favorieten verwijderen?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Als u op "Doorgaan" klikt wordt het product uit favorieten verwijderd. Als u dit niet wilt verlaten kunt u op "Terug" drukken.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
+                        <button type="button" class="btn btn-primary" onclick="Delete()">Doorgaan</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -61,16 +117,30 @@
 
 
 <script>
+    var starstring = {};
+    var blockstring = {};
+
+    function ToDelete(number) {
+        starstring = "";
+        blockstring = "";
+
+        starstring = "star" + number;
+        blockstring = "ProductBlock" + number;
+    }
+
+    // Function to delete the product out of favourites.
     function Delete(number) {
-        var Stars = document.getElementsByClassName("star1"); 
+        var Stars = document.getElementById(starstring); 
         Stars[0].style.visibility = "collapse"; 
-        var Blocks = document.getElementsByClassName("ProductBlock1");
+        var Blocks = document.getElementById(blockstring);
         Blocks[0].style.visibility = "collapse";
 
         localStorage.removeItem(number);
+        ArrowCheck()
         location.reload();
     }
 
+    // Function to show the correct products.
     function ProductShow(object) {
         searchstringproduct = "ProductBlock" + keyvalues[0];
         searchstringstar = "star" + keyvalues[0];
@@ -82,7 +152,22 @@
         keyvalues.shift()
     }
     
+    // Function to check if the arrows are neccesary.
+    function ArrowCheck() {
+        // Only make the up and down arrows appear if there are more than 3 products
+        productAmount = $('.ProductBlock').length;
+        if (productAmount > 3) {
+            document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+            document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+        }
+    }
+
+    // Onload function. Check if there are products in favourites.
     window.onload = function () {
+        // Only make the up and down arrows appear if there are more than 3 products
+        ArrowCheck()
+        currentView = 0;
+
         var values = []
         keys = Object.keys(localStorage)
         items = keys.length
@@ -100,8 +185,9 @@
     };
 
 
-
+    // Function to go back.
     function GoBack() {
+        // If the page is accessed via the url the user will be send back to the home screen, otherwise the user will go back to the previous page
         if (localStorage.getItem("location") != null) {
             var newLocation = localStorage.getItem("location");
         } else {
@@ -113,10 +199,5 @@
     function ToProduct() {
         location.href = "http://localhost:5090/nl/productpagina/product";
     }
-    function ToProduct2() {
-        location.href = "https://www.rookmeldershop.nl/honeywell-home-rookmelder-r200S-1";
-    }
-    function ToProduct3() {
-        location.href = "https://www.hearplanet.nl/wekkers/iluv-smartshaker-3-bluetooth-trilwekker?channable=00b0d9696400333430303307&gclid=Cj0KCQiA99ybBhD9ARIsALvZavWElFiyyCNrGI7-gcRmijkmgoVw4At0SqkoegEZGkYiogbml-4zVU0aAlBbEALw_wcB";
-    }
+    
 </script>
