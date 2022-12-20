@@ -54,6 +54,21 @@
 
 <script>
     var starstring = {};
+    window.onscroll = function() {PositionCheck()};
+
+    function PositionCheck() {
+        if (document.documentElement.scrollTop == 0) {
+            document.getElementsByClassName("Arrow")[0].style.visibility = "hidden";
+        } else {
+            document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "hidden";
+        } else {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+        }
+    }
 
     function scrolling(n) {
         var scrolloffset = $(window).height();
