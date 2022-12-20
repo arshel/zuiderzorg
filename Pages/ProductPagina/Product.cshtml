@@ -27,7 +27,7 @@
                     <div class="productDescription">@ProductInfo[0].Description</div>
                 </div>
                 <div class="productPrice">€@ProductInfo[0].Price</div>
-                <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">  <i class="bi bi-shop" style="font-size:5vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar productpagina</strong></button>
+                <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">  <i class="bi bi-cart-fill" style="font-size:5vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar bestelpagina</strong></button>
             </div>
             <script>
                 window.productName = "@ProductInfo[0].Name";
@@ -38,8 +38,8 @@
             </script>
         </div>
         <div class="col">
-            <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">  <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Ervaringen van anderen</strong></button>
-            <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i>  <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:absolute;margin-left:-6%;visibility:hidden"></i> <br/> <strong class="FavouritesText">In favorieten plaatsen</strong></button>
+            <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">  <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Ervaringen van <br>anderen</strong></button>
+            <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i>  <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:absolute;margin-left:-37%;visibility:hidden"></i> <br/> <strong class="FavouritesText">In favorieten <br>plaatsen</strong></button>
         </div>
         <div class="modal fade" id="Popup" tabindex="-1" aria-labelledby="LeavePopup" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -91,10 +91,10 @@
         var text = document.getElementsByClassName("FavouritesText");
         var textstring = text[0].innerHTML;
 
-        if (textstring.includes("In favorieten plaatsen")) {
-            $(".FavouritesText").html("Uit favorieten verwijderen");
+        if (textstring.includes("In favorieten <br>plaatsen")) {
+            $(".FavouritesText").html("Uit favorieten <br>verwijderen");
         } else {
-            $(".FavouritesText").html("In favorieten plaatsen");
+            $(".FavouritesText").html("In favorieten <br>plaatsen");
         }
 
         var visibility = document.getElementsByClassName("bi bi-star")[0].style.visibility;
@@ -109,6 +109,7 @@
         }
     }
 
+
     // Function to add a product into favourites.
     function AddFavourites() {
         const product = {
@@ -119,13 +120,7 @@
             GUIDfield: window.productGUID
         }
 
-        amountofProducts = 0;
-        for (var i = 0; i < keys.length; i++) {
-            if (keys[i].indexOf("FAVOURITEDPRODUCT") != -1) {
-                amountofProducts +=1;
-            }
-        }
-        var keystring = "FAVOURITEDPRODUCT" + amountofProducts;
+        var keystring = "FAVOURITEDPRODUCT:" + product.GUIDfield;
 
         localStorage.setItem(keystring, JSON.stringify(product));
     }
@@ -139,7 +134,7 @@
     function StarFill(object) {
         if (object.name != null) {
             if (window.productGUID == object.GUIDfield) {
-                $(".FavouritesText").html("Uit favorieten verwijderen");
+                $(".FavouritesText").html("Uit favorieten <br>verwijderen");
                 document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
                 document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
             }
@@ -152,7 +147,7 @@
         keys = Object.keys(localStorage);
 
         for (var i = 0; i < keys.length; i++) {
-            if (keys[i].indexOf("FAVOURITEDPRODUCT") != -1) {
+            if (keys[i].indexOf("FAVOURITEDPRODUCT:") != -1) {
                 values.push(JSON.parse(localStorage.getItem(keys[i])));
             }
         }

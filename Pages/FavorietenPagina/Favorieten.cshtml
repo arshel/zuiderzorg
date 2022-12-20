@@ -19,81 +19,17 @@
         <div class="col-7">
             <div class="NoFavourites">
                 <h1 class="NoFavouritesText">U heeft nog geen favorieten</h1>
+                <h3 class="NoFavouritesText2">Voeg eerst een product toe aan favorieten</h3>
+                <button class="NoFavouritesButton" onclick="ToCategoryPage()">Naar categorie pagina</button>
             </div>
-            <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-                <div id="nav Favorieten">
-                    @* @{  var db = new CategoryContext();
-                        var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
-                    <button type="button" class="ProductBlock" id="nav ProductBlock0" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">@ProductInfo[0].Name
-                        <div class="PriceBlock">€@ProductInfo[0].Price</div>
-                        <div class="imagefield">
-                            <img class="image" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
-                        </div>
-                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock1" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Rookmelder
-                        <div class="PriceBlock">€36,95</div>
-                        <div class="imagefield">
-                            <img class="image" src="https://www.rookmeldershop.nl/Files/5/17000/17795/ProductPhotos/MaxContent/1923737877.png" alt="Rookmelder">
-                        </div>
-                    </button>
-                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock2" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
-                        <div class="PriceBlock">€2,79</div>
-                        <div class="imagefield">
-                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
-                        </div>
-                    </button>
-                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock3" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
-                        <div class="PriceBlock">€2,79</div>
-                        <div class="imagefield">
-                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
-                        </div>
-                    </button>
-                    <button type="button" class="ProductBlock" id="nav-link ProductBlock4" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
-                        <div class="PriceBlock">€2,79</div>
-                        <div class="imagefield">
-                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
-                        </div>
-                    </button>
-                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock5" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
-                        <div class="PriceBlock">€2,79</div>
-                        <div class="imagefield">
-                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
-                        </div>
-                    </button>
-                    <button type="button" class="ProductBlock"  id="nav-link ProductBlock6" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
-                        <div class="PriceBlock">€2,79</div>
-                        <div class="imagefield">
-                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
-                        </div>
-                    </button>
-                    <button type="button" class="ProductBlock" id="nav-link ProductBlock7" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
-                        <div class="PriceBlock">€2,79</div>
-                        <div class="imagefield">
-                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
-                        </div>
-                    </button>
-                    <button type="button" class="ProductBlock" id="nav-link ProductBlock8"  onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder" trigger="manual">Trilwekker
-                        <div class="PriceBlock">€2,79</div>
-                        <div class="imagefield">
-                            <img class="image" src="https://www.hearplanet.nl/.uc/i596dbcc1010376a20800f85cd801b479624ab73ba4130701c12003800280/ss3bk-a1-1024x1024.png" alt="Trilwekker">
-                        </div>
-                    </button>  *@
+                <div id="nav-Favorieten">
                 </div>
-            </div>
         </div>
         <div class="col-md">
             <div id="stars">
-                @* <button class="star" id="star0" value=0 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
-                    <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;top:-15%;"></i>
-                </button>
-                <button class="star" id="star1" value=1 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
-                    <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;"></i>
-                </button>
-                <button class="star" id="star2" value=2 onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
-                    <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;"></i>
-                </button> *@
             </div>
-            <button class="dropdown-item Arrow" id="upArrow" href="#ProductBlock7"></button>
-            <button class="dropdown-item Arrow" id="downArrow" href="#ProductBlock0"></button>
+            <button class="Arrow" id="upArrow" value="false" onclick="scrolling(value)"><i class="bi bi-arrow-up-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar boven</strong></button>
+            <button class="Arrow" id="downArrow" value="true" onclick="scrolling(value)"><i class="bi bi-arrow-down-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar beneden</strong></button>
         </div>
         <div class="modal fade" id="Popup" tabindex="-1" aria-labelledby="LeavePopup" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -103,7 +39,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Als u op "Doorgaan" klikt wordt het product uit favorieten verwijderd. Als u dit niet wilt verlaten kunt u op "Terug" drukken.
+                        Als u op "Doorgaan" klikt wordt het product uit favorieten verwijderd. Als u dit niet wilt kunt u op "Terug" drukken.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
@@ -118,21 +54,33 @@
 
 <script>
     var starstring = {};
-    var blockstring = {};
+
+    function scrolling(n) {
+        var scrolloffset = $(window).height();
+        scrolloffset *= 0.87;
+        var top = document.documentElement.scrollTop || document.body.scrollTop;
+        if (n == "true") {
+            var newscroll = top + scrolloffset;
+        } else {
+            var newscroll = top - scrolloffset;
+        }
+        window.scrollTo({ top: newscroll, behavior: 'smooth' })
+    }
 
     function ToDelete(number) {
         starstring = "";
-        blockstring = "";
-
-        starstring = "star" + number;
-        blockstring = "ProductBlock" + number;
+        starstring = "FAVOURITEDPRODUCT:" + number;
     }
 
     // Function to delete the product out of favourites.
     function Delete() {
-        localStorage.removeItem(number);
+        localStorage.removeItem(starstring);
         location.reload();
         ArrowCheck();
+    }
+
+    function ToCategoryPage() {
+        location.href = "http://localhost:5090/nl/product_select_page";
     }
 
     // Function to check if the arrows are neccesary.
@@ -147,13 +95,11 @@
 
     // Onload function. Check if there are products in favourites.
     window.onload = function () {
-        ArrowCheck();
-
         var values = [];
         keys = Object.keys(localStorage);
 
         for (var i = 0; i < keys.length; i++) {
-            if (keys[i].indexOf("FAVOURITEDPRODUCT") != -1) {
+            if (keys[i].indexOf("FAVOURITEDPRODUCT:") != -1) {
                 values.push(JSON.parse(localStorage.getItem(keys[i])))
             }
         }
@@ -162,34 +108,31 @@
             var NoFav = document.getElementsByClassName("NoFavourites");
             NoFav[0].style.visibility = "visible";
         } else {
-            var iterationnumbers = [];
-            for (var i = 0; i < values.length; i++) {
-                iterationnumbers.push(i);
-            }
             values.forEach(ProductShow);
         }
+        ArrowCheck();
+        PositionCheck();
     };
 
     // Function to show the correct products.
     function ProductShow(object) {
-        iterationnumbers = [0];
         var makeProduct = 
-        `<button type="button" class="ProductBlock" id="nav ProductBlock${iterationnumbers[0]}" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">${object.name}
+        `<button type="button" class="ProductBlock" id="nav ProductBlock${object.GUIDfield}" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">${object.name}
             <div class="PriceBlock">${object.price}</div>
             <div class="imagefield">
                 <img class="image" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
-            </div>`;
+            </div>
+        </button>`;
 
         var makeStar = 
-        `<button class="star" id="star${iterationnumbers[0]}" value=${iterationnumbers[0]} onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
+        `<button class="star" id="star${object.GUIDfield}" value=${object.GUIDfield} onclick="ToDelete(value)" data-bs-toggle="modal" data-bs-target="#Popup">
             <i class="bi bi-star-fill" style="font-size:10vh;color:#6CBF2A;position:relative;top:-15%;"></i>
         </button>`;
 
-        document.getElementById("nav Favorieten").innerHTML += makeProduct;
+        document.getElementById("nav-Favorieten").innerHTML += makeProduct;
 
         document.getElementById("stars").innerHTML += makeStar;
 
-        @* iterationnumbers.shift(); *@
     }
 
     // Function to go back.
@@ -200,8 +143,8 @@
         } else {
             var newLocation = "http://localhost:5090";
         }
-        location.href = newLocation;
         localStorage.removeItem("location");
+        location.href = newLocation;
     }
     function ToProduct() {
         location.href = "http://localhost:5090/nl/productpagina/product";
