@@ -18,7 +18,7 @@
 
             <div class="container-fluid">
 
-                <div data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="bottom">
+                <div data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="@localizer.Get("Kies een taal")" data-bs-content="@localizer.Get("Hier kunt u een taal kiezen naar keuze.")" data-bs-placement="bottom">
                     <vc:culture-switcher/>
                 </div>
                 <div class="container">
@@ -47,7 +47,7 @@
                             <partial name="_LoginPartial"/>
                         </li>
                         <li class="nav-item">
-                            <button onclick="window.open('https://www.solnetwerk.nl/')" type="button" class="btn" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="right">
+                            <button onclick="window.open('https://www.solnetwerk.nl/')" type="button" class="btn" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Koppeling naar SOL")" data-bs-content="@localizer.Get("Met deze koppeling kunt a naar de website SOL, op deze website kunt u meer informatie vinden over wat SOL precies inhoud.")" data-bs-placement="right">
                                 <img class="navbar-brand img-fluid" alt="" style="width: 130px; height: 60px" src="~/Images/SOL_LOGO.png">
                             </button>
                         </li>
