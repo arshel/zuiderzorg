@@ -23,12 +23,12 @@ namespace zuiderzorg.Pages {
         private const string GoogleAppPassword = "cuqfkkkadrhkodie";
         
         private const string Subject = "Zuiderzorg Contact Formulier";
-  
+        public string? success;
         [BindProperty]
         public MailRequest MailRequest { get;set;}
         public IActionResult OnPost(){
 
-        string  Body = "<p> Naam: " + Request.Form["Name"] + "<br> Bericht: "+ Request.Form["Body"] + "<br> telefoon-nummer: " + Request.Form["TelNumber"] + "<br> Email: " + Request.Form["Email"] +"</p>";
+        string  Body = "<p> Naam: " + Request.Form["Name"] + "<br> telefoon-nummer: " + Request.Form["TelNumber"] + "<br> Email: " + Request.Form["Email"] + "<br> Bericht: "+ Request.Form["Body"] + "</p>";
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
@@ -45,6 +45,7 @@ namespace zuiderzorg.Pages {
             mailMessage.To.Add(To);
 
             smtpClient.Send(mailMessage);
+            success = "Bedankt voor uw bericht!";
             return Page();
         }
 
