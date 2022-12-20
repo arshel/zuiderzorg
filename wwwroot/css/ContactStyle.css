@@ -1,4 +1,4 @@
-﻿.container .contact {
+﻿/* .container .contact {
     width: 100vw;
     height: 80vh;
   
@@ -20,14 +20,14 @@
     width: 40vh;
     height: 50vh;
     display: inline-block;
-}
+} */
 
-.text-container {
+/* .text-container {
     width: 40vh;
     height: 30vh;
     display: inline-block;
     margin-top: 10px;
-}
+} */
 
 form h1 {
     
@@ -56,8 +56,9 @@ form button{
 button.Basic {
     background-position: center center;
     position: relative;
-    height: 300px;
-    width: 275px;
+    /* height: 300px; */
+    /* width: 275px; */
+    padding: 4.5rem;
     border: 3px solid;
     background-color: white;
     border-radius: 12px;
@@ -70,15 +71,15 @@ button.Basic {
     }
 
 button.HelpButton {
-    background-position: center center;
+    /* background-position: center center;
     position: relative;
     height: 100px;
-    width: 200px;
+    width: 200px; */
     border: 3px solid;
     background-color: white;
     border-radius: 12px;
-    margin-bottom: 20px;
-    margin-left: 40px;
+    /* margin-bottom: 20px;
+    margin-left: 40px; */
 }
 
     button.HelpButton:hover {
