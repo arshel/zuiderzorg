@@ -21,6 +21,7 @@
     var el = document.getElementById("culture-options");
     el.addEventListener("change", () => {
         var culture = el.options[el.selectedIndex].value;
+        
         if (segments.length > 2) {
             segments[1] = culture;
             location.href = segments.join('/');
