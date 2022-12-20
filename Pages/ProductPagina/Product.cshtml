@@ -7,95 +7,65 @@
 
 <body style="background-color:#E9E2E2;">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    
-    <div class="das">
-        <div class="row flex-row">
-            <div class="col">
-                <div class="button1">
-                    <button class="Back" onclick="GoBack()">
-                    <p class="BackText">Terug</p>
-                    <i class="bi bi-arrow-return-left" style="font-size:6vw;color:#6CBF2A;position:relative;top:-20%"></i>
-                </button>
-                </div>
-                <div class="button2">
-                    <button class="Help" onclick="Help()">
-                    <p class="HelpText">Klik hier voor hulp</p>
-                    <i class="bi bi-question-circle" style="font-size:6vw;color:#6CBF2A;position:relative;top:-40%"></i>
-                </button>
-                </div>
+    <div class="row">
+        <div class="col">
+            <div class="button1">
+                <button class="Back" onclick="GoBack()"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
             </div>
-            <div class="col-7">
-                <div class="ProductInfo">
-                
-                    <div class="image">
-                        <img id="Blikopener" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
-                    </div class>
-                        @{var db = new CategoryContext();}
-                        @{var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
-                    
-                    <div class="DescriptionBlock">@ProductInfo[0].Name
-                        <div class="DescriptionText">@ProductInfo[0].Description</div>
-                    </div>
-                    <div class="PriceBlock">€@ProductInfo[0].Price</div>
-                    <div class="button1">
-                        <button class="ShoppingCart" onclick="FavouritesToggle()">
-                        <div class="ShoppingCartText">In favorieten plaatsen</div>
-                        <div class="ShoppingCartText2">In favorieten geplaatst</div>  
-                        <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;top:-90%;left:18%;visibility:visible"></i>
-                        <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:relative;top:-90%;left:-20%;visibility:hidden"></i>
-                    </button>
-                    </div>
-                    <div class="button2">
-                        <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">
-                        <p class="BuyText">Naar productpagina</p>
-                        <i class="bi bi-shop" style="font-size:6vw;color:#6CBF2A;position:relative;top:-50%;"></i>
-                    </button>
-                    </div>
-                </div>
+            <div class="button2">
+                <button class="Help" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
             </div>
-            
-            <div class="col">
-                <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">
-                <p class="ExperienceText">Ervaringen van anderen</p>
-                <i class="bi bi-play-circle" style="font-size:6vw;color:#6CBF2A;position:relative;top:-40%;"></i>
-                </button>
+        </div>
+        <div class="col-7">
+            <div class="ProductInfo">
+                <div class="image">
+                    <img id="productImage" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
                 </div>
+                @{var db = new CategoryContext();}
+                @{var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
+                <div class="productName">@ProductInfo[0].Name
+                    <div class="productDescription">@ProductInfo[0].Description</div>
+                </div>
+                <div class="productPrice">€@ProductInfo[0].Price</div>
+                <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">  <i class="bi bi-cart-fill" style="font-size:5vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar bestelpagina</strong></button>
             </div>
-            <div class="modal fade" id="Popup" tabindex="-1" aria-labelledby="LeavePopup" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Wilt u de website verlaten?</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Als u op "Doorgaan" klikt gaat u door naar de pagina. De pagina is op een andere website en u wordt dus doorgestuurd. Als u de pagina niet wilt verlaten kunt u op "Terug" drukken.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
-                            <button type="button" class="btn btn-primary" onclick="ToPage()">Doorgaan</button>
-                        </div>
+            <script>
+                window.productName = "@ProductInfo[0].Name";
+                window.productImage = "temp";
+                window.productHref = "temp";
+                window.productPrice = "€@ProductInfo[0].Price";
+                window.productGUID = "@ProductInfo[0].ProductId";
+            </script>
+        </div>
+        <div class="col">
+            <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">  <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Ervaringen van <br>anderen</strong></button>
+            <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i>  <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:absolute;margin-left:-37%;visibility:hidden"></i> <br/> <strong class="FavouritesText">In favorieten <br>plaatsen</strong></button>
+        </div>
+        <div class="modal fade" id="Popup" tabindex="-1" aria-labelledby="LeavePopup" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Wilt u de website verlaten?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Als u op "Doorgaan" klikt gaat u door naar de pagina. De pagina is op een andere website en u wordt dus doorgestuurd. Als u de pagina niet wilt verlaten kunt u op "Terug" drukken.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
+                        <button type="button" class="btn btn-primary" onclick="ToPage()">Doorgaan</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 
 <script>
-    function Favorites() {
-        location.href = "http://localhost:5090/FavorietenPagina/Favorieten";
-    }
-
+    // Variable to store the next location from a popup.
     var Nextlocation = {};
 
-    function GoBack() {
-        location.href = "http://localhost:5090/nl/productenselectie";
-    }
-
-    function ToPage() {
-        location.href = Nextlocation;
-    }
-
+    // Function to set the next location for a popup depending if clicked on the buy button or experience button.
     function ClickedButton(arg) {
         Nextlocation = "";
         if (arg == "Buy") {
@@ -105,89 +75,83 @@
         }
     }
 
+    // Function to go to the next page after a popup. Also removes the popup.
+    function ToPage() {
+        window.open(Nextlocation);
+        location.reload();
+    }
+
+    // Function to go back with the back button.
+    function GoBack() {
+        location.href = "http://localhost:5090/nl/productenselectie";
+    }
+
+    // Function to toggle a product in or out favourites.
     function FavouritesToggle() {
-        var star = document.getElementsByClassName("bi bi-star");
-        var starfill = document.getElementsByClassName("bi bi-star-fill");
+        var text = document.getElementsByClassName("FavouritesText");
+        var textstring = text[0].innerHTML;
 
-        var text = document.getElementsByClassName("ShoppingCartText");
-        var text2 = document.getElementsByClassName("ShoppingCartText2");
-
-        visible = star[0].style.visibility;
-
-        if (visible == "visible") {
-            if(star[0].offsetWidth > 0 && star[0].offsetHeight > 0) {
-                star[0].style.visibility = "hidden";
-                text[0].style.visibility = "hidden";
-            }
-            if(starfill[0].offsetWidth > 0 && starfill[0].offsetHeight > 0) {
-                starfill[0].style.visibility = "visible";
-                text2[0].style.visibility = "visible";
-            }
-            AddFavourites();
+        if (textstring.includes("In favorieten <br>plaatsen")) {
+            $(".FavouritesText").html("Uit favorieten <br>verwijderen");
         } else {
-            if(star[0].offsetWidth > 0 && star[0].offsetHeight > 0) {
-                star[0].style.visibility = "visible";
-                text[0].style.visibility = "visible";
+            $(".FavouritesText").html("In favorieten <br>plaatsen");
+        }
 
-            }
-            if(starfill[0].offsetWidth > 0 && starfill[0].offsetHeight > 0) {
-                starfill[0].style.visibility = "hidden";
-                text2[0].style.visibility = "hidden";
-            }
+        var visibility = document.getElementsByClassName("bi bi-star")[0].style.visibility;
+        if (visibility == "visible") {
+            AddFavourites();
+            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
+            document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+        } else {
             DeleteFavourites();
+            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "hidden";
+            document.getElementsByClassName("bi bi-star")[0].style.visibility = "visible";
         }
     }
 
 
+    // Function to add a product into favourites.
     function AddFavourites() {
-        var storagelength = (Object.keys(localStorage)).length;
-        storagenew = storagelength += 1;
-    
         const product = {
-            name: document.getElementById("DescriptionBlock").innerHTML,
-            image: document.getElementById("Blikopener").src,
-            href: "https://www.wibra.nl/assortiment/blikopener-rvs/", 
-            price: document.getElementById("PriceBlock").innerHTML
+            name: window.productName,
+            image: window.productImage,
+            href: window.productHref, 
+            price: window.productPrice,
+            GUIDfield: window.productGUID
         }
 
-        localStorage.setItem(storagenew, JSON.stringify(product));
+        var keystring = "FAVOURITEDPRODUCT:" + product.GUIDfield;
+
+        localStorage.setItem(keystring, JSON.stringify(product));
     }
 
+    // Function to delete a product from favourites.
     function DeleteFavourites() {
-        for (var i = localStorage.length; i > 0; i--) {
-            localStorage.removeItem(localStorage.key("i"));
-            break;
-        }
+        localStorage.removeItem(localStorage.key(window.productGUID));
     }
 
+    // Function to change the text and icon based on the product being favourited or not.
     function StarFill(object) {
-        if (object.name == document.getElementById("DescriptionBlock").innerHTML) {
-            var star = document.getElementsByClassName("bi bi-star");
-            var starfill = document.getElementsByClassName("bi bi-star-fill");
-            var text = document.getElementsByClassName("ShoppingCartText");
-            var text2 = document.getElementsByClassName("ShoppingCartText2");
-
-            star[0].style.visibility = "hidden";
-            text[0].style.visibility = "hidden";
-            starfill[0].style.visibility = "visible";
-            text2[0].style.visibility = "visible";
+        if (object.name != null) {
+            if (window.productGUID == object.GUIDfield) {
+                $(".FavouritesText").html("Uit favorieten <br>verwijderen");
+                document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+                document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
+            }
         }
     }
 
-
+    // Onload function. Checks what the current product is and if that product is favourited.
     window.onload = function () { 
-        var values = [],
-        keys = Object.keys(localStorage),
-        len = keys.length;
+        var values = [];
+        keys = Object.keys(localStorage);
 
-        while ( len-- ) {
-            values.push(JSON.parse(localStorage.getItem(keys[len])));
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].indexOf("FAVOURITEDPRODUCT:") != -1) {
+                values.push(JSON.parse(localStorage.getItem(keys[i])));
+            }
         }
-
         values.forEach(StarFill);
     };
 
 </script>
-
-
-
