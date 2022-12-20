@@ -18,21 +18,47 @@
             <div class="col-sm-9" id="buttonsContainer" runat="server">
                 @{
                     var db = new CategoryContext();
-                    var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
-                    foreach(var item in CatInfo)
+                    var y = new Guid();
+                    var ProdInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
+                    foreach(var item in ProdInfo)
                     {
                         <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/nl/productpagina/product'"> <img src="/images/@item.Image" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
                     }
                 }
                 @if (auth)
                 {
-                    <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
+                    <button class="Add" onclick="AddProductsOpen()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
+                    <button class="Add" onclick="RemoveOpen()"><img src="/images/CatagoryIcons/EditIcon.png" height=100 width=100 /><br /><strong>Aanpassen</strong></button>
                 }
                 
             </div>
         </div>
+
     </container>
-    <div class="form-popup" id="myForm">
+    <div class="form-popup" id="RemoveProducts">
+        <div class="center">
+            <form enctype="multipart/form-data" class="form-container" method="post" onsubmit="GetID()">
+                <div asp-validation-summary="ModelOnly">
+                </div>
+
+                <h1>Aanpassen</h1
+                    @{
+                        foreach (var item in ProdInfo)
+                    {
+                        <label style="margin-right:75px"><b>@item.Name</b></label> 
+                        <button type="button" onclick="reloadP();RemoveClose();EditOpen();document.c;document.cookie = 'ProductId=@item.ProductId;'">Aanpassen</button>
+                        <button type="submit" onclick="document.cookie = 'ProductId=@item.ProductId'"> Remove</button>
+                        <br />
+                    }
+                }
+                <br />
+                <input asp-for="Option" type="hidden" name="Option" id="Option" value="Remove">
+                <button type="button" class="btn cancel" onclick="RemoveClose()">Annuleren</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="form-popup" id= "AddProducts">
         <div class="center">
             <form enctype="multipart/form-data" class="form-container" method="post" onsubmit="GetID()">
                 <div asp-validation-summary="ModelOnly">
@@ -52,31 +78,101 @@
                 <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" required>
                 <span asp-validation-for="ProductRequest.Description"> </span>
 
-                <label asp-for="FileUpload"><b>Icoon</b></label>
-                <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe." required>
+                <label asp-for="FileUpload"><b>Icoon</b></label><br>
+                <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe.">
                 <span asp-validation-for="FileUpload"></span>
-                <br />
+                <br /><br />
 
                 <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
+                <input asp-for="Option" type="hidden" name="Option" id="Option" value="Add">
 
                 <button type="submit" class="btn">Toevoegen</button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
+                <button type="button" class="btn cancel" onclick="AddProductsClose()">Annuleren</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="form-popup" id="EditProduct">
+        <div class="center">
+            <form enctype="multipart/form-data" class="form-container" method="post">
+                <div asp-validation-summary="ModelOnly">
+                </div>
+                @{
+                        var products = ProdInfo.Where(x=>x.ProductId== Guid.Parse(Request.Cookies["ProductId"]) ).ToArray();
+                    if (products.Any())
+                    {
+                        var product = products[0];
+                        <h1>Aanpassen</h1>
+                        <label for="ProductRequest.Name"><b>Titel</b></label>
+                        <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" value="@product.Name" required>
+                        <span asp-validation-for="ProductRequest.Name"> </span>
+
+                        <label for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><br />
+                        <input for="ProductRequest.PriceMin" min="0" max="999.99" type="number"  name="ProductPriceMin" step="0.01" value="@product.PriceMin" required>
+                        <br />
+                        <label for="ProductRequest.PriceMax"><b>Maximum Prijs</b></label><br />
+                        <input for="ProductRequest.PriceMax" min="0" max="1000" type="number"  name="ProductPriceMax" step="0.01" value="@product.PriceMax" required>
+                        <br />
+                        <label for="ProductRequest.Description"><b>Beschrijving</b></label>
+                        <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" value="@product.Description" required>
+                        <span asp-validation-for="ProductRequest.Description"> </span>
+
+                        <label asp-for="FileUpload"><b>Icoon</b></label><br />
+                        <input type="file" asp-for="FileUpload" value="@product.Image">
+                        <span asp-validation-for="FileUpload"></span>
+                        <br /><br />
+
+                        <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
+                        <input asp-for="Option" type="hidden" name="Option" id="Option" value="Edit">
+                        <button type="submit" class="btn">Aanpassen</button>
+                        <button type="button" class="btn cancel" onclick="EditClose();document.cookie='EditId=@product.ProductId';">Annuleren</button>
+                    
+                    }
+                    
+                }
             </form>
         </div>
     </div>
 
     <script>
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
+        function AddProductsOpen() {
+            document.getElementById("AddProducts").style.display = "block";
         }
 
-        function closeForm() {
-            document.getElementById("myForm").style.display = "none";
+        function AddProductsClose() {
+            document.getElementById("AddProducts").style.display = "none";
+        }
+        function RemoveOpen() {
+            document.getElementById("RemoveProducts").style.display = "block";
+        }
+
+        function RemoveClose() {
+            document.getElementById("RemoveProducts").style.display = "none";
+        }
+        function EditOpen() {
+            document.getElementById("EditProduct").style.display = "block";
+        }
+
+        function EditClose() {
+            document.getElementById("EditProduct").style.display = "none";
         }
         function GetID(){
             var fr = document.getElementById("CategorieID");
             return fr.value = localStorage.getItem('CategoryId');
         }
+       window.onload = function() {
+        var reloading = sessionStorage.getItem("reloading");
+        if (reloading) {
+            sessionStorage.removeItem("reloading");
+            
+            EditOpen();
+        }
+    }
+
+    function reloadP() {
+        sessionStorage.setItem("reloading", "true");
+        document.location.reload();
+    }
     </script>
 
 

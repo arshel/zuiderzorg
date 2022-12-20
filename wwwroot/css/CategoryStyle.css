@@ -64,7 +64,7 @@ button.NestedButton {
 /* Add styles to the form container */
 .form-container {
     border: 3px solid;
-    max-width: 300px;
+    max-width: 600px;
     padding: 10px;
     background-color: white;
 }
