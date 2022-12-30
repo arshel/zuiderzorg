@@ -141,4 +141,24 @@
     <value>Add</value>
     <comment/>
   </data>
+  <data name="Verstuur" xml:space="preserve">
+    <value>Send</value>
+    <comment/>
+  </data>
+  <data name="Naam" xml:space="preserve">
+    <value>name</value>
+    <comment/>
+  </data>
+  <data name="Hier uw bericht" xml:space="preserve">
+    <value>Type your message here</value>
+    <comment/>
+  </data>
+  <data name="Telefoon nummer" xml:space="preserve">
+    <value>Telephone number</value>
+    <comment/>
+  </data>
+  <data name="Locatie" xml:space="preserve">
+    <value>Location</value>
+    <comment/>
+  </data>
 </root>

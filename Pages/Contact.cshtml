@@ -16,9 +16,9 @@
         <div class="col-xs-6 col-lg-3">
       <div class="row">
         <div class="col-xs-12   col-lg-3 red">
-                <button class="Basic" onclick="document.location='/index'">
-                     <img src="/images/CatagoryIcons/BackIcon.png" class="img-fluid" /><br /> <strong>Terug</strong>
-                </button>
+                <a  class="Basic button" asp-route-culture="@Request.RouteValues["culture"]" asp-page="/Index">
+                     <img src="/images/CatagoryIcons/BackIcon.png" class="img-fluid mx-auto d-block mt-4" /><br /> <strong>Terug</strong>
+                </a>
         </div>
        </div>
       <div class="row">
@@ -30,28 +30,28 @@
     <div class="col-xs-6 col-lg-6">
       <div class="row">
         <div class="col-xs-12  black">
-               <form method="POST" asp-page-handler="Contact">
+               <form method="POST" onsubmit="return Check();"  id="contactForm" asp-page-handler="Contact">
     
       
-            <h1>Contact Pagina</h1>
+            <h1>Contact Formulier</h1>
             
             <div class="col">
                 <label for="name">@localizer.Get("Naam"):</label>
                 <input for="MailRequest.Name"  type="text" class="form-control" id="name" placeholder="Naam" name="Name" required>
             </div>
             <div class="col">
-                <label for="email">Email:</label>
+                <label for="email">@localizer.Get("Email"):</label>
                 <input for="MailRequest.From" type="email" class="form-control" id="email" placeholder="Email" name="Email" required>
             </div> 
              <div class="col">
-                <label for="telnum">Telefoon nummer:</label>
+                <label for="telnum">@localizer.Get("Telefoon nummer"):</label>
                 <input for="MailRequest.TelNumber" type="number" class="form-control" id="telnum" placeholder="Telefoon nummer" name="TelNumber">
             </div>
             <div class="col">
-                <label for="bericht">Hier uw bericht:</label>
+                <label for="bericht">@localizer.Get("Hier uw bericht"):</label>
                 <textarea for="MailRequest.Body"  class="form-control" id="bericht" name="Body" required></textarea>
                 </div>
-                <button class="mt-4" style="background-color:white ;" type="submit">Verstuur</button>
+                <button class="mt-4 btn text-center" style="background-color:white; border:3px solid; font-size:1.25rem;" type="submit">@localizer.Get("Verstuur")</button>
 
     </form> 
         </div>
@@ -61,70 +61,50 @@
 
       <div class="row">
         <div class="col-xs-12 mt-5 ">
-          <p>Naam: <br> SOL</p>
-            <p>Hoofdlocatie SOL: <br> Schommelstraat 69 <br> 3035 CG Rotterdam</p>
+          <p>@localizer.Get("Naam"): <br> SOL</p>
+            <p>@localizer.Get("Locatie") SOL: <br> Schommelstraat 69 <br> 3035 CG Rotterdam</p>
             <p>Email: <br> info@solnetwerk.nl</p>
-            <p>Telefoon nummer: <br>010 – 2448240</p>
+            <p>@localizer.Get("Telefoon nummer"): <br>010 – 2448240</p>
                 
         </div>
        </div>
      </div>
     </div>
   </div>
-
-    @* <div class="container contact">
-        <div class="row">
-
-       
-        <div class="col-3 ">
-          
-                <button class="Basic" onclick="document.location='/index'"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
-            </div> 
-              <div class="w-100"></div>
-            <div class="col-3 ">
-          
-                <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
-             </div> 
-     
-          </div>
-          <div class="row">
-     <form method="POST" class="col-3" asp-page-handler="Contact">
-    
-      
-            <h1>Contact Pagina</h1>
-            
-            <div class="col">
-                <label for="name">@localizer.Get("Naam")</label>
-                <input for="MailRequest.Name"  type="text" class="form-control" id="name" placeholder="Naam" name="Name" required>
-            </div>
-            <div class="col">
-                <label for="email">Email</label>
-                <input for="MailRequest.From" type="email" class="form-control" id="email" placeholder="Email" name="Email" required>
-            </div> 
-             <div class="col">
-                <label for="telnum">Telefoon nummer</label>
-                <input for="MailRequest.TelNumber" type="number" class="form-control" id="telnum" placeholder="Telefoon nummer" name="TelNumber">
-            </div>
-            <div class="col">
-                <label for="bericht">Hier uw bericht</label>
-                <textarea for="MailRequest.Body"  class="form-control" id="bericht" name="Body" required></textarea>
-                </div>
-                <button type="submit">klik</button>
-
-    </form>  
-    </div> *@
-    
-    @* <div class="text-container">
-            <p>Naam: <br> SOL</p>
-            <p>Hoofdlocatie SOL: <br> Schommelstraat 69 <br> 3035 CG Rotterdam</p>
-            <p>Email: <br> info@solnetwerk.nl</p>
-            <p>Telefoon nummer: <br>010 – 2448240</p>
-                
-        </div> *@
     </div>
+
     @* cuqfkkkadrhkodie *@
 </body>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModal">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    function Check() 
+    {
+        //alert('this form is about to be submitted...');
+        $('#myModal').modal('show')
+        //this.submit();
+    }
+</script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
