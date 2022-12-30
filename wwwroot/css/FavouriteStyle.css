@@ -6,68 +6,72 @@
 
 .NoFavourites {
  visibility: hidden;
- position: relative;
- top: 30%;
- left: 10%;
- width: 550px;
- height: 5vh;
- background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
+ position: absolute;
+ margin-left: 5%;
+ width: 38vw;
+ height: 77vh;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
+ background-color: #D9D9D9;
  text-align: center;
+ text-decoration: none;
+ font-size: 30px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .NoFavouritesText {
  margin-top: 1%;
 }
 
+.NoFavouritesText2 {
+ margin-top: 40%;
+}
 
-.image-1 {
+.NoFavouritesButton {
  position: relative;
- width: 250px;
- height: 250px;
- left: -40%;
- margin-top: -15%;
+ margin-top: 20%;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
+ background-color: white;
+ width: 30vw;
+ height: 20vh;
+ padding: 10px;
+ font-weight: bold;
+ text-align: center;
+ text-decoration: none;
+ font-size: 30px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.image-2 {
- position: relative;
- width: 150px;
- height: 150px;
- left: -40%;
- margin-top: -15%;
+
+
+.image {
+ width: 10vw;
+ height: 20vh;
+ margin-left: -80%;
+ margin-top: -40%;
 }
 
-.image-3 {
- position: relative;
- width: 150px;
- height: 150px;
- left: -35%;
- margin-top: -15%;
-}
-
-.PriceBlock-1 {
- margin-top: -20%;
-}
-.PriceBlock-2 {
- margin-top: -10%;
-}
-.PriceBlock-3 {
- margin-top: -10%;
+.PriceBlock {
+ font-size: 5vh;
+ margin-top: 10%;
 }
 
 button.Help {
- position: relative;
- margin-top: 50%;
- height: 30vh;
  width: 14vw;
+ height: 30vh;
+ padding: 10px;
+ text-align: center;
+ margin-top: 65%;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
  background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
+ text-decoration: none;
+ font-size: 30px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 p.HelpText {
@@ -77,21 +81,18 @@ p.HelpText {
  text-align: center;
 }
 
-button.Help:hover {
- box-shadow: 10px 10px 8px #888888;
-}
-
 button.Back {
- position: relative;
- margin-top: 15%;
- height: 30vh;
- width: 14vw;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
  background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
- font-size: 20px;
+ width: 14vw;
+ height: 30vh;
+ padding: 10px;
+ text-align: center;
+ text-decoration: none;
+ font-size: 30px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 p.BackText {
@@ -101,114 +102,73 @@ p.BackText {
  text-align: center;
 }
 
-button.Back:hover {
- box-shadow: 10px 10px 8px #888888;
-}
 
-
-button.ProductBlock1 {
- visibility: hidden;
+button.ProductBlock {
  position: relative;
+ visibility: visible;
  margin-left: 5%;
- margin-top: -40%;
- width: 650px;
- height: 200px;
+ margin-bottom: 11%;
+ width: 38vw;
+ height: 20vh;
  font-size: 50px;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
  background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
+ text-decoration: none;
+ font-size: 30px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-button.ProductBlock1:hover {
+button.ProductBlock:hover {
  box-shadow: 10px 10px 8px #888888;
 }
 
-button.ProductBlock2 {
+button.star {
+ margin-bottom: 33%;
+ visibility: visible;
+ width: 10vw;
+ height: 20vh;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
+ background-color: white;
+ text-decoration: none;
+ font-size: 1vh;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+button.star:hover {
+ box-shadow: 10px 10px 8px #888888;
+}
+
+button.Arrow {
  visibility: hidden;
- position: relative;
- margin-left: 5%;
- margin-top: 8%;
- width: 650px;
- height: 200px;
- font-size: 50px;
+ border: 4px solid black;
+ color: rgb(0, 0, 0);
  background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
+ width: 10vw;
+ height: 20vh;
+ padding: 10px;
+ text-align: center;
+ text-decoration: none;
+ font-size: 20px;
+ border-radius: 16px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-button.ProductBlock2:hover {
+#upArrow {
+ position: fixed;
+ right: 2%;
+ bottom: 69%;
+}
+
+#downArrow {
+ position: fixed;
+ right: 2%;
+ bottom: 10%;
+}
+button:hover {
  box-shadow: 10px 10px 8px #888888;
 }
 
-button.ProductBlock3 {
- visibility: hidden;
- position: relative;
- margin-left: 5%;
- margin-top: 8%;
- width: 650px;
- height: 200px;
- font-size: 50px;
- background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
-}
-
-button.ProductBlock3:hover {
- box-shadow: 10px 10px 8px #888888;
-}
-
-button.star1 {
- visibility: hidden;
- position: relative;
- width: 200px;
- height: 200px;
- background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
-}
-
-button.star1:hover {
- box-shadow: 10px 10px 8px #888888;
-}
-
-button.star2 {
- visibility: hidden;
- position: relative;
- margin-top: 20%;
- width: 200px;
- height: 200px;
- background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
-}
-
-button.star2:hover {
- box-shadow: 10px 10px 8px #888888;
-}
-
-button.star3 {
- visibility: hidden;
- position: relative;
- margin-top: 20%;
- width: 200px;
- height: 200px;
- background-color: white;
- border-style: solid;
- border-width: 1.5px;
- border-color: black;
- border-radius: 8px;
-}
-
-button.star3:hover {
- box-shadow: 10px 10px 8px #888888;
-}

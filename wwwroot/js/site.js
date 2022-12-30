@@ -85,7 +85,7 @@ function TogglePopovers() { $('[data-bs-toggle="popover"]').popover('toggle'); }
 
 $(document).ready(function () {
     $('[data-bs-toggle="popover"]').popover({
-        trigger: 'manual',
+        // trigger: 'manual',
         container: 'body'
     });
 });
