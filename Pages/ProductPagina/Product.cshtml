@@ -45,11 +45,11 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Wilt u de website verlaten?</h5>
+                        <h5 class="modal-title tlink" id="exampleModalLabel"></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        Als u op "Doorgaan" klikt gaat u door naar de pagina. De pagina is op een andere website en u wordt dus doorgestuurd. Als u de pagina niet wilt verlaten kunt u op "Terug" drukken.
+                    <div class="modal-body blink">
+                        Als u op "Doorgaan" klikt wordt u doorverwezen naar. Als u de pagina niet wilt verlaten kunt u op "Terug" drukken.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
@@ -73,6 +73,10 @@
         } else {
             Nextlocation = "https://www.youtube.com/watch?v=BWmBov6O0BA";
         }
+        Weblink = (new URL(Nextlocation)).hostname;
+
+        document.getElementsByClassName("tlink")[0].innerHTML = "U wordt doorverwezen naar '" + Weblink + "'"; 
+        document.getElementsByClassName("blink")[0].innerHTML = "Als u op 'Doorgaan' klikt wordt u doorverwezen naar " + "'" + Weblink + "'" + ". Als u de pagina niet wilt verlaten kunt u op 'Terug' drukken.";
     }
 
     // Function to go to the next page after a popup. Also removes the popup.
