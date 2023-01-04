@@ -33,6 +33,7 @@
                 @if (auth)
                 {
                     <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>@localizer.Get("Toevoegen")</strong></button>
+                    <button class="Add" onclick="RemoveOpen()"><img src="/images/CatagoryIcons/EditIcon.png" height=100 width=100 /><br /><strong>Aanpassen</strong></button>
                 }
                 
             </div>
@@ -49,23 +50,113 @@
                     @*<span asp-validation-for="CategoryRequest.Name"> </span>*@
                     
                     <label asp-for="FileUpload"><b>Icoon</b></label>
-                    <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe." required>
+                    <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe.">
                     <span asp-validation-for="FileUpload"></span>
                     <br />
 
+                    <input asp-for="Option" type="hidden" name="Option" id="Option" value="Add">
                     <button type="submit" class="btn">@localizer.Get("Toevoegen")</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
             </form>
         </div>
     </div>
-  
+    <div class="form-popup" id="EditCategory">
+        <div class="center">
+            <form enctype="multipart/form-data" class="form-container" method="post">
+                <div asp-validation-summary="ModelOnly">
+                </div>
+                    @{
+                        if (Request.Cookies["CategoryId"] != null)
+                        {
+                        var categrories = CatInfo.Where(x => x.CategoryId == Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
+                        if (categrories.Any())
+                            {
+                            var category = categrories[0];
+                            <h1>Aanpassen</h1>
+                            <h1>Toevoegen</h1>
+                            <label for="CategoryRequest.Name"><b>Titel</b></label>
+                            <input for="CategoryRequest.Name" type="text" placeholder="Vul een naam in" name="CategoryName" value="@category.Name" required>
+                                @*<span asp-validation-for="CategoryRequest.Name"> </span>*@
+
+                            <label asp-for="FileUpload"><b>Icoon</b></label>
+                            <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe.">
+                            <span asp-validation-for="FileUpload"></span>
+                            <br />
+
+                            <input asp-for="Option" type="hidden" name="Option" id="Option" value="Edit">
+
+                            <button type="submit" class="btn">Aanpassen</button>
+                            <button type="button" class="btn cancel" onclick="EditClose();document.cookie='EditId=@category.CategoryId';">Annuleren</button>
+
+                            }
+                        }
+                    }
+            </form>
+        </div>
+        
+    </div>
+        <div class="form-popup" id="RemoveCategory">
+            <div class="center">
+                <form enctype="multipart/form-data" class="form-container" method="post" onsubmit="GetID()">
+                    <div asp-validation-summary="ModelOnly">
+                    </div>
+
+                    <h1>Aanpassen</h1>
+                        @{
+                            foreach (var item in CatInfo)
+                            {
+                            <label style="padding-right:100px"><b>@item.Name</b></label>
+                        <button type="button" onclick="reloadP();RemoveClose();EditOpen();document.c;document.cookie = 'CategoryId=@item.CategoryId;'">Aanpassen</button>
+                        <button type="submit" onclick="document.cookie = 'CategoryId=@item.CategoryId'"> Remove</button>
+                            <br />
+                            }
+                        }
+                    <br />
+                    <input asp-for="Option" type="hidden" name="Option" id="Option" value="Remove">
+                    <button type="button" class="btn cancel" onclick="RemoveClose()">Annuleren</button>
+                </form>
+            </div>
+        </div>
     <script>
+
     function openForm() {
       document.getElementById("myForm").style.display = "block";
     }
 
     function closeForm() {
       document.getElementById("myForm").style.display = "none";
+    }
+    function EditOpen() {
+        document.getElementById("EditCategory").style.display = "block";
+    }
+
+    function EditClose() {
+        document.getElementById("EditCategory").style.display = "none";
+    }
+    function RemoveOpen() {
+        document.getElementById("RemoveCategory").style.display = "block";
+    }
+
+    function RemoveClose() {
+        document.getElementById("RemoveCategory").style.display = "none";
+    }
+    function GetID() {
+        var fr = document.getElementById("CategorieID");
+        return fr.value = localStorage.getItem('CategoryId');
+    }
+
+    window.onload = function () {
+        var reloading = sessionStorage.getItem("reloading");
+        if (reloading) {
+            sessionStorage.removeItem("reloading");
+
+            EditOpen();
+        }
+    }
+
+    function reloadP() {
+        sessionStorage.setItem("reloading", "true");
+        document.location.reload();
     }
     </script>
 
