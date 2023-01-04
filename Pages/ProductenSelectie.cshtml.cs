@@ -61,8 +61,10 @@ namespace zuiderzorg.Pages
                             ProductToEdit[0].Description = Request.Form["ProductDescription"];
                             ProductToEdit[0].PriceMin = decimal.Parse(Request.Form["ProductPriceMin"], CultureInfo.InvariantCulture.NumberFormat);
                             ProductToEdit[0].PriceMax = decimal.Parse(Request.Form["ProductPriceMax"], CultureInfo.InvariantCulture.NumberFormat);
-                            ProductToEdit[0].Image = FileUpload.FileName;
-                            
+                            if(FileUpload != null)
+                                ProductToEdit[0].Image = FileUpload.FileName;
+                            else
+                                ProductToEdit[0].Image = "CatagoryIcons/InfoIcon.png";
                             db.SaveChanges();
                         }
 
