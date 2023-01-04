@@ -39,4 +39,6 @@ public class Product
     public string? Description { get; set; }
     public Category? Category { get; set; }
     public string? Image { get; set; }
+    public string? StoreLink { get; set; }
+    public string[]? ExpLinks { get; set; }
 }
