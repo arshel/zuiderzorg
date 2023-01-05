@@ -136,7 +136,7 @@
     // Function to show the correct products.
     function ProductShow(object) {
         var makeProduct = 
-        `<button type="button" class="ProductBlock" id="nav ProductBlock${object.GUIDfield}" onclick="ToProduct()" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">${object.name}
+        `<button type="button" class="ProductBlock" id="nav ProductBlock${object.GUIDfield}" value="${object.GUIDfield}" onclick="ToProduct(value)" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">${object.name}
             <div class="PriceBlock">${object.price}</div>
             <div class="imagefield">
                 <img class="image" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
@@ -165,8 +165,9 @@
         localStorage.removeItem("location");
         location.href = newLocation;
     }
-    function ToProduct() {
-        location.href = "http://localhost:5090/nl/productpagina/product";
+
+    function ToProduct(id) {
+        document.cookie = "ProductId=" + id + ";path=/;";
+        location.href = "/productpagina/product";
     }
-    
 </script>
