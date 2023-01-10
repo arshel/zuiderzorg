@@ -82,6 +82,15 @@
                 <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe.">
                 <span asp-validation-for="FileUpload"></span>
                 <br /><br />
+                <label for="ProductRequest.StoreLink"><b>Link naar de winkel</b></label>
+                <input for="ProductRequest.StoreLink" type="text" name="StoreLink" required>
+                <span asp-validation-for="ProductRequest.StoreLink"> </span>
+                <br /><br />
+                <label for="ProductRequest.ExpLink"><b>Link naar de Ervaringen</b></label>
+                <input for="ProductRequest.ExpLink" type="text" name="ExpLink" required>
+                <span asp-validation-for="ProductRequest.ExpLink"> </span>
+
+                <br /><br />
 
                 <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
                 <input asp-for="Option" type="hidden" name="Option" id="Option" value="Add">
@@ -117,6 +126,14 @@
                             <label for="ProductRequest.Description"><b>Beschrijving</b></label>
                             <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" value="@product.Description" required>
                             <span asp-validation-for="ProductRequest.Description"> </span>
+                            <br /><br />
+                            <label for="ProductRequest.StoreLink"><b>Link naar de winkel</b></label>
+                            <input for="ProductRequest.StoreLink" type="text" name="StoreLink" value="@product.StoreLink" required>
+                            <span asp-validation-for="ProductRequest.StoreLink"> </span>
+                            <br /><br />
+                            <label for="ProductRequest.ExpLink"><b>Link naar de Ervaringen</b></label>
+                            <input for="ProductRequest.ExpLink" type="text" name="ExpLink" value="@product.ExpLinks" required>
+                            <span asp-validation-for="ProductRequest.ExpLink"> </span>
 
                             <label asp-for="FileUpload"><b>Icoon</b></label><br />
                             <input type="file" asp-for="FileUpload" value="@product.Image">
