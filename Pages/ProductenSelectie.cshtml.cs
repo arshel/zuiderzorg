@@ -30,6 +30,8 @@ namespace zuiderzorg.Pages
                         NewProduct.PriceMax = decimal.Parse(Request.Form["ProductPriceMax"], CultureInfo.InvariantCulture.NumberFormat);
                         NewProduct.ProductId = Guid.NewGuid();
                         NewProduct.ParentCategoryId = Guid.Parse(Request.Form["CategorieID"]);
+                        NewProduct.StoreLink = Request.Form["StoreLink"];
+                        NewProduct.ExpLinks = Request.Form["ExpLink"];
                         if (FileUpload != null)
                         {
                             var filePath = Path.Combine("./wwwroot/images/", FileUpload.FileName);
@@ -61,7 +63,11 @@ namespace zuiderzorg.Pages
                             ProductToEdit[0].Description = Request.Form["ProductDescription"];
                             ProductToEdit[0].PriceMin = decimal.Parse(Request.Form["ProductPriceMin"], CultureInfo.InvariantCulture.NumberFormat);
                             ProductToEdit[0].PriceMax = decimal.Parse(Request.Form["ProductPriceMax"], CultureInfo.InvariantCulture.NumberFormat);
-                            if(FileUpload != null)
+
+                            ProductToEdit[0].StoreLink = Request.Form["StoreLink"];
+                            ProductToEdit[0].ExpLinks = Request.Form["ExpLink"];
+
+                            if (FileUpload != null)
                                 ProductToEdit[0].Image = FileUpload.FileName;
                             else
                                 ProductToEdit[0].Image = "CatagoryIcons/InfoIcon.png";
@@ -103,7 +109,8 @@ namespace zuiderzorg.Pages
     public class ProductRequest{
         public string Name { get;set;}
         public string Description { get;set;}
-        public decimal Price { get;set;}
+        public string StoreLink { get; set; }
+        public string ExpLink { get; set; }
 
     }
 
