@@ -20,7 +20,7 @@
             <div class="NoFavourites">
                 <h1 class="NoFavouritesText">U heeft nog geen favorieten</h1>
                 <h3 class="NoFavouritesText2">Voeg eerst een product toe aan favorieten</h3>
-                <button class="NoFavouritesButton" onclick="ToCategoryPage()">Naar categorie pagina</button>
+                <button class="NoFavouritesButton" onclick="ToCatagoryPage()">Naar categorie pagina</button>
             </div>
                 <div id="nav-Favorieten">
                 </div>
@@ -53,7 +53,9 @@
 
 
 <script>
+    // Variable that needs to be used outside of just a single function.
     var starstring = {};
+    // Checks the position for the need of the up and down arrows.
     window.onscroll = function() {PositionCheck()};
 
     function PositionCheck() {
@@ -69,7 +71,7 @@
             document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
         }
     }
-
+    // Function for scrolling.
     function scrolling(n) {
         var scrolloffset = $(window).height();
         scrolloffset *= 0.87;
@@ -82,6 +84,7 @@
         window.scrollTo({ top: newscroll, behavior: 'smooth' })
     }
 
+    // Function to delete a product out of favourites.
     function ToDelete(number) {
         starstring = "";
         starstring = "FAVOURITEDPRODUCT:" + number;
@@ -98,7 +101,8 @@
         ArrowCheck();
     }
 
-    function ToCategoryPage() {
+    // Function to go to the Catagory Page.
+    function ToCatagoryPage() {
         location.href = "http://localhost:5090/nl/product_select_page";
     }
 
@@ -166,6 +170,7 @@
         location.href = newLocation;
     }
 
+    // Function to go to the right product.
     function ToProduct(id) {
         document.cookie = "ProductId=" + id + ";path=/;";
         location.href = "/productpagina/product";
