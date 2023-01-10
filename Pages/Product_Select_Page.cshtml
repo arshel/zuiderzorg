@@ -16,9 +16,9 @@
 
     <container class="cont">
         <div class="row">
-            <div class="col-sm-3">
-                <button class="Basic" onclick="document.location='/index'" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug knop")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
-                <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
+            <div class="col-2">
+                <button class="BackButton" onclick="document.location='/nl/Product_Select_Page'" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug knop")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
+                <button class="HelpButton" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
             </div>
             <div class="col-sm-9" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Categorieën")" data-bs-content="@localizer.Get("Met deze knoppen kunt u naar de weergeven categorieën navigeren, hier kunt u producten zien om eventueel te kopen.")" data-bs-placement="right">
                 @{
@@ -30,7 +30,10 @@
                     }
                 }
                 <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>@localizer.Get("Toevoegen")</strong></button>
-                
+            </div>
+            <div class="col">
+                <button class="Arrow" id="ArrowUp" value="false" onclick="scrolling(value)"><i class="bi bi-arrow-up-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar boven</strong></button>
+                <button class="Arrow" id="ArrowDown" value="true" onclick="scrolling(value)"><i class="bi bi-arrow-down-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar beneden</strong></button>
             </div>
         </div>
     </container>
@@ -58,6 +61,50 @@
     function closeForm() {
       document.getElementById("myForm").style.display = "none";
     }
+
+    //Functions for the scrollarrows
+    window.onscroll = function() {PositionCheck()};
+    window.onload = function () {
+        ArrowCheck();
+        PositionCheck();
+    }
+
+    function scrolling(n) {
+        var scrolloffset = $(window).height();
+        scrolloffset *= 0.87;
+        var top = document.documentElement.scrollTop || document.body.scrollTop;
+        if (n == "true") {
+            var newscroll = top + scrolloffset;
+        } else {
+            var newscroll = top - scrolloffset;
+        }
+        window.scrollTo({ top: newscroll, behavior: 'smooth' })
+    }
+
+    function PositionCheck() {
+        if (document.documentElement.scrollTop == 0) {
+            document.getElementsByClassName("Arrow")[0].style.visibility = "hidden";
+        } else {
+            document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "hidden";
+        } else {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+        }
+    }
+
+        // Function to check if the arrows are neccesary.
+    function ArrowCheck() {
+            // Only make the up and down arrows appear if there are more than 3 products
+            productAmount = $('.Basic').length;
+            if (productAmount > 6) {
+                document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+                document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+            }
+        }
+
     </script>
 
 </body>
