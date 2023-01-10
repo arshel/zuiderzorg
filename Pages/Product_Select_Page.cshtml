@@ -21,7 +21,7 @@
                 <button class="HelpButton" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
             </div>
             <div class="col-sm-9" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Categorieën")" data-bs-content="@localizer.Get("Met deze knoppen kunt u naar de weergeven categorieën navigeren, hier kunt u producten zien om eventueel te kopen.")" data-bs-placement="right">
-                <button class="Basic" onclick="ToFavourites()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:absolute;"></i><br/> <strong>Naar Favorieten</strong> </button>
+                <button class="Basic" onclick="ToFavourites()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;"></i><br/> <strong>Naar Favorieten</strong> </button>
                 @{
                     var db = new CategoryContext();
                     var CatInfo = db.Categories.ToArray();

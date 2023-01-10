@@ -41,6 +41,12 @@
             <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">  <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Ervaringen van <br>anderen</strong></button>
             <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i>  <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:absolute;margin-left:-37%;visibility:hidden"></i> <br/> <strong class="FavouritesText">In favorieten <br>plaatsen</strong></button>
         </div>
+        <div class="alert alert-success" id="AddAlert" role="alert">
+            Het product is toegevoegd aan uw winkelwagen.
+        </div>
+        <div class="alert alert-danger" id="DeleteAlert" role="alert">
+            Het product is verwijderd uit uw winkelwagen.
+        </div>
         <div class="modal fade" id="Popup" tabindex="-1" aria-labelledby="LeavePopup" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -90,6 +96,11 @@
         location.href = "http://localhost:5090/nl/productenselectie";
     }
 
+    function CloseAlert() {
+        $("#AddAlert").hide();
+        $("#DeleteAlert").hide(); 
+    }
+
     // Function to toggle a product in or out favourites.
     function FavouritesToggle() {
         var text = document.getElementsByClassName("FavouritesText");
@@ -106,10 +117,18 @@
             AddFavourites();
             document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
             document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+            CloseAlert();
+            $("#AddAlert").fadeTo(2000, 500).slideUp(500, function() {
+                $("#AddAlert").slideUp(500);
+            });
         } else {
             DeleteFavourites();
             document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "hidden";
             document.getElementsByClassName("bi bi-star")[0].style.visibility = "visible";
+            CloseAlert();
+            $("#DeleteAlert").fadeTo(2000, 500).slideUp(500, function() {
+                $("#DeleteAlert").slideUp(500);
+            });
         }
     }
 
@@ -154,6 +173,9 @@
 
     // Onload function. Checks what the current product is and if that product is favourited.
     window.onload = function () { 
+        $("#AddAlert").hide();
+        $("#DeleteAlert").hide();
+
         var values = [];
         keys = Object.keys(localStorage);
 
