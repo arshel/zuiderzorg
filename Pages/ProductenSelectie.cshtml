@@ -11,11 +11,12 @@
 <body style="background-color:#E9E2E2;">
     <container class="cont">
         <div class="row">
-            <div class="col-sm-3">
-                <button class="Basic" onclick="document.location='/nl/Product_Select_Page'" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug knop")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
-                <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
+            <div class="col-2">
+                <button class="BackButton" onclick="document.location='/nl/Product_Select_Page'" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug knop")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
+                <button class="HelpButton" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
             </div>
             <div class="col-sm-9" id="buttonsContainer" data-bs-toggle="popover" data-bs-title="@localizer.Get("Producten")" data-bs-content="@localizer.Get("De weergeven producten kunnen u helpen in het dagelijks leven, u kunt deze producten in favorieten toeoegen zodat een mantelzorger deze eventueel voor u kan bestellen.")" data-bs-placement="right" runat="server">
+                <button class="Basic" onclick="ToFavourites()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;"></i><br/> <strong>Naar Favorieten</strong> </button>
                 @{
                     var db = new CategoryContext();
                     var y = new Guid();
@@ -177,6 +178,26 @@
     }
     </script>
 
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "hidden";
+        } else {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+        }
+    }
 
+        // Function to check if the arrows are neccesary.
+        function ArrowCheck() {
+            // Only make the up and down arrows appear if there are more than 3 products
+            productAmount = $('.Basic').length;
+            if (productAmount > 6) {
+                document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+                document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+            }
+        }
 
+    function ToFavourites() {
+        location.href = "http://localhost:5090/nl/favorietenpagina/favorieten";
+        localStorage.setItem("location", (window.location.href).toString());
+    }
+    </script>
 </body>

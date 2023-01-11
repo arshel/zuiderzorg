@@ -10,11 +10,7 @@
     margin-left: 40px;
 }
 
-    button.Basic:hover {
-        box-shadow: 10px 10px 8px #888888;
-    }
-
-button.HelpButton {
+/* button.HelpButton {
     background-position: center center;
     position: relative;
     height: 100px;
@@ -24,11 +20,36 @@ button.HelpButton {
     border-radius: 12px;
     margin-bottom: 20px;
     margin-left: 40px;
-}
+} */
 
-    button.HelpButton:hover {
-        box-shadow: 10px 10px 8px #888888;
-    }
+button.BackButton {
+    border: 4px solid black;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    width: 14vw;
+    height: 30vh;
+    margin-bottom: 65%;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+button.HelpButton {
+    border: 4px solid black;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    width: 14vw;
+    height: 30vh;
+    margin-top: 25%;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 
 button.NestedButton {
     background-position: center center;
@@ -51,9 +72,38 @@ button.NestedButton {
     margin-bottom: 20px;
     margin-left: 40px;
 }
-.Add:hover {
+
+button.Arrow {
+    visibility: hidden;
+    border: 4px solid black;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    width: 10vw;
+    height: 20vh;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#ArrowUp {
+    position: fixed;
+    right: 2%;
+    bottom: 69%;
+}
+   
+#ArrowDown {
+    position: fixed;
+    right: 2%;
+    bottom: 10%;
+}
+
+button:hover {
     box-shadow: 10px 10px 8px #888888;
 }
+  
+
 /* The popup form - hidden by default */
 .form-popup {
     display: none;
@@ -112,4 +162,8 @@ button.NestedButton {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.col-sm-9 {
+    margin-left: 6%;
 }

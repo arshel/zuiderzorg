@@ -37,9 +37,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <i class="bi bi-star-half" onclick="ToFavourites()" style="color:black;font-size:4vh;cursor:pointer;"></i>
-                        </li>
                         @* <li class="nav-item active"> *@
                         @*     <a class="navbar-brand" asp-area="" asp-page="/Index">Zuiderzorg</a> *@
                         @* </li> *@
@@ -67,14 +64,6 @@
 
     </main>
 </div>
-
-<script>
-    function ToFavourites() {
-        location.href = "http://localhost:5090/nl/favorietenpagina/favorieten";
-        localStorage.setItem("location", (window.location.href).toString());
-    }
-</script>
-
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
