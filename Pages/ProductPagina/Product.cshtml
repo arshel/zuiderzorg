@@ -67,11 +67,18 @@
 
     // Function to set the next location for a popup depending if clicked on the buy button or experience button.
     function ClickedButton(arg) {
+    @{
+        var db = new CategoryContext();
+    }
+    @{
+        var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();
+    }
+
         Nextlocation = "";
         if (arg == "Buy") {
-            Nextlocation = "https://www.wibra.nl/assortiment/blikopener-rvs/";
+            Nextlocation = "@ProductInfo[0].StoreLink";
         } else {
-            Nextlocation = "https://www.youtube.com/watch?v=BWmBov6O0BA";
+            Nextlocation = "@ProductInfo[0].ExpLinks";
         }
         Weblink = (new URL(Nextlocation)).hostname;
 
