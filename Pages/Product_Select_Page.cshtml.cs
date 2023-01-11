@@ -50,8 +50,8 @@ namespace zuiderzorg.Pages
                         db.SaveChanges();
 
                     }
-                    op = "";
-                    return Page();
+                    op = ""; 
+                    return RedirectToPage("Product_Select_Page");
 
                 case "Edit":
                     using (var db = new CategoryContext())
@@ -69,7 +69,7 @@ namespace zuiderzorg.Pages
 
                     }
                     op = "";
-                    return Page();
+                    return RedirectToPage("Product_Select_Page");
 
                 case "Remove":
                     using (var db = new CategoryContext())
@@ -83,11 +83,11 @@ namespace zuiderzorg.Pages
 
                     }
                     op = "";
-                    return Page();
+                    return RedirectToPage("Product_Select_Page");
 
                 default:
                     op = "";
-                    return Page();
+                    return RedirectToPage("Product_Select_Page");
             }
         }
         public Category[] GetCategories()

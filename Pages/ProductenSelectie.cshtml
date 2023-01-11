@@ -64,15 +64,14 @@
             <form enctype="multipart/form-data" class="form-container" method="post" onsubmit="GetID()">
                 <div asp-validation-summary="ModelOnly">
                 </div>
-                <h1>Toevoegen</h1>
+                <h2>Toevoegen</h2>
                 <label for="ProductRequest.Name"><b>Titel</b></label>
                 <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" required>
                 <span asp-validation-for="ProductRequest.Name"> </span>
 
-                <label for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><br />
+                <label for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><label  for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><br />
                 <input for="ProductRequest.PriceMin" min="0" max="999.99" type="number"  name="ProductPriceMin" step="0.01" required>
-                <br />
-                <label for="ProductRequest.PriceMax"><b>Maximum Prijs</b></label><br />
+                
                 <input for="ProductRequest.PriceMax" min="0" max="1000" type="number"  name="ProductPriceMax" step="0.01" required>
                 <br />
                 <label for="ProductRequest.Description"><b>Beschrijving</b></label>
@@ -86,7 +85,6 @@
                 <label for="ProductRequest.StoreLink"><b>Link naar de winkel</b></label>
                 <input for="ProductRequest.StoreLink" type="text" name="StoreLink" required>
                 <span asp-validation-for="ProductRequest.StoreLink"> </span>
-                <br /><br />
                 <label for="ProductRequest.ExpLink"><b>Link naar de Ervaringen</b></label>
                 <input for="ProductRequest.ExpLink" type="text" name="ExpLink" required>
                 <span asp-validation-for="ProductRequest.ExpLink"> </span>

@@ -51,7 +51,7 @@ namespace zuiderzorg.Pages
 
 
                     }
-                    return Page();
+                    return RedirectToPage("ProductenSelectie");
 
                 case "Edit":
                     using (var db = new CategoryContext())
@@ -75,7 +75,7 @@ namespace zuiderzorg.Pages
                         }
 
                     }
-                    return Page();
+                    return RedirectToPage("ProductenSelectie");
 
                 case "Remove":
                     using (var db = new CategoryContext())
@@ -88,10 +88,10 @@ namespace zuiderzorg.Pages
                         }
 
                     }
-                    return Page();
+                    return RedirectToPage("ProductenSelectie");
 
                 default:
-                    return Page();
+                    return RedirectToPage("Product_Select_Page");
             }
         }
         private readonly ILogger<ProductenSelectie> _logger;
