@@ -1,5 +1,6 @@
 ﻿@page
 @using zuiderzorg.Models
+@using Microsoft.EntityFrameworkCore.Infrastructure
 @inject Auth.AuthChecker auth
 @model ProductenSelectie
 
@@ -8,55 +9,61 @@
     <link href="~/css/CategoryStyle.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
+
+
 <body style="background-color:#E9E2E2;">
-    <container class="cont">
-        <div class="row">
-            <div class="col-2">
-                <button class="BackButton" onclick="document.location='/nl/Product_Select_Page'" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug knop")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
-                <button class="HelpButton" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
-            </div>
-            <div class="col-sm-9" id="buttonsContainer" data-bs-toggle="popover" data-bs-title="@localizer.Get("Producten")" data-bs-content="@localizer.Get("De weergeven producten kunnen u helpen in het dagelijks leven, u kunt deze producten in favorieten toeoegen zodat een mantelzorger deze eventueel voor u kan bestellen.")" data-bs-placement="right" runat="server">
-                <button class="Basic" onclick="ToFavourites()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;"></i><br/> <strong>Naar Favorieten</strong> </button>
-                @{
-                    var db = new CategoryContext();
-                    var y = new Guid();
-                    var ProdInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
-                    foreach(var item in ProdInfo)
-                    {
-                        <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/nl/productpagina/product'"> <img src="/images/@item.Image" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
-                    }
-                }
-                @if (auth)
-                {
-                    <button class="Add" onclick="AddProductsOpen()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
-                    <button class="Add" onclick="RemoveOpen()"><img src="/images/CatagoryIcons/EditIcon.png" height=100 width=100 /><br /><strong>Aanpassen</strong></button>
-                }
-                
-            </div>
-        </div>
-
-    </container>
-    <div class="form-popup" id="RemoveProducts">
-        <div class="center">
-            <form enctype="multipart/form-data" class="form-container" method="post" onsubmit="GetID()">
-                <div asp-validation-summary="ModelOnly">
+    <div class="container-fluid">
+            <div class="row row-cols-2">
+                <div class="col-lg-4">
+                    <div class="row row-cols-1">
+                        <div class="col-md-12 mb-4">
+                            <button class="Basic" onclick="document.location='/nl/Product_Select_Page'" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug knop")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left">
+                                <img src="/images/CatagoryIcons/BackIcon.png" class="img-fluid imgIcons" height=100 width=100/><br/>
+                                <strong>Terug</strong>
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">
+                                <img src="/images/CatagoryIcons/InfoIcon.png" class="img-fluid imgIcons"/><br/>
+                                <strong>Informatie</strong>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-
-                <h1>Aanpassen</h1>
-                    @{
-                        foreach (var item in ProdInfo)
-                    {
-                        <label style="padding-right:100px"><b>@item.Name</b></label> 
-                        <button type="button" onclick="reloadP();RemoveClose();EditOpen();document.c;document.cookie = 'ProductId=@item.ProductId;'">Aanpassen</button>
-                        <button type="submit" onclick="document.cookie = 'ProductId=@item.ProductId'"> Remove</button>
-                        <br />
-                    }
-                }
-                <br />
-                <input asp-for="Option" type="hidden" name="Option" id="Option" value="Remove">
-                <button type="button" class="btn cancel" onclick="RemoveClose()">Annuleren</button>
-            </form>
+                <div class="col-xxl">
+                    <div class="row row-cols-auto align-items-center" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Producten")" data-bs-content="@localizer.Get("Met deze knoppen kunt u naar de weergeven categorieën navigeren, hier kunt u producten zien om eventueel te kopen.")" data-bs-placement="right">
+                        <div class="col-md-3">
+                            <button class="Basic" onclick="ToFavourites()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;"></i><br/> <strong>Naar Favorieten</strong> </button>
+                        </div>
+                        @{
+                            var db = new CategoryContext();
+                            var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
+                            foreach(var item in CatInfo)
+                            {
+                                <div class="col-md-3">
+                                    <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId;path=/;';document.location='/productpagina/product'">
+                                        <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100/>
+                                        <br/> 
+                                        <strong>@item.Name</strong>
+                                    </button>
+                                </div>
+                            }
+                        }
+                        <div class="col-md-3">
+                            <button type="button" class="Basic Add" onclick="openForm()">
+                                <img src="/images/CatagoryIcons/PlusIcon.png" class="img-fluid imgIcons" height=100 width=100/>
+                                <br><strong>@localizer.Get("Toevoegen")</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @* <div class="col"> *@
+                @*     <button class="Arrow" id="ArrowUp" value="false" onclick="scrolling(value)"><i class="bi bi-arrow-up-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar boven</strong></button> *@
+                @*     <button class="Arrow" id="ArrowDown" value="true" onclick="scrolling(value)"><i class="bi bi-arrow-down-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar beneden</strong></button> *@
+                @* </div> *@
+            </div>
         </div>
+    <div class="form-popup" id="myForm">
     </div>
 
     <div class="form-popup" id= "AddProducts">
@@ -106,6 +113,9 @@
                 <div asp-validation-summary="ModelOnly">
                 </div>
                 @{
+                    var db = new CategoryContext();
+                    var y = new Guid();
+                    var ProdInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
                     if(Request.Cookies["ProductId"] != null){
                         var products = ProdInfo.Where(x=>x.ProductId== Guid.Parse(Request.Cookies["ProductId"]) ).ToArray();
                         if (products.Any())

@@ -30,9 +30,5 @@
     <Folder Include="Images" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\Images\Info_icon.png" />
-  </ItemGroup>
-
 </Project>
 

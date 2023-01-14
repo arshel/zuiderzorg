@@ -1,55 +1,34 @@
 ﻿button.Basic {
-    background-position: center center;
-    position: relative;
-    height: 300px;
-    width: 275px;
+    /*background-position: center center;*/
+    /*position: relative;*/
+    /*width: 275px;*/
+    /*height: 100%;*/
+    /*height: 300px;*/
+    width: 100%;
     border: 3px solid;
     background-color: white;
     border-radius: 12px;
-    margin-bottom: 20px;
-    margin-left: 40px;
+    padding: 20%;
+    /*margin-bottom: 20px;*/
+    /*margin-left: 40px;*/
 }
 
-/* button.HelpButton {
-    background-position: center center;
-    position: relative;
-    height: 100px;
-    width: 200px;
-    border: 3px solid;
-    background-color: white;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    margin-left: 40px;
-} */
+    button.Basic:hover {
+        box-shadow: 10px 10px 8px #888888;
+    }
+    
+.imgIcons {
+    width: 100%;
+    /*padding: 5%;*/
+    /*margin: 20%;*/
+    /*margin-top: 20%;*/
+    /*margin-bottom: 20%;*/
 
-button.BackButton {
-    border: 4px solid black;
-    color: rgb(0, 0, 0);
-    background-color: white;
-    width: 14vw;
-    height: 30vh;
-    margin-bottom: 65%;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-button.HelpButton {
-    border: 4px solid black;
-    color: rgb(0, 0, 0);
-    background-color: white;
-    width: 14vw;
-    height: 30vh;
-    margin-top: 25%;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
+
+    button.HelpButton:hover {
+        box-shadow: 10px 10px 8px #888888;
+    }
 
 button.NestedButton {
     background-position: center center;
@@ -59,16 +38,6 @@ button.NestedButton {
     border: 3px solid;
     background-color: white;
     border-radius: 12px;
-    margin-bottom: 20px;
-    margin-left: 40px;
-}
-.Add {
-    cursor: pointer;
-    height: 300px;
-    width: 275px;
-    border: 3px solid;
-    border-radius: 12px;
-    background-color: white;
     margin-bottom: 20px;
     margin-left: 40px;
 }

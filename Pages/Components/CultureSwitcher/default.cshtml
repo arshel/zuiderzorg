@@ -1,10 +1,10 @@
 @model CultureSwitcherModel
 
-<div class="container" style="margin-left: 1rem;">
+<div style="margin-left: 1rem; z-index: 1" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="@localizer.Get("Kies een taal")" data-bs-content="@localizer.Get("Hier kunt u een taal kiezen naar keuze.")" data-bs-placement="bottom">
 
    
-    <form id="culture-switcher">
-        <select name="culture" class="selectpicker" id="culture-options">
+    <form id="culture-switcher" >
+        <select name="culture" class="selectpicker" id="culture-options" style="z-index: 10">
 
             @foreach (var culture in Model.SupportedCultures)
             {

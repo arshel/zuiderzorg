@@ -53,12 +53,19 @@ body {
   color: rgb(108, 191, 42);
   cursor: pointer;
 }
+.bi-volume-down-fill {
+  
+}
+
+.bi-volume-up-fill {
+  
+}
 
 /* Video container end */
 
 /* Next-page begin */
 .border-green {
-  
+  border-color: rgb(108, 191, 42);
 }
 
 .next-page {
@@ -82,14 +89,8 @@ body {
 }
 /* Next-page end */
 
-
-/* Volume Slider */
-.slidecontainer {
-  transform: translate(-42%) rotate(-90deg);
-  margin-left: -1px;
-}
-
 .slider {
+  padding: 0;
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   width: 100%; /* Full-width */
