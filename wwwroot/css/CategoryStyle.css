@@ -1,16 +1,9 @@
 ﻿button.Basic {
-    /*background-position: center center;*/
-    /*position: relative;*/
-    /*width: 275px;*/
-    /*height: 100%;*/
-    /*height: 300px;*/
     width: 100%;
     border: 3px solid;
     background-color: white;
     border-radius: 12px;
     padding: 20%;
-    /*margin-bottom: 20px;*/
-    /*margin-left: 40px;*/
 }
 
     button.Basic:hover {
@@ -19,11 +12,6 @@
     
 .imgIcons {
     width: 100%;
-    /*padding: 5%;*/
-    /*margin: 20%;*/
-    /*margin-top: 20%;*/
-    /*margin-bottom: 20%;*/
-
 }
 
     button.HelpButton:hover {
