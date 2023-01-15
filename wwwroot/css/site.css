@@ -163,4 +163,32 @@ body {
   left: 50%;
   margin-left: -5px;
   margin-top: -1px;
+
+  
 }
+
+@media (min-width:320px)  {
+  .text-small-center{
+    text-align: center;
+  }
+  .d-small-flex{
+    display: flex;
+    justify-content: center;
+    margin-left: 0 !important;
+  }
+  .ml-small{
+    margin-left: 0;
+  }
+}
+@media (min-width:961px)  {
+  .text-small-center{
+    text-align: left;
+  }
+  .d-small-flex{
+    display: block;
+  }
+  .ml-small{
+    margin-left: 1.5rem;
+  }
+}
+
