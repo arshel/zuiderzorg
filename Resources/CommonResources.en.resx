@@ -141,27 +141,6 @@
     <value>Add</value>
     <comment/>
   </data>
-
-  <data name="Verstuur" xml:space="preserve">
-    <value>Send</value>
-    <comment/>
-  </data>
-  <data name="Naam" xml:space="preserve">
-    <value>name</value>
-    <comment/>
-  </data>
-  <data name="Hier uw bericht" xml:space="preserve">
-    <value>Type your message here</value>
-    <comment/>
-  </data>
-  <data name="Telefoon nummer" xml:space="preserve">
-    <value>Telephone number</value>
-    <comment/>
-  </data>
-  <data name="Locatie" xml:space="preserve">
-    <value>Location</value>
-    <comment/>
-
   <data name="Hier kunt u een taal kiezen naar keuze." xml:space="preserve">
     <value>Here you can choose a language of your own liking.</value>
   </data>
@@ -197,6 +176,5 @@
   </data>
   <data name="De weergeven producten kunnen u helpen in het dagelijks leven, u kunt deze producten in favorieten toeoegen zodat een mantelzorger deze eventueel voor u kan bestellen." xml:space="preserve">
     <value>These products can help you in everyday life, you can add these products to your favourites so that a caregiver could order these for you.</value>
-
   </data>
 </root>
