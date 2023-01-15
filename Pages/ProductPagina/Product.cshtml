@@ -4,7 +4,6 @@
 <head>
     <link href="~/css/ProductStyle.css" rel="stylesheet"/>
 </head>
-
 <body style="background-color:#E9E2E2;">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <div class="row">
@@ -18,22 +17,23 @@
         </div>
         <div class="col-7">
             <div class="ProductInfo">
-                <div class="image">
-                    <img id="productImage" src="https://www.wibra.nl/wp-content/uploads/sites/3/2022/02/17570058-000-01.png" alt="BlikopenerFoto">
-                </div>
                 @{var db = new CategoryContext();}
                 @{var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
+                <div class="image">
+                    <img id="productImage" src="/images/@ProductInfo[0].Image" alt="BlikopenerFoto">
+                </div>
                 <div class="productName">@ProductInfo[0].Name
                     <div class="productDescription">@ProductInfo[0].Description</div>
                 </div>
-                <div class="productPrice">€@ProductInfo[0].Price</div>
+                <div class="productPrice">€@ProductInfo[0].PriceMin - €@ProductInfo[0].PriceMax</div>
                 <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">  <i class="bi bi-cart-fill" style="font-size:5vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar bestelpagina</strong></button>
             </div>
             <script>
                 window.productName = "@ProductInfo[0].Name";
                 window.productImage = "temp";
                 window.productHref = "temp";
-                window.productPrice = "€@ProductInfo[0].Price";
+                window.productVideo = "temp";
+                window.productPrice = "€@ProductInfo[0].PriceMin";
                 window.productGUID = "@ProductInfo[0].ProductId";
             </script>
         </div>
@@ -41,15 +41,21 @@
             <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">  <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Ervaringen van <br>anderen</strong></button>
             <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i>  <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:absolute;margin-left:-37%;visibility:hidden"></i> <br/> <strong class="FavouritesText">In favorieten <br>plaatsen</strong></button>
         </div>
+        <div class="alert alert-success" id="AddAlert" role="alert">
+            Het product is toegevoegd aan uw winkelwagen.
+        </div>
+        <div class="alert alert-danger" id="DeleteAlert" role="alert">
+            Het product is verwijderd uit uw winkelwagen.
+        </div>
         <div class="modal fade" id="Popup" tabindex="-1" aria-labelledby="LeavePopup" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Wilt u de website verlaten?</h5>
+                        <h5 class="modal-title tlink" id="exampleModalLabel"></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        Als u op "Doorgaan" klikt gaat u door naar de pagina. De pagina is op een andere website en u wordt dus doorgestuurd. Als u de pagina niet wilt verlaten kunt u op "Terug" drukken.
+                    <div class="modal-body blink">
+                        Als u op "Doorgaan" klikt wordt u doorverwezen naar. Als u de pagina niet wilt verlaten kunt u op "Terug" drukken.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Terug</button>
@@ -67,12 +73,23 @@
 
     // Function to set the next location for a popup depending if clicked on the buy button or experience button.
     function ClickedButton(arg) {
+    @{
+        var db = new CategoryContext();
+    }
+    @{
+        var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();
+    }
+
         Nextlocation = "";
         if (arg == "Buy") {
-            Nextlocation = "https://www.wibra.nl/assortiment/blikopener-rvs/";
+            Nextlocation = "@ProductInfo[0].StoreLink";
         } else {
-            Nextlocation = "https://www.youtube.com/watch?v=BWmBov6O0BA";
+            Nextlocation = "@ProductInfo[0].ExpLinks";
         }
+        Weblink = (new URL(Nextlocation)).hostname;
+
+        document.getElementsByClassName("tlink")[0].innerHTML = "U wordt doorverwezen naar '" + Weblink + "'"; 
+        document.getElementsByClassName("blink")[0].innerHTML = "Als u op 'Doorgaan' klikt wordt u doorverwezen naar " + "'" + Weblink + "'" + ". Als u de pagina niet wilt verlaten kunt u op 'Terug' drukken.";
     }
 
     // Function to go to the next page after a popup. Also removes the popup.
@@ -84,6 +101,11 @@
     // Function to go back with the back button.
     function GoBack() {
         location.href = "http://localhost:5090/nl/productenselectie";
+    }
+
+    function CloseAlert() {
+        $("#AddAlert").hide();
+        $("#DeleteAlert").hide(); 
     }
 
     // Function to toggle a product in or out favourites.
@@ -102,13 +124,28 @@
             AddFavourites();
             document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
             document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+            CloseAlert();
+            $("#AddAlert").fadeTo(2000, 500).slideUp(500, function() {
+                $("#AddAlert").slideUp(500);
+            });
         } else {
             DeleteFavourites();
             document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "hidden";
             document.getElementsByClassName("bi bi-star")[0].style.visibility = "visible";
+            CloseAlert();
+            $("#DeleteAlert").fadeTo(2000, 500).slideUp(500, function() {
+                $("#DeleteAlert").slideUp(500);
+            });
         }
     }
 
+    @* function VideoAvailability() {
+        if (@ProductInfo[0].Video == ""){
+            document.getElementsByClassName("Experience")[0].style.background = grey;
+            document.getElementsByClassName("Experience")[0].innerHTML = Geen video beschikbaar;
+            //De button niet clickable maken
+        }
+    } *@
 
     // Function to add a product into favourites.
     function AddFavourites() {
@@ -143,6 +180,9 @@
 
     // Onload function. Checks what the current product is and if that product is favourited.
     window.onload = function () { 
+        $("#AddAlert").hide();
+        $("#DeleteAlert").hide();
+
         var values = [];
         keys = Object.keys(localStorage);
 
@@ -152,6 +192,7 @@
             }
         }
         values.forEach(StarFill);
+        VideoAvailability();
     };
 
 </script>

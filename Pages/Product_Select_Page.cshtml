@@ -1,6 +1,7 @@
 ﻿@page
 @using zuiderzorg.Models
 @model zuiderzorg.Pages.Product_Select_PageModel
+@inject Auth.AuthChecker auth
 @inject CommonLocalizationService localizer
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
@@ -12,44 +13,151 @@
 
 
 <body style="background-color: #F9EFEF">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
-    <container class="cont">
-        <div class="row">
-            <div class="col-sm-3">
-                <button class="Basic" onclick="document.location='/index'" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="left"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
-                <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
+    <div class="container-fluid">
+        <div class="row row-cols-2">
+            <div class="col-lg-3">
+                <div class="row row-cols-1">
+                    <div class="col-xl-12 mb-4">
+                        <button class="Basic" onclick="document.location='/index'" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug knop")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left" >
+                            <img src="/images/CatagoryIcons/BackIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px; padding-bottom: 27px;"/>
+                            <br/>
+                            <strong class="h2">Terug</strong>
+                        </button>
+                    </div>
+                    <div class="col-xl-12 mb-4">
+                        <button class="Basic" onclick="TogglePopovers()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-info-square" viewBox="0 0 16 16">
+                              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                            </svg>
+                            <br/>
+                            <strong class="h2">Informatie</strong>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-9" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="right">
+            <div class="col-xxl">
+                <div class="row row-cols-auto align-items-center" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Categorieën")" data-bs-content="@localizer.Get("Met deze knoppen kunt u naar de weergeven categorieën navigeren, hier kunt u producten zien om eventueel te kopen.")" data-bs-placement="right">
                 @{
                     var db = new CategoryContext();
                     var CatInfo = db.Categories.ToArray();
-                    foreach(var item in CatInfo)
+                    foreach (var item in CatInfo)
                     {
-                    <button class="Basic" onclick="document.cookie = 'CategoryId=@item.CategoryId';localStorage.setItem('CategoryId', '@item.CategoryId'); document.location = '/nl/productenselectie'"> <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
+                        <div class="col-xxl-4 mb-4">
+                            <button class="Basic" onclick="document.cookie = 'CategoryId=@item.CategoryId';localStorage.setItem('CategoryId', '@item.CategoryId'); document.location = '/nl/productenselectie'">
+                                @* <img src="/images/CatagoryIcons/InfoIcon.png" class="img-fluid imgIcons" height=100 width=100/><br/> *@
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-question-circle" viewBox="0 0 16 16">
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                                </svg>
+                                <strong class="h2">@item.Name</strong>
+                            </button>
+                        </div>
                     }
                 }
-                <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>@localizer.Get("Toevoegen")</strong></button>
-                
+                    <div class="col-xxl-4 mb-4">
+                        <button type="button" class="Basic" onclick="openForm()">
+                            @* <img src="/images/CatagoryIcons/PlusIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px;"/> *@
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                            </svg>
+                            <br>
+                            <strong class="h2">@localizer.Get("Toevoegen")</strong>
+                        </button>
+                        @* <button class="Add" onclick="RemoveOpen()"> *@
+                        @*     <img src="/images/CatagoryIcons/EditIcon.png" height=100 width=100/> *@
+                        @*     <br/> *@
+                        @*     <strong>Aanpassen</strong> *@
+                        @* </button> *@
+                    </div>
+                </div>
             </div>
+           
         </div>
-    </container>
+         <div class="col">
+            <button class="Arrow" id="ArrowUp" value="false" onclick="scrolling(value)"><i class="bi bi-arrow-up-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar boven</strong></button>
+            <button class="Arrow" id="ArrowDown" value="true" onclick="scrolling(value)"><i class="bi bi-arrow-down-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar beneden</strong></button>
+        </div>
+    </div>
     <div class="form-popup" id="myForm">
         <div class="center"> 
-            <form class="form-container" method="post">
+            <form enctype="multipart/form-data" class="form-container" method="post">
                 <div asp-validation-summary="ModelOnly">
                 </div>
                     <h1>Toevoegen</h1>
                     <label for="CategoryRequest.Name"><b>Titel</b></label>
                     <input for="CategoryRequest.Name" type="text" placeholder="Vul een naam in" name="CategoryName" required>
+                    @*<span asp-validation-for="CategoryRequest.Name"> </span>*@+
                     @*<span asp-validation-for="CategoryRequest.Name"> </span>*@
+                    
+                    <label asp-for="FileUpload"><b>Icoon</b></label>
+                    <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe.">
+                    <span asp-validation-for="FileUpload"></span>
+                    <br />
 
+                    <input asp-for="Option" type="hidden" name="Option" id="Option" value="Add">
                     <button type="submit" class="btn">@localizer.Get("Toevoegen")</button>
                     <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
             </form>
         </div>
     </div>
-  
+    <div class="form-popup" id="EditCategory">
+        <div class="center">
+            <form enctype="multipart/form-data" class="form-container" method="post">
+                <div asp-validation-summary="ModelOnly">
+                </div>
+                    @{
+                        if (Request.Cookies["CategoryId"] != null)
+                        {
+                        var categrories = CatInfo.Where(x => x.CategoryId == Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
+                        if (categrories.Any())
+                            {
+                            var category = categrories[0];
+                            <h1>Aanpassen</h1>
+                            <h1>Toevoegen</h1>
+                            <label for="CategoryRequest.Name"><b>Titel</b></label>
+                            <input for="CategoryRequest.Name" type="text" placeholder="Vul een naam in" name="CategoryName" value="@category.Name" required>
+                                @*<span asp-validation-for="CategoryRequest.Name"> </span>*@
+
+                            <label asp-for="FileUpload"><b>Icoon</b></label>
+                            <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe.">
+                            <span asp-validation-for="FileUpload"></span>
+                            <br />
+
+                            <input asp-for="Option" type="hidden" name="Option" id="Option" value="Edit">
+
+                            <button type="submit" class="btn">Aanpassen</button>
+                            <button type="button" class="btn cancel" onclick="EditClose();document.cookie='EditId=@category.CategoryId';">Annuleren</button>
+
+                            }
+                        }
+                    }
+            </form>
+        </div>
+        
+    </div>
+        <div class="form-popup" id="RemoveCategory">
+            <div class="center">
+                <form enctype="multipart/form-data" class="form-container" method="post" onsubmit="GetID()">
+                    <div asp-validation-summary="ModelOnly">
+                    </div>
+
+                    <h1>Aanpassen</h1>
+                        @{
+                            foreach (var item in CatInfo)
+                            {
+                            <label style="padding-right:100px"><b>@item.Name</b></label>
+                        <button type="button" onclick="reloadP();RemoveClose();EditOpen();document.c;document.cookie = 'CategoryId=@item.CategoryId;'">Aanpassen</button>
+                        <button type="submit" onclick="document.cookie = 'CategoryId=@item.CategoryId'"> Remove</button>
+                            <br />
+                            }
+                        }
+                    <br />
+                    <input asp-for="Option" type="hidden" name="Option" id="Option" value="Remove">
+                    <button type="button" class="btn cancel" onclick="RemoveClose()">Annuleren</button>
+                </form>
+            </div>
+        </div>
     <script>
     function openForm() {
       document.getElementById("myForm").style.display = "block";
@@ -57,6 +165,87 @@
 
     function closeForm() {
       document.getElementById("myForm").style.display = "none";
+    }
+
+    //Functions for the scrollarrows
+    window.onscroll = function() {PositionCheck()};
+    window.onload = function () {
+        ArrowCheck();
+        PositionCheck();
+    }
+
+    function scrolling(n) {
+        var scrolloffset = $(window).height();
+        scrolloffset *= 0.87;
+        var top = document.documentElement.scrollTop || document.body.scrollTop;
+        if (n == "true") {
+            var newscroll = top + scrolloffset;
+        } else {
+            var newscroll = top - scrolloffset;
+        }
+        window.scrollTo({ top: newscroll, behavior: 'smooth' })
+    }
+
+    function PositionCheck() {
+        if (document.documentElement.scrollTop == 0) {
+            document.getElementsByClassName("Arrow")[0].style.visibility = "hidden";
+        } else {
+            document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+        }
+
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "hidden";
+        } else {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+        }
+    }
+
+        // Function to check if the arrows are neccesary.
+    function ArrowCheck() {
+            // Only make the up and down arrows appear if there are more than 3 products
+            productAmount = $('.Basic').length;
+            if (productAmount > 6) {
+                document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+                document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+            }
+        }
+
+    function ToFavourites() {
+        location.href = "http://localhost:5090/nl/favorietenpagina/favorieten";
+        localStorage.setItem("location", (window.location.href).toString());
+    }
+
+    function EditOpen() {
+        document.getElementById("EditCategory").style.display = "block";
+    }
+
+    function EditClose() {
+        document.getElementById("EditCategory").style.display = "none";
+    }
+    function RemoveOpen() {
+        document.getElementById("RemoveCategory").style.display = "block";
+    }
+
+    function RemoveClose() {
+        document.getElementById("RemoveCategory").style.display = "none";
+    }
+    function GetID() {
+        var fr = document.getElementById("CategorieID");
+        return fr.value = localStorage.getItem('CategoryId');
+    }
+
+    window.onload = function () {
+        var reloading = sessionStorage.getItem("reloading");
+        if (reloading) {
+            sessionStorage.removeItem("reloading");
+
+            EditOpen();
+        }
+    }
+
+    function reloadP() {
+        sessionStorage.setItem("reloading", "true");
+        document.location.reload();
     }
     </script>
 

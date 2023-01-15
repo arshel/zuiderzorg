@@ -2,18 +2,20 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using zuiderzorg.Models;
 
 #nullable disable
 
-namespace zuiderzorg.Migrations
+namespace zuiderzorg.Migrations.Category
 {
     [DbContext(typeof(CategoryContext))]
-    partial class CategoryContextModelSnapshot : ModelSnapshot
+    [Migration("20221213221333_AddMinMaxPrices")]
+    partial class AddMinMaxPrices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,9 +29,6 @@ namespace zuiderzorg.Migrations
                     b.Property<Guid?>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -50,12 +49,6 @@ namespace zuiderzorg.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<string>("ExpLinks")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("text");
-
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -64,9 +57,6 @@ namespace zuiderzorg.Migrations
 
                     b.Property<decimal?>("PriceMin")
                         .HasColumnType("numeric");
-
-                    b.Property<string>("StoreLink")
-                        .HasColumnType("text");
 
                     b.HasKey("ParentCategoryId", "ProductId");
 

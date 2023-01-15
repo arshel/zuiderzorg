@@ -1,5 +1,7 @@
 ﻿@page
 @using zuiderzorg.Models
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@inject Auth.AuthChecker auth
 @model ProductenSelectie
 
 <h1>@ViewData["Title"]</h1>
@@ -7,67 +9,241 @@
     <link href="~/css/CategoryStyle.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
+
+
 <body style="background-color:#E9E2E2;">
-    <container class="cont">
-        <div class="row">
-            <div class="col-sm-3">
-                <button class="Basic" onclick="document.location='/nl/Product_Select_Page'" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="left"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
-                <button class="Basic" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
-            </div>
-            <div class="col-sm-9" id="buttonsContainer" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="right" runat="server">
-                @{
-                    var db = new CategoryContext();
-                    var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
-                    foreach(var item in CatInfo)
-                    {
-                    <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId';document.location='/nl/productpagina/product'"> <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100 /><br /> <strong>@item.Name</strong> </button>
-                    }
-                }
-                <button class="Add" onclick="openForm()"><img src="/images/CatagoryIcons/PlusIcon.png" height=100 width=100 /><br /><strong>Toevoegen</strong></button>
+    <div class="container-fluid">
+            <div class="row row-cols-2">
+                <div class="col-lg-3">
+                    <div class="row row-cols-1">
+                        <div class="col-xl-12 mb-4">
+                            <button class="Basic" onclick="document.location='/nl/product_select_page'" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug knop")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left" >
+                                <img src="/images/CatagoryIcons/BackIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px; padding-bottom: 27px;"/>
+                                <br/>
+                                <strong class="h2">Terug</strong>
+                            </button>
+                        </div>
+                        <div class="col-xl-12 mb-4">
+                            <button class="Basic" onclick="TogglePopovers()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-info-square" viewBox="0 0 16 16">
+                                  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                                <br/>
+                                <strong class="h2">Informatie</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl">
+                    <div class="row row-cols-auto align-items-center" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Producten")" data-bs-content="@localizer.Get("Met deze knoppen kunt u naar de weergeven categorieën navigeren, hier kunt u producten zien om eventueel te kopen.")" data-bs-placement="right">
+                        <div class="col-xxl-4 mb-4">
+                            <button class="Basic" onclick="ToFavourites()">
+                                @* <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;"></i> *@
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-star" viewBox="0 0 16 16">
+                                  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                </svg>
+                                <br/> 
+                                <strong class="h2">Favorieten</strong>
+                            </button>
+                        </div>
+                        @{
+                            var db = new CategoryContext();
+                            var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
+                            foreach(var item in CatInfo)
+                            {
+                                <div class="col-xxl-4 mb-4">
+                                    <button class="Basic" onclick="document.cookie = 'ProductId=@item.ProductId;path=/;';document.location='/productpagina/product'">
+                                        @* <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100/> *@
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-question-circle" viewBox="0 0 16 16">
+                                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                          <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                                        </svg>
+                                        <br/> 
+                                        <strong class="h2">@item.Name</strong>
+                                    </button>
+                                </div>
+                            }
+                        }
+                        <div class="col-xxl-4 mb-4">
+                            <button type="button" class="Basic" onclick="AddProductsOpen()">
+                                @* <img src="/images/CatagoryIcons/PlusIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px;"/> *@
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                </svg>
+                                <br>
+                                <strong class="h2">@localizer.Get("Toevoegen")</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @* <div class="col"> *@
+                @*     <button class="Arrow" id="ArrowUp" value="false" onclick="scrolling(value)"><i class="bi bi-arrow-up-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar boven</strong></button> *@
+                @*     <button class="Arrow" id="ArrowDown" value="true" onclick="scrolling(value)"><i class="bi bi-arrow-down-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar beneden</strong></button> *@
+                @* </div> *@
             </div>
         </div>
-    </container>
-    <div class="form-popup" id="myForm">
+    @* <div class="form-popup" id="myForm"> *@
+    @* </div> *@
+
+    <div class="form-popup" id= "AddProducts">
         <div class="center">
-            <form class="form-container" method="post" onsubmit="GetID()">
+            <form enctype="multipart/form-data" class="form-container" method="post" onsubmit="GetID()">
                 <div asp-validation-summary="ModelOnly">
                 </div>
-                <h1>Toevoegen</h1>
+                <h2>Toevoegen</h2>
                 <label for="ProductRequest.Name"><b>Titel</b></label>
                 <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" required>
                 <span asp-validation-for="ProductRequest.Name"> </span>
 
-                <label for="ProductRequest.Price"><b>Prijs</b></label><br />
-                <input for="ProductRequest.Price" type="number" placeholder="Vul een prijs in" name="ProductPrice" required>
-                <span asp-validation-for="ProductRequest.Price"> </span>
-
+                <label for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><label  for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><br />
+                <input for="ProductRequest.PriceMin" min="0" max="999.99" type="number"  name="ProductPriceMin" step="0.01" required>
+                
+                <input for="ProductRequest.PriceMax" min="0" max="1000" type="number"  name="ProductPriceMax" step="0.01" required>
+                <br />
                 <label for="ProductRequest.Description"><b>Beschrijving</b></label>
                 <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" required>
                 <span asp-validation-for="ProductRequest.Description"> </span>
 
+                <label asp-for="FileUpload"><b>Icoon</b></label><br>
+                <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe.">
+                <span asp-validation-for="FileUpload"></span>
+                <br /><br />
+                <label for="ProductRequest.StoreLink"><b>Link naar de winkel</b></label>
+                <input for="ProductRequest.StoreLink" type="text" name="StoreLink" required>
+                <span asp-validation-for="ProductRequest.StoreLink"> </span>
+                <label for="ProductRequest.ExpLink"><b>Link naar de Ervaringen</b></label>
+                <input for="ProductRequest.ExpLink" type="text" name="ExpLink" required>
+                <span asp-validation-for="ProductRequest.ExpLink"> </span>
+
+                <br /><br />
+
                 <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
-                @*<span asp-validation-for="ProductRequest.ParentCategoryId"> </span>*@
+                <input asp-for="Option" type="hidden" name="Option" id="Option" value="Add">
 
                 <button type="submit" class="btn">Toevoegen</button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Annuleren</button>
+                <button type="button" class="btn cancel" onclick="AddProductsClose()">Annuleren</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="form-popup" id="EditProduct">
+        <div class="center">
+            <form enctype="multipart/form-data" class="form-container" method="post">
+                <div asp-validation-summary="ModelOnly">
+                </div>
+                @{
+                    var db = new CategoryContext();
+                    var y = new Guid();
+                    var ProdInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
+                    if(Request.Cookies["ProductId"] != null){
+                        var products = ProdInfo.Where(x=>x.ProductId== Guid.Parse(Request.Cookies["ProductId"]) ).ToArray();
+                        if (products.Any())
+                        {
+                            var product = products[0];
+                            <h1>Aanpassen</h1>
+                            <label for="ProductRequest.Name"><b>Titel</b></label>
+                            <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" value="@product.Name" required>
+                            <span asp-validation-for="ProductRequest.Name"> </span>
+
+                            <label for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><br />
+                            <input for="ProductRequest.PriceMin" min="0" max="999.99" type="number"  name="ProductPriceMin" step="0.01" value="@product.PriceMin" required>
+                            <br />
+                            <label for="ProductRequest.PriceMax"><b>Maximum Prijs</b></label><br />
+                            <input for="ProductRequest.PriceMax" min="0" max="1000" type="number"  name="ProductPriceMax" step="0.01" value="@product.PriceMax" required>
+                            <br />
+                            <label for="ProductRequest.Description"><b>Beschrijving</b></label>
+                            <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" value="@product.Description" required>
+                            <span asp-validation-for="ProductRequest.Description"> </span>
+                            <br /><br />
+                            <label for="ProductRequest.StoreLink"><b>Link naar de winkel</b></label>
+                            <input for="ProductRequest.StoreLink" type="text" name="StoreLink" value="@product.StoreLink" required>
+                            <span asp-validation-for="ProductRequest.StoreLink"> </span>
+                            <br /><br />
+                            <label for="ProductRequest.ExpLink"><b>Link naar de Ervaringen</b></label>
+                            <input for="ProductRequest.ExpLink" type="text" name="ExpLink" value="@product.ExpLinks" required>
+                            <span asp-validation-for="ProductRequest.ExpLink"> </span>
+
+                            <label asp-for="FileUpload"><b>Icoon</b></label><br />
+                            <input type="file" asp-for="FileUpload" value="@product.Image">
+                            <span asp-validation-for="FileUpload"></span>
+                            <br /><br />
+
+                            <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
+                            <input asp-for="Option" type="hidden" name="Option" id="Option" value="Edit">
+
+                            <button type="submit" class="btn">Aanpassen</button>
+                            <button type="button" class="btn cancel" onclick="EditClose();document.cookie='EditId=@product.ProductId';">Annuleren</button>
+
+                        }
+                    }
+                }
             </form>
         </div>
     </div>
 
     <script>
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
+        function AddProductsOpen() {
+            document.getElementById("AddProducts").style.display = "block";
         }
 
-        function closeForm() {
-            document.getElementById("myForm").style.display = "none";
+        function AddProductsClose() {
+            document.getElementById("AddProducts").style.display = "none";
+        }
+        function RemoveOpen() {
+            document.getElementById("RemoveProducts").style.display = "block";
+        }
+
+        function RemoveClose() {
+            document.getElementById("RemoveProducts").style.display = "none";
+        }
+        function EditOpen() {
+            document.getElementById("EditProduct").style.display = "block";
+        }
+
+        function EditClose() {
+            document.getElementById("EditProduct").style.display = "none";
         }
         function GetID(){
             var fr = document.getElementById("CategorieID");
             return fr.value = localStorage.getItem('CategoryId');
         }
+       window.onload = function() {
+        var reloading = sessionStorage.getItem("reloading");
+        if (reloading) {
+            sessionStorage.removeItem("reloading");
+            
+            EditOpen();
+        }
+    }
+
+    function reloadP() {
+        sessionStorage.setItem("reloading", "true");
+        document.location.reload();
+    }
     </script>
+    <script>
 
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "hidden";
+        } else {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+        }
+    }
 
+        // Function to check if the arrows are neccesary.
+        function ArrowCheck() {
+            // Only make the up and down arrows appear if there are more than 3 products
+            productAmount = $('.Basic').length;
+            if (productAmount > 6) {
+                document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+                document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+            }
+        }
 
+    function ToFavourites() {
+        location.href = "http://localhost:5090/nl/favorietenpagina/favorieten";
+        localStorage.setItem("location", (window.location.href).toString());
+    }
+    </script>
 </body>
