@@ -27,7 +27,7 @@ namespace zuiderzorg.Pages {
         [BindProperty]
         public MailRequest MailRequest { get;set;}
         public IActionResult OnPost(){
-
+        // html for the mail body
         string  Body = "<p> Naam: " + Request.Form["Name"] + "<br> telefoon-nummer: " + Request.Form["TelNumber"] + "<br> Email: " + Request.Form["Email"] + "<br> Bericht: "+ Request.Form["Body"] + "</p>";
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {

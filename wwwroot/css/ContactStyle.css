@@ -51,12 +51,12 @@ form button{
     border-radius: 30px;
 }
 
-button.Basic {
+.Basic {
     background-position: center center;
     position: relative;
-    /* height: 300px; */
-    /* width: 275px; */
-    padding: 4.5rem;
+    height: 15.75rem; 
+     width: 14.188rem;
+    
     border: 3px solid;
     background-color: white;
     border-radius: 12px;
@@ -64,11 +64,11 @@ button.Basic {
     margin-left: 40px;
 }
 
-    button.Basic:hover {
+.Basic:hover {
         box-shadow: 10px 10px 8px #888888;
     }
 
-button.HelpButton {
+.HelpButton {
     /* background-position: center center;
     position: relative;
     height: 100px;
@@ -80,6 +80,6 @@ button.HelpButton {
     margin-left: 40px; */
 }
 
-    button.HelpButton:hover {
+ .HelpButton:hover {
         box-shadow: 10px 10px 8px #888888;
     }
