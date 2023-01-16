@@ -3,43 +3,81 @@
 @using zuiderzorg.Models
 <head>
     <link href="~/css/ProductStyle.css" rel="stylesheet"/>
-</head>
-<body style="background-color:#E9E2E2;">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <div class="row">
-        <div class="col">
-            <div class="button1">
-                <button class="Back" onclick="GoBack()"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
+</head>
+
+<body style="background-color:#E9E2E2;">
+<div class="container-xxl container-fluid">
+    <div class="row row-cols-3 justify-content-center">
+        <div class="row row-cols-1 align-content-between">
+            <div class="col text-start">
+                <button class="product" onclick="GoBack()">
+                    <img class="img-fluid imgIcons" src="/images/CatagoryIcons/BackIcon.png" height=100 width=100/>
+                    <br/>
+                    <strong>Terug</strong>
+                </button>
             </div>
-            <div class="button2">
-                <button class="Help" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
+            <div class="col text-start">
+                <button class="product" onclick="JavaScript:alert('This button is under construction, please remain calm.')">
+                    @* <img class="img-fluid imgIcons" src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150/> *@
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="60%" fill="#6CBF2A" class="bi bi-info-square" viewBox="0 0 16 16">
+                      <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                    <br/>
+                    <strong>Informatie</strong>
+                </button>
             </div>
         </div>
-        <div class="col-7">
-            <div class="ProductInfo">
-                @{var db = new CategoryContext();}
-                @{var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();}
-                <div class="image">
-                    <img id="productImage" src="/images/@ProductInfo[0].Image" alt="BlikopenerFoto">
+        <div class="col-xxl-4 ProductInfo">
+            <div class="container-fluid">
+                @* <div class="ProductInfo"> *@
+                @{
+                    var db = new CategoryContext();
+                    var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();
+
+                }
+                <div class="image" style="padding-bottom: 50%;">
+                    <img class="img-fluid" src="/images/@ProductInfo[0].Image" alt="BlikopenerFoto">
                 </div>
-                <div class="productName">@ProductInfo[0].Name
+                <div class="productName" style="padding-bottom: 5%;">@ProductInfo[0].Name
                     <div class="productDescription">@ProductInfo[0].Description</div>
                 </div>
-                <div class="productPrice">€@ProductInfo[0].PriceMin - €@ProductInfo[0].PriceMax</div>
-                <button type="button" class="btn Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">  <i class="bi bi-cart-fill" style="font-size:5vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Naar bestelpagina</strong></button>
+                <div class="productPrice" style="padding-bottom: 10%;">€@ProductInfo[0].PriceMin - €@ProductInfo[0].PriceMax</div>
+                <button type="button" class="Buy" data-bs-toggle="modal" data-bs-target="#Popup" value="Buy" onclick="ClickedButton(value)">
+                    <i class="bi bi-cart-fill" style="font-size:5vw;color:#6CBF2A;position:relative;"></i> 
+                    <br/> 
+                    <strong>Naar bestelpagina</strong>
+                </button>
+                @* </div> *@
+                <script>
+                        window.productName = "@ProductInfo[0].Name";
+                        window.productImage = "temp";
+                        window.productHref = "temp";
+                        window.productVideo = "temp";
+                        window.productPrice = "€@ProductInfo[0].PriceMin";
+                        window.productGUID = "@ProductInfo[0].ProductId";
+                    </script>
             </div>
-            <script>
-                window.productName = "@ProductInfo[0].Name";
-                window.productImage = "temp";
-                window.productHref = "temp";
-                window.productVideo = "temp";
-                window.productPrice = "€@ProductInfo[0].PriceMin";
-                window.productGUID = "@ProductInfo[0].ProductId";
-            </script>
         </div>
-        <div class="col">
-            <button type="button" class="btn Experience" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">  <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>Ervaringen van <br>anderen</strong></button>
-            <button class="btn ShoppingCart" onclick="FavouritesToggle()"> <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;position:relative;visibility:visible"></i>  <i class="bi bi-star-fill" style="font-size:6vw;color:#6CBF2A;position:absolute;margin-left:-37%;visibility:hidden"></i> <br/> <strong class="FavouritesText">In favorieten <br>plaatsen</strong></button>
+        <div class="row row-cols-1 align-content-between">
+            <div class="col text-end">
+                <button type="button" class="product" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">
+                    @* <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i>  *@
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="50%" fill="#6CBF2A" class="bi bi-play-circle-fill position-relative" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+                    </svg>
+                    @* <br/>  *@
+                    <strong>Ervaringen van <br>anderen</strong>
+                </button>
+            </div>
+            <div class="col text-end">
+                <button class="product" onclick="FavouritesToggle()">
+                    <span class="bi bi-star-fill favoswitch" style="font-size: 400%;color: #6CBF2A;overflow-wrap: break-word;display: inline-block;"></span>
+                    <br/> 
+                    <strong class="FavouritesText">In favorieten <br>plaatsen</strong>
+                </button>
+            </div>
         </div>
         <div class="alert alert-success" id="AddAlert" role="alert">
             Het product is toegevoegd aan uw winkelwagen.
@@ -65,6 +103,7 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 
 <script>
@@ -119,24 +158,45 @@
             $(".FavouritesText").html("In favorieten <br>plaatsen");
         }
 
-        var visibility = document.getElementsByClassName("bi bi-star")[0].style.visibility;
-        if (visibility == "visible") {
-            AddFavourites();
-            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
-            document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
-            CloseAlert();
-            $("#AddAlert").fadeTo(2000, 500).slideUp(500, function() {
-                $("#AddAlert").slideUp(500);
-            });
-        } else {
-            DeleteFavourites();
-            document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "hidden";
-            document.getElementsByClassName("bi bi-star")[0].style.visibility = "visible";
-            CloseAlert();
-            $("#DeleteAlert").fadeTo(2000, 500).slideUp(500, function() {
-                $("#DeleteAlert").slideUp(500);
-            });
-        }
+        // // var visibility = document.getElementsByClassName("bi bi-star")[0].style.visibility;
+        // if (visibility == "visible") {
+        //     AddFavourites();
+            // document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
+        //     document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+        //     CloseAlert();
+        //     $("#AddAlert").fadeTo(2000, 500).slideUp(500, function() {
+        //         $("#AddAlert").slideUp(500);
+        //     });
+        // } else {
+        //     DeleteFavourites();
+        //     document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "hidden";
+        //     document.getElementsByClassName("bi bi-star")[0].style.visibility = "visible";
+        //     CloseAlert();
+        //     $("#DeleteAlert").fadeTo(2000, 500).slideUp(500, function() {
+        //         $("#DeleteAlert").slideUp(500);
+        //     });
+        // }
+        
+            let favoriteCheck = document.getElementsByClassName("favoswitch")[0];
+            if ($(favoriteCheck).hasClass("bi-star")) {
+                console.log("filled");
+                AddFavourites();
+                $(favoriteCheck).toggleClass("bi-star");
+                $(favoriteCheck).toggleClass("bi-star-fill");
+                CloseAlert();
+                $("#AddAlert").fadeTo(2000, 500).slideUp(500, function() {
+                    $("#AddAlert").slideUp(500);
+                });
+            } else {
+                console.log("UNfilled");
+                DeleteFavourites();
+                $(favoriteCheck).toggleClass("bi-star-fill");
+                $(favoriteCheck).toggleClass("bi-star");
+                CloseAlert();
+                $("#DeleteAlert").fadeTo(2000, 500).slideUp(500, function() {
+                    $("#DeleteAlert").slideUp(500);
+                });
+            }
     }
 
     @* function VideoAvailability() {
@@ -168,15 +228,15 @@
     }
 
     // Function to change the text and icon based on the product being favourited or not.
-    function StarFill(object) {
-        if (object.name != null) {
-            if (window.productGUID == object.GUIDfield) {
-                $(".FavouritesText").html("Uit favorieten <br>verwijderen");
-                document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
-                document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
-            }
-        }
-    }
+    // function StarFill(object) {
+    //     if (object.name != null) {
+    //         if (window.productGUID == object.GUIDfield) {
+    //             $(".FavouritesText").html("Uit favorieten <br>verwijderen");
+    //             document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+    //             document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
+    //         }
+    //     }
+    // }
 
     // Onload function. Checks what the current product is and if that product is favourited.
     window.onload = function () { 
@@ -191,8 +251,8 @@
                 values.push(JSON.parse(localStorage.getItem(keys[i])));
             }
         }
-        values.forEach(StarFill);
-        VideoAvailability();
+        // values.forEach(StarFill);
+        // VideoAvailability();
     };
 
 </script>

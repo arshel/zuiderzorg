@@ -65,4 +65,28 @@
     function NextPage() {
         location.href = "/nl/product_select_page";
     }
+    
+    // get slider
+    var slider = document.getElementById("myRange");
+    
+    
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+        document.getElementsByTagName('video')[0].volume = parseFloat(this.value / 100);
+    };
+    
+    // Video pause and unpause
+    $('.bi').parent().click(function () 
+        {
+            if($(this).children(".video").get(0).paused)
+            {        
+                $(this).children(".video").get(0).play();   
+                $(this).children(".bi").fadeOut();
+        }
+        else
+        {       
+            $(this).children(".video").get(0).pause();
+            $(this).children(".bi").fadeIn();
+        }
+    });
 </script>

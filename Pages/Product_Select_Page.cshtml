@@ -14,9 +14,9 @@
 
 <body style="background-color: #F9EFEF">
     <div class="container-fluid">
-        <div class="row row-cols-2">
+        <div class="row row-cols-1">
             <div class="col-lg-3">
-                <div class="row row-cols-1">
+                <div class="row row-cols-2">
                     <div class="col-xl-12 mb-4">
                         <button class="Basic" onclick="document.location='/index'" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug knop")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left" >
                             <img src="/images/CatagoryIcons/BackIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px; padding-bottom: 27px;"/>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="col-xxl">
-                <div class="row row-cols-auto align-items-center" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Categorieën")" data-bs-content="@localizer.Get("Met deze knoppen kunt u naar de weergeven categorieën navigeren, hier kunt u producten zien om eventueel te kopen.")" data-bs-placement="right">
+                <div class="row row-cols-2 align-items-center" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Categorieën")" data-bs-content="@localizer.Get("Met deze knoppen kunt u naar de weergeven categorieën navigeren, hier kunt u producten zien om eventueel te kopen.")" data-bs-placement="right">
                 @{
                     var db = new CategoryContext();
                     var CatInfo = db.Categories.ToArray();
@@ -55,21 +55,19 @@
                         </div>
                     }
                 }
-                    <div class="col-xxl-4 mb-4">
-                        <button type="button" class="Basic" onclick="openForm()">
-                            @* <img src="/images/CatagoryIcons/PlusIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px;"/> *@
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-plus-lg" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-                            </svg>
-                            <br>
-                            <strong class="h2">@localizer.Get("Toevoegen")</strong>
-                        </button>
-                        @* <button class="Add" onclick="RemoveOpen()"> *@
-                        @*     <img src="/images/CatagoryIcons/EditIcon.png" height=100 width=100/> *@
-                        @*     <br/> *@
-                        @*     <strong>Aanpassen</strong> *@
-                        @* </button> *@
-                    </div>
+                <div class="col-xxl-4 mb-4">
+                    <button type="button" class="Basic" onclick="openForm()">
+                        @* <img src="/images/CatagoryIcons/PlusIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px;"/> *@
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                        </svg>
+                        <br>
+                        <strong class="h2">@localizer.Get("Toevoegen")</strong>
+                    </button>
+                </div>
+                <div>
+                    
+                </div>
                 </div>
             </div>
            
