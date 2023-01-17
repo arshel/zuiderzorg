@@ -11,11 +11,11 @@
     <div class="row row-cols-3 justify-content-center">
         <div class="row row-cols-1 align-content-between">
             <div class="col text-start">
-                <button class="product" onclick="GoBack()">
+                <a class="product btn" asp-route-culture="@Request.RouteValues["culture"]" asp-page="/productenselectie">
                     <img class="img-fluid imgIcons" src="/images/CatagoryIcons/BackIcon.png" height=100 width=100/>
                     <br/>
                     <strong>Terug</strong>
-                </button>
+                </a>
             </div>
             <div class="col text-start">
                 <button class="product" onclick="JavaScript:alert('This button is under construction, please remain calm.')">

@@ -1,12 +1,13 @@
-﻿button.Basic {
+﻿button.Basic, a.Basic {
     width: 100%;
     border: 3px solid;
     background-color: white;
     border-radius: 12px;
     padding: 20%;
+    white-space: normal;
 }
 
-    button.Basic:hover {
+    button.Basic:hover, a.Basic:hover {
         box-shadow: 10px 10px 8px #888888;
     }
     
@@ -18,7 +19,7 @@
         box-shadow: 10px 10px 8px #888888;
     }
 
-button.NestedButton {
+button.NestedButton,a.NestedButton {
     background-position: center center;
     position: relative;
     height: 470px;
@@ -30,7 +31,7 @@ button.NestedButton {
     margin-left: 40px;
 }
 
-button.Arrow {
+button.Arrow, a.Arrow {
     visibility: hidden;
     border: 4px solid black;
     color: rgb(0, 0, 0);
@@ -56,7 +57,7 @@ button.Arrow {
     bottom: 10%;
 }
 
-button:hover {
+button:hover, a:hover {
     box-shadow: 10px 10px 8px #888888;
 }
   
