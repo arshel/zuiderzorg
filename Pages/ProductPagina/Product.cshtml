@@ -52,9 +52,7 @@
                 @* </div> *@
                 <script>
                         window.productName = "@ProductInfo[0].Name";
-                        window.productImage = "temp";
-                        window.productHref = "temp";
-                        window.productVideo = "temp";
+                        window.productImage = "@ProductInfo[0].Image";
                         window.productPrice = "€@ProductInfo[0].PriceMin";
                         window.productGUID = "@ProductInfo[0].ProductId";
                     </script>
@@ -65,7 +63,7 @@
                 <button type="button" class="product" data-bs-toggle="modal" data-bs-target="#Popup" value="Experience" onclick="ClickedButton(value)">
                     @* <i class="bi bi-play-circle-fill" style="font-size:6vw;color:#6CBF2A;position:relative;"></i>  *@
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="50%" fill="#6CBF2A" class="bi bi-play-circle-fill position-relative" viewBox="0 0 16 16">
-                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
                     </svg>
                     @* <br/>  *@
                     <strong>Ervaringen van <br>anderen</strong>
@@ -113,17 +111,17 @@
     // Function to set the next location for a popup depending if clicked on the buy button or experience button.
     function ClickedButton(arg) {
     @{
-        var db = new CategoryContext();
+        var db2 = new CategoryContext();
     }
     @{
-        var ProductInfo = db.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();
+        var ProductInfo2 = db2.Products.Where(x => x.ProductId == Guid.Parse(Request.Cookies["ProductId"])).ToArray();
     }
 
         Nextlocation = "";
         if (arg == "Buy") {
-            Nextlocation = "@ProductInfo[0].StoreLink";
+            Nextlocation = "@ProductInfo2[0].StoreLink";
         } else {
-            Nextlocation = "@ProductInfo[0].ExpLinks";
+            Nextlocation = "@ProductInfo2[0].ExpLinks";
         }
         Weblink = (new URL(Nextlocation)).hostname;
 
@@ -211,8 +209,7 @@
     function AddFavourites() {
         const product = {
             name: window.productName,
-            image: window.productImage,
-            href: window.productHref, 
+            image: window.productImage, 
             price: window.productPrice,
             GUIDfield: window.productGUID
         }
