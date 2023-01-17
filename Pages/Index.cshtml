@@ -1,9 +1,6 @@
 ﻿@page
 @model IndexModel
 @inject Auth.AuthChecker auth
-@* @using Microsoft.AspNetCore.Localization
-@inject IStringLocalizer<IndexModel> localizer
-@inject IHtmlLocalizer<IndexModel> htmlLocalizer *@
 @{
     ViewData["Title"] = "Home page";
     var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
@@ -19,76 +16,52 @@
 </div>
 
 <div class="container-fluid container-xxl ms-0">
-    <div class="row flex-row row-cols-1 justify-content-center" >
+    <div class="row flex-row row-cols-1 justify-content-center">
         <div class="col-xl-9 position-relative">
             <video class="video rounded-3 container-fluid shadow p-2 bg-green">
-                <source src="http://e14aaeb709f7cde1ae68-a1d0a134a31b545b257b15f8a8ba5726.r70.cf3.rackcdn.com/projects/31432/1427815464209-bf74131a7528d0ea5ce8c0710f530bb5/1280x720.mp4" type="video/mp4"/>
+                @try
+                {
+                    if (Request.RouteValues["culture"].ToString() == "nl")
+                    {
+                        <source src="~/videos/UitlegVideo_NL.mp4" type="video/mp4"/>
+                    }
+                    else
+                    {
+                        <source src="~/videos/UitlegVideo_EN.mp4" type="video/mp4"/>
+                    }
+                }
+                catch
+                {
+                }
             </video>
-            <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-play-circle-fill videoplay" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
             </svg>
         </div>
-        
         <div class="row row-cols-3 justify-content-center mb-5" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Volume Regeling")" data-bs-content="@localizer.Get("Hiermee kunt u die volume regelen, de volume gaat van onder(zachter geluid) naar boven(luider geluid)")" data-bs-placement="right">
-            @* <div class="col w-25" style="margin-top: -1%" > *@
-                <svg class="col col-sm-auto" style="margin-right: -1%" width="24px" height="24px" viewBox="0 0 75 75" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" id="layer1" >
-                    <metadata id="metadata1"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/></cc:Work></rdf:RDF></metadata>
-                    <g id="g1"><polygon id="polygon1" points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769" style="stroke:#111111;stroke-width:5;stroke-linejoin:round;fill:#111111;"/>
-                        <path id="path1" d="M 48.128,49.03 C 50.057,45.934 51.19,42.291 51.19,38.377 C 51.19,34.399 50.026,30.703 48.043,27.577" style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
-                    </g>
-                </svg>
-                
-                <input class="col slider w-25" type="range" step="1" min="0" max="100" value="50" id="myRange">
-                
-                <svg class="col col-sm-auto" style="margin-left: -0.8%" width="24px" height="24px" viewBox="0 0 75 75" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" id="layer1" >
-                    <metadata id="metadata1"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/></cc:Work></rdf:RDF></metadata>
-                    <g id="g1"><polygon id="polygon1" points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769" style="stroke:#111111;stroke-width:5;stroke-linejoin:round;fill:#111111;"/>
-                        <path id="path1" d="M 48.128,49.03 C 50.057,45.934 51.19,42.291 51.19,38.377 C 51.19,34.399 50.026,30.703 48.043,27.577" style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
-                        <path id="path2" d="M 55.082,20.537 C 58.777,25.523 60.966,31.694 60.966,38.377 C 60.966,44.998 58.815,51.115 55.178,56.076" style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
-                        <path id="path1" d="M 61.71,62.611 C 66.977,55.945 70.128,47.531 70.128,38.378 C 70.128,29.161 66.936,20.696 61.609,14.01" style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
-                    </g>
-                </svg>
-                @* <div id="bubble" style="position: absolute; left: 20px; width: 20px; height:20px; background-color: red;pointer-events: none;"></div> *@
-            @* </div> *@
-            
-            @* <span class="position-absolute" id="volume"></span> *@
+            <svg class="col col-sm-auto" style="margin-right: -1%" width="24px" height="24px" viewBox="0 0 75 75" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" id="layer1">
+                <metadata id="metadata1"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/></cc:Work></rdf:RDF></metadata>
+                <g id="g1"><polygon id="polygon1" points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769" style="stroke:#111111;stroke-width:5;stroke-linejoin:round;fill:#111111;"/>
+                    <path id="path1" d="M 48.128,49.03 C 50.057,45.934 51.19,42.291 51.19,38.377 C 51.19,34.399 50.026,30.703 48.043,27.577" style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
+                </g>
+            </svg>
+
+            <input class="col slider w-25" type="range" step="1" min="0" max="100" value="50" id="myRange">
+
+            <svg class="col col-sm-auto" style="margin-left: -0.8%" width="24px" height="24px" viewBox="0 0 75 75" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" id="layer1">
+                <metadata id="metadata1"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/></cc:Work></rdf:RDF></metadata>
+                <g id="g1"><polygon id="polygon1" points="39.389,13.769 22.235,28.606 6,28.606 6,47.699 21.989,47.699 39.389,62.75 39.389,13.769" style="stroke:#111111;stroke-width:5;stroke-linejoin:round;fill:#111111;"/>
+                    <path id="path1" d="M 48.128,49.03 C 50.057,45.934 51.19,42.291 51.19,38.377 C 51.19,34.399 50.026,30.703 48.043,27.577" style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
+                    <path id="path2" d="M 55.082,20.537 C 58.777,25.523 60.966,31.694 60.966,38.377 C 60.966,44.998 58.815,51.115 55.178,56.076" style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
+                    <path id="path1" d="M 61.71,62.611 C 66.977,55.945 70.128,47.531 70.128,38.378 C 70.128,29.161 66.936,20.696 61.609,14.01" style="fill:none;stroke:#111111;stroke-width:5;stroke-linecap:round"/>
+                </g>
+            </svg>
         </div>
     </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            @* <a type="button btn" class="btn btn-primary bg-green border-green p-5 rounded-pill w-50" style="color: black" asp-route-culture="@Request.RouteValues["culture"]" asp-page="/product_Select_page"><h2>@localizer.Get("Volgende pagina")</h2></a> *@
-                    <a type="button btn" class="btn btn-primary bg-green border-green p-5 rounded-pill w-50" style="color: black" href="/nl/product_Select_page"><h2>@localizer.Get("Volgende pagina")</h2></a>
-
+            <a type="button btn" class="btn btn-primary bg-green border-green p-5 rounded-pill w-50" style="color: black" asp-route-culture="@Request.RouteValues["culture"]" asp-page="/Categories">
+                <h2>@localizer.Get("Volgende pagina")</h2></a>
         </div>
     </div>
 </div>
-
-<script>
-    function NextPage() {
-        location.href = "/nl/product_select_page";
-    }
-    
-    // get slider
-    var slider = document.getElementById("myRange");
-    
-    
-    // Update the current slider value (each time you drag the slider handle)
-    slider.oninput = function() {
-        document.getElementsByTagName('video')[0].volume = parseFloat(this.value / 100);
-    };
-    
-    // Video pause and unpause
-    $('.bi').parent().click(function () 
-        {
-            if($(this).children(".video").get(0).paused)
-            {        
-                $(this).children(".video").get(0).play();   
-                $(this).children(".bi").fadeOut();
-        }
-        else
-        {       
-            $(this).children(".video").get(0).pause();
-            $(this).children(".bi").fadeIn();
-        }
-    });
-</script>

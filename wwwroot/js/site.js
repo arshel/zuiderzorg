@@ -45,7 +45,25 @@ $(document).ready(function () {
     });
 });
 
+// get slider
+var slider = document.getElementById("myRange");
 
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    document.getElementsByTagName('video')[0].volume = parseFloat(this.value / 100);
+};
 
-
-document.addEventListener("DOMContentLoaded", setValue);
+// Video pause and unpause
+$('.videoplay').parent().click(function ()
+{
+    if($(this).children(".video").get(0).paused)
+    {
+        $(this).children(".video").get(0).play();
+        $(this).children(".bi").fadeOut();
+    }
+    else
+    {
+        $(this).children(".video").get(0).pause();
+        $(this).children(".bi").fadeIn();
+    }
+});

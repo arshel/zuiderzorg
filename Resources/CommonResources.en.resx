@@ -130,4 +130,31 @@
     <value>Add</value>
     <comment/>
   </data>
+  <data name="Terug" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Informatie" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Met deze knop kunt u terug naar de vorige pagina." xml:space="preserve">
+    <value>With this button you can go back to the previous page.</value>
+  </data>
+  <data name="categorieën" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="Met deze knoppen kunt u naar de weergeven categorieën navigeren, hier kunt u producten in favorieten zetten om door uw verzorger te laten kopen." xml:space="preserve">
+    <value>With these buttons you can go to the shown categories, here you can favorite products so that your caretaker may be able to buy it for you.</value>
+  </data>
+  <data name="Producten" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="Met deze knoppen kunt naar de weergeven producten navigeren." xml:space="preserve">
+    <value>With these buttons you can navigate to the shown products.</value>
+  </data>
+  <data name="Favorieten" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="Met deze knop kunt u uw producten bekijken die u in favorieten heeft gezet." xml:space="preserve">
+    <value>With this button you can navigate to the products you have placed in your favorites.</value>
+  </data>
 </root>

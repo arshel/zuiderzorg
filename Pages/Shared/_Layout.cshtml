@@ -13,28 +13,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 </head>
-<body>
+<body style="background-color: #F9EFEF">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 bg-green">
-
             <div class="container-fluid">
-
-
-        <button onclick="window.open('https://www.solnetwerk.nl/')" type="button" class="btn m-b-4  mx-auto d-block .d-block .d-sm-none" data-bs-toggle="popover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="right">
-                <img class="navbar-brand img-fluid float-right" alt="" style="width: 100%; height: 4rem;" src="~/Images/SOL_LOGO.png">
-        </button>
-
-                @* <div data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Placeholder" data-bs-content="placeholderplaceholderplaceholderplaceholder" data-bs-placement="bottom"> *@
-                   
-                  
-                        <vc:culture-switcher/>
-                   
-                @* </div> *@
-                 <div class="container d-small-flex"> 
+                <button onclick="window.open('https://www.solnetwerk.nl/')" type="button" class="btn m-b-4  mx-auto d-block .d-block .d-sm-none">
+                    <img class="navbar-brand img-fluid float-right" alt="" style="width: 100%; height: 4rem;" src="~/Images/SOL_LOGO.png">
+                </button>
+                <vc:culture-switcher/>
+                <div class="container d-small-flex"> 
                     <a class="navbar-brand ml-small  ml-lg-0 mt-lg-0  mt-2" asp-route-culture="@Context.Request.RouteValues["culture"]" asp-page="/Index">ZuiderZorg</a>
-                 </div> 
-
-
+                </div>
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 
 

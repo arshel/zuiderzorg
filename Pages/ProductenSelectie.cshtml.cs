@@ -91,7 +91,7 @@ namespace zuiderzorg.Pages
                     return RedirectToPage("ProductenSelectie");
 
                 default:
-                    return RedirectToPage("Product_Select_Page");
+                    return RedirectToPage("Categories");
             }
         }
         private readonly ILogger<ProductenSelectie> _logger;

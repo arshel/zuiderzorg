@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col">
             <div class="button1">
-                <button class="Back" onclick="history.back()"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>Terug</strong></button>
+                <button class="Back" onclick="history.back()"> <img src="/images/CatagoryIcons/BackIcon.png" height=100 width=100 /><br /> <strong>@localizer.Get("Terug")</strong></button>
             </div>
             <div class="button2">
                 <button class="Help" onclick="JavaScript:alert('This button is under construction, please remain calm.')">  <img src="/images/CatagoryIcons/InfoIcon.png" height=150 width=150 /><br /> <strong>Vraag om hulp</strong></button>
@@ -103,7 +103,7 @@
 
     // Function to go to the Catagory Page.
     function ToCatagoryPage() {
-        location.href = "http://localhost:5090/nl/product_select_page";
+        location.href = "http://localhost:5090/nl/Categories";
     }
 
     // Function to check if the arrows are neccesary.
@@ -143,7 +143,7 @@
         `<button type="button" class="ProductBlock" id="nav ProductBlock${object.GUIDfield}" value="${object.GUIDfield}" onclick="ToProduct(value)" data-toggle="tooltip" data-popper-placement="top" title="Placeholder">${object.name}
             <div class="PriceBlock">${object.price}</div>
             <div class="imagefield">
-                <img class="image" src="/images/${object.image}" alt="BlikopenerFoto">
+                <img class="image" src="/images/${object.image}" alt="ProductFoto">
             </div>
         </button>`;
 
@@ -156,18 +156,6 @@
 
         document.getElementById("stars").innerHTML += makeStar;
 
-    }
-
-    // Function to go back.
-    function GoBack() {
-        // If the page is accessed via the url the user will be send back to the home screen, otherwise the user will go back to the previous page
-        if (localStorage.getItem("location") != null) {
-            var newLocation = localStorage.getItem("location");
-        } else {
-            var newLocation = "http://localhost:5090";
-        }
-        localStorage.removeItem("location");
-        location.href = newLocation;
     }
 
     // Function to go to the right product.
