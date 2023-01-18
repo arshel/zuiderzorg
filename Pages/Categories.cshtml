@@ -20,7 +20,7 @@
                         <a class="Basic btn" asp-route-culture="@Request.RouteValues["culture"]" asp-page="/index" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left" >
                             <img src="/images/CatagoryIcons/BackIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px; padding-bottom: 27px;"/>
                             <br/>
-                            <strong>Terug</strong>
+                            <strong>@localizer.Get("Terug")</strong>
                         </a>
                     </div>
                     <div class="col-xl-12 mb-4">

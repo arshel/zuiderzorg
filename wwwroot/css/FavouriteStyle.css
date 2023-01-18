@@ -50,28 +50,6 @@
  margin-top: 10%;
 }
 
-/*button.Help {*/
-/* width: 14vw;*/
-/* height: 30vh;*/
-/* padding: 10px;*/
-/* text-align: center;*/
-/* margin-top: 65%;*/
-/* border: 4px solid black;*/
-/* color: rgb(0, 0, 0);*/
-/* background-color: white;*/
-/* text-decoration: none;*/
-/* font-size: 30px;*/
-/* border-radius: 16px;*/
-/* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
-/*}*/
-
-/*p.HelpText {*/
-/* position: relative;*/
-/* top: 50%;*/
-/* font-size: 30px;*/
-/* text-align: center;*/
-/*}*/
-
 button.Button, a.Button {
  border: 4px solid black;
  color: rgb(0, 0, 0);
@@ -86,21 +64,9 @@ button.Button, a.Button {
  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-/*p.BackText {*/
-/* position: relative;*/
-/* top: 50%;*/
-/* font-size: 145%;*/
-/* text-align: center;*/
-/*}*/
-
-
 button.ProductBlock {
- /*position: relative;*/
  visibility: visible;
- /*margin-left: 5%;*/
- /*margin-bottom: 11%;*/
  width: 100%;
- /*height: 5%;*/
  border: 4px solid black;
  color: rgb(0, 0, 0);
  background-color: white;
@@ -115,10 +81,8 @@ button.ProductBlock:hover {
 }
 
 button.star {
- /*margin-bottom: 33%;*/
  visibility: visible;
  width: 100%;
- /*height: 100%;*/
  border: 4px solid black;
  color: rgb(0, 0, 0);
  background-color: white;
