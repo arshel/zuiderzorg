@@ -5,3 +5,7 @@
 # to start project use dotnet run or dotnet run watch in the command line
 
 
+Test user:
+
+123@gmail.com
+admin
