@@ -45,15 +45,6 @@
  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-
-
-/*.image {*/
-/* width: 10vw;*/
-/* height: 20vh;*/
-/* margin-left: -80%;*/
-/* margin-top: -40%;*/
-/*}*/
-
 .PriceBlock {
  font-size: 5vh;
  margin-top: 10%;
@@ -81,7 +72,7 @@
 /* text-align: center;*/
 /*}*/
 
-button.Button {
+button.Button, a.Button {
  border: 4px solid black;
  color: rgb(0, 0, 0);
  background-color: white;
@@ -90,17 +81,17 @@ button.Button {
  padding: 10px;
  text-align: center;
  text-decoration: none;
- font-size: 30px;
+ font-size: 145%;
  border-radius: 16px;
  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-p.BackText {
- position: relative;
- top: 50%;
- font-size: 30px;
- text-align: center;
-}
+/*p.BackText {*/
+/* position: relative;*/
+/* top: 50%;*/
+/* font-size: 145%;*/
+/* text-align: center;*/
+/*}*/
 
 
 button.ProductBlock {
@@ -132,7 +123,6 @@ button.star {
  color: rgb(0, 0, 0);
  background-color: white;
  text-decoration: none;
- font-size: 1vh;
  border-radius: 16px;
  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

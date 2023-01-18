@@ -38,7 +38,7 @@ body {
 
 /* Video container begin */
 
-.bi-play-circle-fill {
+.videoplay {
   width:17%;
   height:30%;
   position:absolute;
@@ -49,16 +49,9 @@ body {
   margin:auto;
 }
 
-.bi-play-circle-fill:hover {
+.videoplay:hover {
   color: rgb(108, 191, 42);
   cursor: pointer;
-}
-.bi-volume-down-fill {
-  
-}
-
-.bi-volume-up-fill {
-  
 }
 
 /* Video container end */

@@ -163,4 +163,22 @@
   <data name="Naar Beneden" xml:space="preserve">
     <value>To Bottom</value>
   </data>
+  <data name="Naar bestelpagina" xml:space="preserve">
+    <value>To order page</value>
+  </data>
+  <data name="In favorieten plaatsen" xml:space="preserve">
+    <value>Place in favorites</value>
+  </data>
+  <data name="Ervaringen van anderen" xml:space="preserve">
+    <value>Other people's experiences</value>
+  </data>
+  <data name="Met deze knop kunt u het product aan uw favorieten plaatsen." xml:space="preserve">
+    <value>With this button you can add the product to your list of favorite items.</value>
+  </data>
+  <data name="Kies een taal" xml:space="preserve">
+    <value>Choose a language</value>
+  </data>
+  <data name="Hier kunt u een taal kiezen naar keuze." xml:space="preserve">
+    <value>Here you can choose a language of your choice.</value>
+  </data>
 </root>

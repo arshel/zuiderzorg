@@ -6,6 +6,9 @@
     var requestCultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
     var requestCulture = requestCultureFeature.RequestCulture;
 }
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
 
 <div class="mt-4 container">
 <component render-mode="Static" type="typeof(Components.Message)" param-text="Model.success" param-type='"success"' />
