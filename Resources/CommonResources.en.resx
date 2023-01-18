@@ -157,4 +157,10 @@
   <data name="Met deze knop kunt u uw producten bekijken die u in favorieten heeft gezet." xml:space="preserve">
     <value>With this button you can navigate to the products you have placed in your favorites.</value>
   </data>
+  <data name="Naar Boven" xml:space="preserve">
+    <value>To Top</value>
+  </data>
+  <data name="Naar Beneden" xml:space="preserve">
+    <value>To Bottom</value>
+  </data>
 </root>
