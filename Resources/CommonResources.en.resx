@@ -181,4 +181,10 @@
   <data name="Hier kunt u een taal kiezen naar keuze." xml:space="preserve">
     <value>Here you can choose a language of your choice.</value>
   </data>
+  <data name="Met deze knop kunt u een product uit de favorieten verwijderen." xml:space="preserve">
+    <value>With this button you can delete a product from your list of favorite items.</value>
+  </data>
+  <data name="Verwijderen" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>

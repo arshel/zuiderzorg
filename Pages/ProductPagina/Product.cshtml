@@ -12,7 +12,7 @@
             <div class="row row-cols-1">
                 <div class="col-md-10 col-lg-8">
                     <a class="product btn" asp-route-culture="@Request.RouteValues["culture"]" asp-page="/productenselectie" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="bottom">
-                        <img class="img-fluid" style="margin-top: 25%;" src="/images/CatagoryIcons/BackIcon.png" height=100 width=100/>
+                        <img class="img-fluid" style="margin-top: 10%;" src="/images/CatagoryIcons/BackIcon.png" height=100 width=100/>
                         <br/>
                         <strong>@localizer.Get("Terug")</strong>
                     </a>
@@ -66,7 +66,7 @@
                     </button>
 
                     <button class="product" onclick="FavouritesToggle()" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("In favorieten plaatsen")" data-bs-content="@localizer.Get("Met deze knop kunt u het product aan uw favorieten plaatsen.")" data-bs-placement="top">
-                        <i class="bi bi-star-fill favoswitch" style="font-size: 300%;color: #6CBF2A;"></i>
+                        <i class="bi bi-star favoswitch" style="font-size: 300%;color: #6CBF2A;"></i>
                         <br/> 
                         <strong class="FavouritesText">@localizer.Get("In favorieten plaatsen")</strong>
                     </button>
@@ -220,15 +220,18 @@
     }
 
     // Function to change the text and icon based on the product being favourited or not.
-    // function StarFill(object) {
-    //     if (object.name != null) {
-    //         if (window.productGUID == object.GUIDfield) {
-    //             $(".FavouritesText").html("Uit favorieten <br>verwijderen");
-    //             document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
-    //             document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
-    //         }
-    //     }
-    // }
+    function StarFill(object) {
+        if (object.name != null) {
+            if (window.productGUID == object.GUIDfield) {
+                $(".FavouritesText").html("Uit favorieten <br>verwijderen");
+                // document.getElementsByClassName("bi bi-star")[0].style.visibility = "hidden";
+                // document.getElementsByClassName("bi bi-star-fill")[0].style.visibility = "visible";
+                let favoriteCheck = document.getElementsByClassName("favoswitch")[0];
+                $(favoriteCheck).toggleClass("bi-star-fill");
+                $(favoriteCheck).toggleClass("bi-star");
+            }
+        }
+    }
 
     // Onload function. Checks what the current product is and if that product is favourited.
     window.onload = function () { 
@@ -243,7 +246,7 @@
                 values.push(JSON.parse(localStorage.getItem(keys[i])));
             }
         }
-        // values.forEach(StarFill);
+        values.forEach(StarFill);
         // VideoAvailability();
     };
 
