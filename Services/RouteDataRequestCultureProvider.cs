@@ -24,7 +24,7 @@ namespace zuiderzorg.Services
             var parts = httpContext.Request.Path.Value.Split('/');
             // Get culture from path
             var culture = parts[1];
-
+            System.Diagnostics.Debug.WriteLine(culture);
             if (parts.Length < 3)
             {
                 return Task.FromResult<ProviderCultureResult>(null);

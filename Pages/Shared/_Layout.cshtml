@@ -3,68 +3,79 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, , shrink-to-fit=no" />
     <title>@ViewData["Title"] - zuiderzorg</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/zuiderzorg.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 </head>
-<body>
+<body style="background-color: #F9EFEF">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 bg-green">
-            <vc:culture-switcher/>
-            <div class="container">
-                
-                @* <button onclick="languageChange_NL()" class="language-btn NL">
-                    <img class="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/266px-Flag_of_the_Netherlands.svg.png">
-                    <script> if(Language == "NL"){Nederlands} else {Netherlands} </script>
-                </button> 
-                <button onclick="languageChange_EN()" class="language-btn EN">
-                    <img class="image" src="https://people4all.nl/wp-content/uploads/2016/07/engelse-vlag.png">
+            <div class="container-fluid">
+                <button onclick="window.open('https://www.solnetwerk.nl/')" type="button" class="btn m-b-4  mx-auto d-block .d-block .d-sm-none">
+                    <img class="navbar-brand img-fluid float-right" alt="" style="width: 100%; height: 4rem;" src="~/Images/SOL_LOGO.png">
                 </button>
-                <script>
-                    function languageChange_NL(){
-                        var Language = "NL";
-                    }
-                    function languageChange_EN(){
-                        var Language = "EN";
-                    }
-                </script> *@
-                <a class="navbar-brand"   asp-route-culture="@Context.Request.RouteValues["culture"]" asp-page="/Index">Zuiderzorg</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <vc:culture-switcher/>
+                <div class="container d-small-flex"> 
+                    <a class="navbar-brand ml-small  ml-lg-0 mt-lg-0  mt-2" asp-route-culture="@Context.Request.RouteValues["culture"]" asp-page="/Index">ZuiderZorg</a>
+                </div>
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+
+
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <partial name="_LoginPartial" />
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                         <a asp-route-culture="@Context.Request.RouteValues["culture"]" asp-page="/favorietenpagina/favorieten">  <i class="bi bi-star-half mr-3 "  style="color:black;font-size:3vh;cursor:pointer; line-height:1.3!important;"></i></a>
+                        </li>
+                       
+                         <li class="nav-item">
+                            <a asp-route-culture="@Context.Request.RouteValues["culture"]" asp-page="/Contact" >
+                                 <img src="/Images/email.png"  class="mr-3 mt-2" width="40" height="40">
+                             </a>
+
+                        </li>
+                        @* calling the login modal *@
+                        <li class="nav-item">
+
+                            <partial name="_LoginPartial"/>
+
+                        </li>
+
+                    </ul>
                 </div>
-                <a href="https://www.solnetwerk.nl/"><img class="navbar-brand float-end img-fluid" alt="" style="width: 130px; height: 60px" src="~/Images/SOL_LOGO.png"></a>
-          
+                
             </div>
         </nav>
     </header>
+
 <div class="container">
     <main role="main" class="pb-3">
-            @RenderBody()
-             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                </div>
+        @RenderBody()
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
             </div>
-            
-</main>
-   
+        </div>
 
+    </main>
+</div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

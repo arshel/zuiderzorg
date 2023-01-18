@@ -38,7 +38,7 @@ body {
 
 /* Video container begin */
 
-.bi-play-circle-fill {
+.videoplay {
   width:17%;
   height:30%;
   position:absolute;
@@ -49,7 +49,7 @@ body {
   margin:auto;
 }
 
-.bi-play-circle-fill:hover {
+.videoplay:hover {
   color: rgb(108, 191, 42);
   cursor: pointer;
 }
@@ -58,7 +58,7 @@ body {
 
 /* Next-page begin */
 .border-green {
-  
+  border-color: rgb(108, 191, 42);
 }
 
 .next-page {
@@ -82,14 +82,8 @@ body {
 }
 /* Next-page end */
 
-
-/* Volume Slider */
-.slidecontainer {
-  transform: translate(-42%) rotate(-90deg);
-  margin-left: -1px;
-}
-
 .slider {
+  padding: 0;
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   width: 100%; /* Full-width */
@@ -163,4 +157,32 @@ body {
   left: 50%;
   margin-left: -5px;
   margin-top: -1px;
+
+  
 }
+
+@media (min-width:320px)  {
+  .text-small-center{
+    text-align: center;
+  }
+  .d-small-flex{
+    display: flex;
+    justify-content: center;
+    margin-left: 0 !important;
+  }
+  .ml-small{
+    margin-left: 0;
+  }
+}
+@media (min-width:961px)  {
+  .text-small-center{
+    text-align: left;
+  }
+  .d-small-flex{
+    display: block;
+  }
+  .ml-small{
+    margin-left: 1.5rem;
+  }
+}
+

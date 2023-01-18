@@ -1,12 +1,16 @@
 @model CultureSwitcherModel
 
-<div class="container">
+
+<div  class="container text-small-center mt-2" style="margin-left: 1rem; z-index: 1" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="@localizer.Get("Kies een taal")" data-bs-content="@localizer.Get("Hier kunt u een taal kiezen naar keuze.")" data-bs-placement="bottom">
+
    
-    <form id="culture-switcher">
-        <select name="culture" class="selectpicker" id="culture-options">
+    <form id="culture-switcher" >
+        <select name="culture" class="selectpicker" id="culture-options" style="z-index: 10">
+
 
             @foreach (var culture in Model.SupportedCultures)
             {
+                @* get the name of the image and display it *@
                 var name = culture.Name + ".png";
                 <option    value="@culture.Name" selected="@(Model.CurrentUICulture.Name == culture.Name)" data-content="<img  style='width:30px; height:30px;' src='/images/@name'></img> @culture.DisplayName">@culture.DisplayName</option>
             }
@@ -17,9 +21,12 @@
 
 <script>
     var segments = location.pathname.split('/');
+     @* on change of the select get the country locale *@
     var el = document.getElementById("culture-options");
+    
     el.addEventListener("change", () => {
         var culture = el.options[el.selectedIndex].value;
+        
         if (segments.length > 2) {
             segments[1] = culture;
             location.href = segments.join('/');

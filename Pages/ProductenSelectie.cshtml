@@ -1,107 +1,270 @@
 ﻿@page
+@using zuiderzorg.Models
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@inject Auth.AuthChecker auth
 @model ProductenSelectie
 
 <h1>@ViewData["Title"]</h1>
-
 <head>
-    <link href="~/css/ProductenSelectieStyle.css" rel="stylesheet"/>
-</head>
-<body>
+    <link href="~/css/CategoryStyle.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <div class="container productenselectie">
-
-        <category class="categorie" style="grid-column-start:1;grid-column-end:5;">
-            <i class="bi bi-house" style="font-size:70px;color:#6CBF2A;position:absolute;left:50%;"></i>
-        </category>
-
-        <a href="/product_select_page" class="button back">
-            <i class="bi bi-arrow-90deg-left" style="font-size:70px;color:#6CBF2A;"></i>
-            <p class="buttontext">Terug</p>
-
-        </a>
-        @*
-        <button class="button back">
-            <i class="bi bi-arrow-90deg-left" style="font-size:70px;color:#6CBF2A;"></i>
-            <p class="buttontext">Terug</p>
-        </button>
+</head>
 
 
-
-        *@
-        <a href="/productpagina/product" class="button Product1">
-            <p style="position:absolute;bottom:20px;left:50px;" class="buttontext">Trilbed</p>
-
-        </a>
-        @*
-        <button class="button Product1">Trilbed</button>
-        *@
-
-
-
-        <a href="/productpagina/product" class="button Product2">
-            <img class="image image2" src="https://cdn.webshopapp.com/shops/285291/files/363696598/1100x720x2/bellman-symfon-bellman-trilwekker-digitaal-pro.jpg">
-            <p class="buttontext">Trill wekker</p>
-
-        </a>
-
-
-
-        @*<button class="button Product3">
-            <img class="image image3" src="https://img.grouponcdn.com/deal/4DUKDZGbhtW5YVHLj5TBm1VwSFwK/4D-1500x900/v1/c1400x840.webp">
-            <p class="buttontext">Bejaarden bestek</p>
-        </button>*@
-        <a href="/productpagina/product" class="button Product3">
-            <img class="image image3" src="https://img.grouponcdn.com/deal/4DUKDZGbhtW5YVHLj5TBm1VwSFwK/4D-1500x900/v1/c1400x840.webp">
-            <p class="buttontext">Bejaarden bestek</p>
-        </a>
-
-
-
-        @*<button class="button Help">
-            <i class="bi bi-info-circle" style="font-size:70px;color:#6CBF2A;"></i>
-            <p class="buttontext">Druk voor help</p>
-        </button>*@
-    <a href="/productpagina/product" class="button Help">
-        <i class="bi bi-info-circle" style="font-size:70px;color:#6CBF2A;"></i>
-        <p class="buttontext">Druk voor help</p>
-
-    </a>
-
-
-
-        @*<button class="button Product4">
-            <img class="image image4" src="https://cdn.shopify.com/s/files/1/0373/7006/9125/products/f5306ab7b50ecbda9d8fbf9487ef28aff348bfd2_FD_35_8712412581634_02_720x.jpg?v=1626439582">
-            <p class="buttontext">Licht bel</p>
-        </button>*@
-    <a href="/productpagina/product" class="button Product4">
-        <img class="image image4" src="https://cdn.shopify.com/s/files/1/0373/7006/9125/products/f5306ab7b50ecbda9d8fbf9487ef28aff348bfd2_FD_35_8712412581634_02_720x.jpg?v=1626439582">
-        <p class="buttontext">Licht bel</p>
-    </a>
-
-
-
-        @*<button class="button Product5">
-            <img class="image image5" src="https://mijnsos.nl/media/mf_webp/jpg/media/catalog/product/cache/83eecdf2a771bef3096e9ee184c49b16/e/v/ev-07b-zwart_4.webp">
-            <p class="buttontext">GPS tracker</p>
-        </button>*@
-    <a href="/productpagina/product" class="button Product5">
-        <img class="image image5" src="https://mijnsos.nl/media/mf_webp/jpg/media/catalog/product/cache/83eecdf2a771bef3096e9ee184c49b16/e/v/ev-07b-zwart_4.webp">
-        <p class="buttontext">GPS tracker</p>
-
-    </a>
-
-
-
-        @*<button class="button Add">
-            <img class="image image6" src="https://ct-res.cloudinary.com/images/f_auto,q_auto:good,w_700/images/c94623f77b935e9ecb2fb4c5f3b39535/gourmetmaxx-elektrische-blikopener-0001732683.jpg">
-            <p class="buttontext">Blikopener</p>
-        </button>*@
-    <a href="/productpagina/product" class="button Add">
-        <img class="image image6" src="https://ct-res.cloudinary.com/images/f_auto,q_auto:good,w_700/images/c94623f77b935e9ecb2fb4c5f3b39535/gourmetmaxx-elektrische-blikopener-0001732683.jpg">
-        <p class="buttontext">Blikopener</p>
-
-    </a>
-
-
+    <div class="container-fluid">
+        <div class="row row-cols-1">
+            <div class="col-lg-3">
+                <div class="row row-cols-2">
+                    <div class="col-xl-12 mb-4">
+                        <a class="Basic btn" asp-route-culture="@Request.RouteValues["culture"]" asp-page="/Categories" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Terug")" data-bs-content="@localizer.Get("Met deze knop kunt u terug naar de vorige pagina.")" data-bs-placement="left" >
+                            <img src="/images/CatagoryIcons/BackIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px; padding-bottom: 27px;"/>
+                            <br/>
+                            <strong>Terug</strong>
+                        </a>
+                    </div>
+                    <div class="col-xl-12 mb-4">
+                        <button class="Basic" onclick="TogglePopovers()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-info-square" viewBox="0 0 16 16">
+                              <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                            </svg>
+                            <br/>
+                            <strong>@localizer.Get("Informatie")</strong>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl">
+                <div class="row row-cols-2 align-items-center" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Producten")" data-bs-content="@localizer.Get("Met deze knoppen kunt naar de weergeven producten navigeren.")" data-bs-placement="bottom">
+                    <div class="col-xxl-4 mb-4">
+                        <a class="Basic btn" asp-route-culture="@Request.RouteValues["culture"]" asp-page="/favorietenpagina/favorieten" data-bs-toggle="popover" data-bs-trigger="manual" data-bs-title="@localizer.Get("Favorieten")" data-bs-content="@localizer.Get("Met deze knop kunt u uw producten bekijken die u in favorieten heeft gezet.")" data-bs-placement="bottom">
+                            @* <i class="bi bi-star" style="font-size:6vw;color:#6CBF2A;"></i> *@
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-star" viewBox="0 0 16 16">
+                              <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                            </svg>
+                            <br/> 
+                            <strong>@localizer.Get("Favorieten")</strong>
+                        </a>
+                    </div>
+                    @{
+                        var db = new CategoryContext();
+                        var CatInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
+                        foreach(var item in CatInfo)
+                        {
+                            <div class="col-xxl-4 mb-4">
+                                <a class="Basic btn" onclick="document.cookie = 'ProductId=@item.ProductId;path=/;';" asp-route-culture="@Request.RouteValues["culture"]" asp-page="/productpagina/product">
+                                    @* <img src="/images/CatagoryIcons/InfoIcon.png" height=100 width=100/> *@
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-question-circle" viewBox="0 0 16 16">
+                                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                      <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                                    </svg>
+                                    <br/> 
+                                    <strong>@item.Name</strong>
+                                </a>
+                            </div>
+                        }
+                    }
+                    <div class="col-xxl-4 mb-4">
+                        <button type="button" class="Basic" onclick="AddProductsOpen()">
+                            @* <img src="/images/CatagoryIcons/PlusIcon.png" class="img-fluid imgIcons" height=100 width=100 style="padding: 20px;"/> *@
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="#6CBF2A" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                            </svg>
+                            <br>
+                            <strong>@localizer.Get("Toevoegen")</strong>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            @* <div class="col"> *@
+                <button class="Arrow" id="ArrowUp" value="false" onclick="scrolling(value)"><i class="bi bi-arrow-up-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>@localizer.Get("Naar Boven")</strong></button>
+                <button class="Arrow" id="ArrowDown" value="true" onclick="scrolling(value)"><i class="bi bi-arrow-down-square-fill" style="font-size:4vw;color:#6CBF2A;position:relative;"></i> <br /> <strong>@localizer.Get("Naar Beneden")</strong></button>
+            @* </div> *@
+        </div>
     </div>
-</body>
+
+    <div class="form-popup" id= "AddProducts">
+        <div class="center">
+            <form enctype="multipart/form-data" class="form-container" method="post" onsubmit="GetID()">
+                <div asp-validation-summary="ModelOnly">
+                </div>
+                <h2>Toevoegen</h2>
+                <label for="ProductRequest.Name"><b>Titel</b></label>
+                <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" required>
+                <span asp-validation-for="ProductRequest.Name"> </span>
+
+                <label for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><label  for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><br />
+                <input for="ProductRequest.PriceMin" min="0" max="999.99" type="number"  name="ProductPriceMin" step="0.01" required>
+                
+                <input for="ProductRequest.PriceMax" min="0" max="1000" type="number"  name="ProductPriceMax" step="0.01" required>
+                <br />
+                <label for="ProductRequest.Description"><b>Beschrijving</b></label>
+                <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" required>
+                <span asp-validation-for="ProductRequest.Description"> </span>
+
+                <label asp-for="FileUpload"><b>Icoon</b></label><br>
+                <input type="file" asp-for="FileUpload" placeholder="Voeg een foto toe.">
+                <span asp-validation-for="FileUpload"></span>
+                <br /><br />
+                <label for="ProductRequest.StoreLink"><b>Link naar de winkel</b></label>
+                <input for="ProductRequest.StoreLink" type="text" name="StoreLink" required>
+                <span asp-validation-for="ProductRequest.StoreLink"> </span>
+                <label for="ProductRequest.ExpLink"><b>Link naar de Ervaringen</b></label>
+                <input for="ProductRequest.ExpLink" type="text" name="ExpLink" required>
+                <span asp-validation-for="ProductRequest.ExpLink"> </span>
+
+                <br /><br />
+
+                <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
+                <input asp-for="Option" type="hidden" name="Option" id="Option" value="Add">
+
+                <button type="submit" class="btn">Toevoegen</button>
+                <button type="button" class="btn cancel" onclick="AddProductsClose()">Annuleren</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="form-popup" id="EditProduct">
+        <div class="center">
+            <form enctype="multipart/form-data" class="form-container" method="post">
+                <div asp-validation-summary="ModelOnly">
+                </div>
+                @{
+                    var db = new CategoryContext();
+                    var y = new Guid();
+                    var ProdInfo = db.Products.Where(x=>x.ParentCategoryId==Guid.Parse(Request.Cookies["CategoryId"])).ToArray();
+                    if(Request.Cookies["ProductId"] != null){
+                        var products = ProdInfo.Where(x=>x.ProductId== Guid.Parse(Request.Cookies["ProductId"]) ).ToArray();
+                        if (products.Any())
+                        {
+                            var product = products[0];
+                            <h1>Aanpassen</h1>
+                            <label for="ProductRequest.Name"><b>Titel</b></label>
+                            <input for="ProductRequest.Name" type="text" placeholder="Vul een naam in" name="ProductTitle" value="@product.Name" required>
+                            <span asp-validation-for="ProductRequest.Name"> </span>
+
+                            <label for="ProductRequest.PriceMin"><b>Minumum Prijs</b></label><br />
+                            <input for="ProductRequest.PriceMin" min="0" max="999.99" type="number"  name="ProductPriceMin" step="0.01" value="@product.PriceMin" required>
+                            <br />
+                            <label for="ProductRequest.PriceMax"><b>Maximum Prijs</b></label><br />
+                            <input for="ProductRequest.PriceMax" min="0" max="1000" type="number"  name="ProductPriceMax" step="0.01" value="@product.PriceMax" required>
+                            <br />
+                            <label for="ProductRequest.Description"><b>Beschrijving</b></label>
+                            <input for="ProductRequest.Description" type="text" placeholder="Vul een beschrijving in" name="ProductDescription" value="@product.Description" required>
+                            <span asp-validation-for="ProductRequest.Description"> </span>
+                            <br /><br />
+                            <label for="ProductRequest.StoreLink"><b>Link naar de winkel</b></label>
+                            <input for="ProductRequest.StoreLink" type="text" name="StoreLink" value="@product.StoreLink" required>
+                            <span asp-validation-for="ProductRequest.StoreLink"> </span>
+                            <br /><br />
+                            <label for="ProductRequest.ExpLink"><b>Link naar de Ervaringen</b></label>
+                            <input for="ProductRequest.ExpLink" type="text" name="ExpLink" value="@product.ExpLinks" required>
+                            <span asp-validation-for="ProductRequest.ExpLink"> </span>
+
+                            <label asp-for="FileUpload"><b>Icoon</b></label><br />
+                            <input type="file" asp-for="FileUpload" value="@product.Image">
+                            <span asp-validation-for="FileUpload"></span>
+                            <br /><br />
+
+                            <input for="ProductRequest.ParentCategoryId" type="hidden" placeholder="De Id van de hogere categorie" name="CategorieID" id="CategorieID" value="1" required>
+                            <input asp-for="Option" type="hidden" name="Option" id="Option" value="Edit">
+
+                            <button type="submit" class="btn">Aanpassen</button>
+                            <button type="button" class="btn cancel" onclick="EditClose();document.cookie='EditId=@product.ProductId';">Annuleren</button>
+
+                        }
+                    }
+                }
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function AddProductsOpen() {
+            document.getElementById("AddProducts").style.display = "block";
+        }
+
+        function AddProductsClose() {
+            document.getElementById("AddProducts").style.display = "none";
+        }
+        function RemoveOpen() {
+            document.getElementById("RemoveProducts").style.display = "block";
+        }
+
+        function RemoveClose() {
+            document.getElementById("RemoveProducts").style.display = "none";
+        }
+        function EditOpen() {
+            document.getElementById("EditProduct").style.display = "block";
+        }
+
+        function EditClose() {
+            document.getElementById("EditProduct").style.display = "none";
+        }
+        function GetID(){
+            var fr = document.getElementById("CategorieID");
+            return fr.value = localStorage.getItem('CategoryId');
+        }
+        window.onload = function() {
+        var reloading = sessionStorage.getItem("reloading");
+            if (reloading) {
+                sessionStorage.removeItem("reloading");
+                
+                EditOpen();
+            }
+        }
+
+        function reloadP() {
+            sessionStorage.setItem("reloading", "true");
+            document.location.reload();
+        }
+    
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "hidden";
+        } else {
+            document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+        }
+    
+        //Functions for the scrollarrows
+            window.onscroll = function() {PositionCheck()};
+            window.onload = function () {
+                ArrowCheck();
+                PositionCheck();
+            }
+        
+            function scrolling(n) {
+                var scrolloffset = $(window).height();
+                scrolloffset *= 0.87;
+                var top = document.documentElement.scrollTop || document.body.scrollTop;
+                if (n == "true") {
+                    var newscroll = top + scrolloffset;
+                } else {
+                    var newscroll = top - scrolloffset;
+                }
+                window.scrollTo({ top: newscroll, behavior: 'smooth' })
+            }
+        
+            function PositionCheck() {
+                if (document.documentElement.scrollTop == 0) {
+                    document.getElementsByClassName("Arrow")[0].style.visibility = "hidden";
+                } else {
+                    document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+                }
+        
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    document.getElementsByClassName("Arrow")[1].style.visibility = "hidden";
+                } else {
+                    document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+                }
+            }
+        
+                // Function to check if the arrows are neccesary.
+            function ArrowCheck() {
+                    // Only make the up and down arrows appear if there are more than 3 products
+                    productAmount = $('.Basic').length;
+                    if (productAmount > 6) {
+                        document.getElementsByClassName("Arrow")[0].style.visibility = "visible";
+                        document.getElementsByClassName("Arrow")[1].style.visibility = "visible";
+                    }
+                }
+    </script>

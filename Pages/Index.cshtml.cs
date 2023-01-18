@@ -89,17 +89,6 @@ public class IndexModel : PageModel
                 return LocalRedirect(returnUrl);
 
             }
-
-           
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                
-                  
-                
-                
-                
-            
-            // If we got this far, something failed, redisplay form
             
         }
 
